@@ -16,13 +16,12 @@ class CreateWalletsTable extends Migration
         Schema::create('wallets', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('uid')->uniqe();
-            $table->string('walletID')->uniqe();
+            $table->string('address')->uniqe();
             $table->string('title');
             $table->string('description');
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *

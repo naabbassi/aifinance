@@ -15,7 +15,7 @@ class Deposit extends Migration
     {
         Schema::create('deposit', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->int('uid');
+            $table->bigInteger('uid');
             $table->decimal('btc');
             $table->decimal('usd');
             $table->string('type');
