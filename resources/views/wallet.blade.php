@@ -3,7 +3,6 @@
     AIF :: My Wallets
 @endsection 
 @section('content')
-<div class="main-content">
         <div class="section">
             <div class="section-header">
                 <h1>My Wallets</h1>
@@ -23,20 +22,20 @@
                         @csrf
                         <div class="form-group">
                           <label for="address">Wallet address</label>
-                          <input type="text" class="form-control" name="address" placeholder="Enter your wallet address">
+                          <input type="text" class="form-control" name="address" placeholder="Enter your wallet address" value="{{ old('address') }}">
                           <small class="form-text text-muted">Be sure that you enter the wallet address correctly.</small>
                           @error('address')
-                             <small class="form-text ">{{ $message }}</small>
+                             <small class="form-text text-danger">{{ $message }}</small>
                           @enderror
                         </div>
                         <div class="form-group">
                           <label for="title">Wallet Name</label>
-                          <input type="text" class="form-control" name="title" placeholder="Set a name to your wallet...">
+                          <input type="text" class="form-control" name="title" placeholder="Set a name to your wallet..." value="{{ old('title') }}">
                           @error('title')
-                             <small class="form-text ">{{ $message }}</small>
+                             <small class="form-text text-danger">{{ $message }}</small>
                           @enderror
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
                       </form>
                     </div>
                   </div>
@@ -45,7 +44,7 @@
                   <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped">
+                            <table class="table table-striped" id="walletTable">
                               <tbody><tr>
                                 <th>Wallet Name</th>
                                 <th>Address</th>
@@ -64,9 +63,14 @@
                                         {{ date_format($item->created_at,'d M. Y') }}
                                     </td>
                                     <td>
-                                    <a href="/finance/wallet/edit/{{$item->id}}" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Edit the Wallet"><i class="far fa-edit"></i></a>
-                                      <a href="/finacne/wallet/delete/{{$item->id}}" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Delete the Wallet"><i class="far fa-trash-alt"></i></a>
-                                      <a href="/finacne/wallet/show/{{$item->id}}" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Show wallet details"><i class="far fa-eye"></i></a>
+                                        <div class="dropdown">
+                                            <a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle" aria-expanded="false">Action</a>
+                                            <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, -6px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                              <a href="/finance/wallet/edit/{{$item->id}}" class="dropdown-item has-icon"><i class="far fa-edit"></i> Edit</a>
+                                              <div class="dropdown-divider"></div>
+                                              <a href="#" class="dropdown-item has-icon text-danger" id="deleteItem" data-id="{{$item->id}}"><i class="far fa-trash-alt"></i> Delete</a>
+                                            </div>
+                                          </div>
                                     </td>
                                   </tr>
                             @endforeach
@@ -77,5 +81,44 @@
                 </div>
               </div>
         </div>
-</div>
 @endsection
+@section('script')
+  <script>
+    $("#walletTable").on('click','#deleteItem',function(e) {
+      var id = e.currentTarget.dataset.id;
+      var el = e.currentTarget.parentNode.parentNode.parentNode.parentNode;
+  swal({
+      title: 'Are you sure to delete this wallet?',
+      text: '',
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+          deleteItem(id)
+          swal('Deleted! Your wallet has been deleted!', {
+          icon: 'success',
+        });
+        el.remove();
+      }
+    });
+});
+function deleteItem(id){
+        $.ajax({
+        method: "POST",
+          data:{
+            '_token': '{{csrf_token()}}',
+            id: id
+          },
+        url: "{{ route('home') }}/finance/wallet/delete",
+        }).done(function(result) {
+          if(result){
+            return true;
+          } else{
+            return false;
+          }
+         });
+      }
+  </script>
+@endsection 

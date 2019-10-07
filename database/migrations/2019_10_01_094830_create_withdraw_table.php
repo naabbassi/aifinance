@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableRevenue extends Migration
+class CreateWithdrawTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateTableRevenue extends Migration
      */
     public function up()
     {
-        Schema::create('revenue', function (Blueprint $table) {
+        Schema::create('withdraw', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('uid');
             $table->double('amount');
-            $table->string('title');
             $table->string('type');
-            $table->boolean('status');
+            $table->date('paid_at')->nullable();
+            $table->Integer('wallet_id');
+            $table->Integer('deposit_id');
             $table->string('description');
             $table->timestamps();
         });
@@ -32,6 +33,6 @@ class CreateTableRevenue extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_revenue');
+        Schema::dropIfExists('withdraw');
     }
 }

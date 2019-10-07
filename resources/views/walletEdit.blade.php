@@ -3,7 +3,7 @@
     AIF :: Edit Wallet
 @endsection 
 @section('content')
-    <div class="main-content">
+
         <div class="section">
                 <div class="section-header">
                         <h1>Edit Wallet</h1>
@@ -23,22 +23,22 @@
                                 <input type="text" class="form-control" name="address" placeholder="Enter your wallet address" value="{{$wallet->address}}">
                                   <small class="form-text text-muted">Be sure that you enter the wallet address correctly.</small>
                                   @error('address')
-                                     <small class="form-text ">{{ $message }}</small>
+                                     <small class="form-text text-danger">{{ $message }}</small>
                                   @enderror
                                 </div>
                                 <div class="form-group">
                                   <label for="title">Wallet Name</label>
                                 <input type="text" class="form-control" name="title" placeholder="Set a name to your wallet..." value="{{$wallet->title}}">
                                   @error('title')
-                                     <small class="form-text ">{{ $message }}</small>
+                                     <small class="form-text text-danger">{{ $message }}</small>
                                   @enderror
                                 </div>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                                <a href="/finance/wallet" class="btn btn-primary">Cancel</a>
                               </form>
                     </div>
                 </div>
             </div>
             </div>
         </div>
-    </div>
 @endsection

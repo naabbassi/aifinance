@@ -26,22 +26,20 @@
                   <button class="btn" type="submit"><i class="fas fa-search"></i></button>
                 </div> --}}
               </form>
+              <input type="hidden" id="invitation" data-hash=" {{ route('home') }}/register/{{ encrypt(Auth::user()->email) }}">
               <ul class="navbar-nav navbar-right">
                 <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                   <img alt="image" src="/img/avatar/avatar-1.png" width="30" class="rounded-circle mr-1">
                   <div class="d-sm-none d-lg-inline-block">Hi, {{ Auth::user()->name }}</div></a>
                   <div class="dropdown-menu dropdown-menu-right">
-                    <a href="features-profile.html" class="dropdown-item has-icon">
+                    <a href="/profile" class="dropdown-item has-icon">
                       <i class="far fa-user"></i> My Profile
                     </a>
-                    <a href="features-activities.html" class="dropdown-item has-icon">
-                      <i class="fas fa-bolt"></i> Activities
+                    <a href="/tickets" class="dropdown-item has-icon">
+                      <i class="fas fa-bolt"></i> Issue Tickets
                     </a>
-                    <a href="features-settings.html" class="dropdown-item has-icon">
-                      <i class="fas fa-cog"></i> Settings
-                    </a>
-                    <a href="features-settings.html" class="dropdown-item has-icon">
-                        <i class="fas fa-user-plus"></i> Copy my Invitation Link
+                  <a href="#" class="dropdown-item has-icon" onclick="show()">
+                        <i class="fas fa-user-plus"></i> Show my Invitation Link
                       </a>
                     <div class="dropdown-divider"></div>
                     <a href="{{ route('logout')}}" class="dropdown-item has-icon text-danger" onclick="event.preventDefault();
@@ -57,8 +55,34 @@
             </nav>
         @extends('nav')
         <!-- Main Content -->
-        @yield('content')
-
+        <div class="main-content">
+        @if(Session::has('alert-success'))
+            <div class="alert alert-success alert-has-icon alert-dismissible show fade">
+                <div class="alert-icon"><i class="far fa-lightbulb"></i></div>
+                <div class="alert-body">
+                    <div class="alert-title">Success</div>
+                  <button class="close" data-dismiss="alert">
+                    <span>&times;</span>
+                  </button>
+                  <h6>{!! session('alert-success') !!}</h6>
+                </div>
+            </div>
+        @endif
+        @if(Session::has('alert-warning'))
+            <div class="alert alert-warning alert-has-icon alert-dismissible show fade">
+                <div class="alert-icon"><i class="far fa-lightbulb"></i></div>
+                <div class="alert-body">
+                    <div class="alert-title">warning</div>
+                  <button class="close" data-dismiss="alert">
+                    <span>&times;</span>
+                  </button>
+                  <h6>{!! session('alert-warning') !!}</h6>
+                </div>
+            </div>
+        @endif
+            
+          @yield('content')
+        </div>
         @extends('footer')
       </div>
     </div>
@@ -69,6 +93,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="/js/stisla.js"></script>
+    <script src="/js/sweet-alert.js"></script>
 
     <!-- Plugins -->
 
@@ -77,6 +102,12 @@
     <!-- Template JS File -->
     <script src="/js/scripts.js"></script>
     <script src="/js/custom.js"></script>
+    <script>
+      function show() {
+        const hash = document.querySelector('#invitation').dataset.hash;
+	      swal('Your Invitation Link', hash, 'success');
+      };
+    </script>
     @yield('script')
   </body>
   </html>

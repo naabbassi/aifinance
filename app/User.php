@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'family','birthday','email', 'password','type'
     ];
 
     /**
@@ -27,7 +27,21 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-
+    public function deposit(){
+        return $this->hasMany('App\deposit','uid');
+    }
+    public function network(){
+        return $this->hasMany('App\User','owner','email')->select(array('id','name'));
+    }
+    public function wallet(){
+        return $this->hasMany('App\wallet','uid');
+    }
+    public function revenue(){
+        return  $this->hasMany('App\revenue','uid');
+    }
+    public function withdraw(){
+        return  $this->hasMany('App\withdraw','uid');
+    }
     /**
      * The attributes that should be cast to native types.
      *
@@ -36,4 +50,5 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
 }

@@ -59,7 +59,7 @@ var myChart = new Chart(ctx, {
   }
 });
 
-var balance_chart = document.getElementById("balance-chart").getContext('2d');
+var balance_chart = document.getElementById("deposit-chart").getContext('2d');
 
 var balance_chart_bg_color = balance_chart.createLinearGradient(0, 0, 0, 70);
 balance_chart_bg_color.addColorStop(0, 'rgba(63,82,227,.2)');

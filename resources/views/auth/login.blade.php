@@ -18,7 +18,7 @@
       <div class="d-flex flex-wrap align-items-stretch">
         <div class="col-lg-4 col-md-6 col-12  min-vh-100  bg-white">
           <div class="p-4 m-3">
-            <img src="" alt="logo" width="80" class="shadow-light rounded-circle mb-5 mt-2">
+            <h2>AI Finance</h2>
             <h4 class="text-dark font-weight-normal">Welcome to <span class="font-weight-bold">AIFinance</span></h4>
             <p class="text-muted">Before you get started, you must login or register if you don't already have an account.</p>
             <form method="POST" action="{{ route('login') }}" class="needs-validation" novalidate="">
@@ -27,9 +27,9 @@
                 <label for="email">Email</label>
                 <input id="email" type="email" class="form-control" name="email" tabindex="1" required autofocus>
                 @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
                 @enderror
               </div>
 

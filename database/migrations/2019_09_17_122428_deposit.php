@@ -19,7 +19,9 @@ class Deposit extends Migration
             $table->decimal('btc');
             $table->decimal('usd');
             $table->string('type');
-            $table->string('description');
+            $table->string('wallet');
+            $table->longText('description')->nullanle();
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }
