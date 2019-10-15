@@ -22,9 +22,9 @@
                                     </span>
                                   </div>
                                 </div>
-                                <div class="card-body">
+                                <div class="card-body p-0">
                                   <div class="table-responsive">
-                                    <table class="table table-striped" id="table-1">
+                                    <table class="table table-striped">
                                       <thead>
                                         <tr>
                                           <th class="text-center">
@@ -58,7 +58,7 @@
                                                 <td>{{ date_format($item->created_at,'d M Y')}}</td>
                                                 <td>
                                                     <div class="dropdown">
-                                                        <a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle" aria-expanded="false">Options</a>
+                                                        <a href="#" data-toggle="dropdown" class="btn btn-primary " aria-expanded="false"> ⋮ </a>
                                                         <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, -6px, 0px); top: 0px; left: 0px; will-change: transform;">
                                                           <a href="/issues/2/{{$item->id}}" class="dropdown-item has-icon"><i class="fas fa-exclamation"></i> Report an issue</a>
                                                           <div class="dropdown-divider"></div>
@@ -70,7 +70,7 @@
                                         @endforeach
                                       </tbody>
                                     </table>
-                                    {!! $list->render() !!}
+                                   <div class="p-2"> {!! $list->render() !!}</div>
                                   </div>
                                 </div>
                               </div>

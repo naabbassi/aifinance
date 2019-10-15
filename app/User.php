@@ -42,6 +42,9 @@ class User extends Authenticatable
     public function withdraw(){
         return  $this->hasMany('App\withdraw','uid');
     }
+    public function issues(){
+        return $this->hasMany('App\issue','uid');
+    }
     /**
      * The attributes that should be cast to native types.
      *

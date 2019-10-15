@@ -99,9 +99,9 @@
 
                             {{-- end accordion --}}
                             {{-- start table --}}
-                            <div class="section-title p-2">Withdraws History - <span class="badge badge-secondary">   Total : {{$sum}} $</span></div>
+                            <div class="section-title p-2">Withdraws History &nbsp;&nbsp; <span class="badge badge-secondary pull-right">   Total Withdraw Amount : {{$sum}} $</span></div>
                             <div class="table-responsive">
-                                <table class="table table-striped" id="table-1">
+                                <table class="table table-striped">
                                   <thead>
                                     <tr>
                                       <th>Transaction</th>
@@ -136,11 +136,11 @@
                                             </td>
                                             <td>
                                                 <div class="dropdown">
-                                                    <a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle" aria-expanded="false">Options</a>
+                                                    <a href="#" data-toggle="dropdown" class="btn btn-light" aria-expanded="false"> ⋮ </a>
                                                     <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, -6px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                                      <a href="/finance/wallet/edit/{{$item->id}}" class="dropdown-item has-icon"><i class="far fa-edit"></i> Edit</a>
-                                                      <div class="dropdown-divider"></div>
-                                                      <a href="#" class="dropdown-item has-icon text-danger" id="deleteItem" data-id="{{$item->id}}"><i class="far fa-trash-alt"></i> Delete</a>
+                                                        <a href="#" class="dropdown-item has-icon text-info" id="deleteItem" data-id="{{$item->id}}"><i class="far fa-eye"></i> Details</a>
+                                                        <div class="dropdown-divider"></div>
+                                                        <a href="/issues/edit/{{$item->id}}" class="dropdown-item text-warning has-icon"><i class="fas fa-exclamation"></i> Report an issue</a>
                                                     </div>
                                                   </div>
                                             </td>

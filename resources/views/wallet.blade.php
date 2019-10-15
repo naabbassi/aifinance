@@ -15,7 +15,7 @@
                 <div class="col-12 col-md-12 col-lg-6">
                   <div class="card">
                     <div class="card-header">
-                      <h4>Add Wallet</h4>
+                      <h4>Add New Wallet</h4>
                     </div>
                     <div class="card-body">
                       <form action="/finance/wallet/new" method="POST">
@@ -42,7 +42,11 @@
                 </div>
                 <div class="col-12 col-md-12 col-lg-6">
                   <div class="card">
-                    <div class="card-body">
+                      <div class="card-header">
+                          <h4>My Wallets</h4>
+                          <div class="card-header-action"></div>
+                        </div>
+                    <div class="card-body p-0">
                         <div class="table-responsive">
                             <table class="table table-striped" id="walletTable">
                               <tbody><tr>
@@ -64,7 +68,7 @@
                                     </td>
                                     <td>
                                         <div class="dropdown">
-                                            <a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle" aria-expanded="false">Action</a>
+                                            <a href="#" data-toggle="dropdown" class="btn btn-primary" aria-expanded="false">⋮</a>
                                             <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, -6px, 0px); top: 0px; left: 0px; will-change: transform;">
                                               <a href="/finance/wallet/edit/{{$item->id}}" class="dropdown-item has-icon"><i class="far fa-edit"></i> Edit</a>
                                               <div class="dropdown-divider"></div>

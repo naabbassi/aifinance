@@ -86,6 +86,11 @@
                             <div class="card">
                               <div class="card-header">
                                 <h4>My Deposits</h4>
+                                <div class="card-header-action">
+                                    <span href="#" class="badge badge-secondary">
+                                        Approved Amount : {{$sum}}$
+                                    </span>
+                                  </div>
                               </div>
                               <div class="card-body p-0">
                                 <div class="table-responsive">
@@ -100,20 +105,19 @@
                                     @foreach ($deposits as $item)
                                     <tr>
                                           <td class="align-middle">
-                                            {{$item->usd }} $
+                                            {{$item->amount }} $
                                           </td>
                                           <td>
                                             @switch($item->type)
                                             @case('w')
-                                            <span class="text-success">Withdraw</span>
+                                            <span>Withdraw</span>
                                             @break
                                             @case('d')
-                                            <span class="text-info">Deposit</span>
+                                            <span >Request</span>
                                             @break
                                             @default
                                             .... 
                                             @endswitch
-                                            
                                           </td>
                                           <td>
                                               {{ date_format($item->created_at,'d M. Y') }}
@@ -123,12 +127,13 @@
                                               @else
                                               <td><div class="badge badge-warning">Pending</div></td>
                                           @endif
-                                          <td>
+                                          <td class="options">
                                               <div class="dropdown">
-                                                  <a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle" aria-expanded="false">Options</a>
+                                                  <a href="#" data-toggle="dropdown" class="btn btn-primary " aria-expanded="false"> ⋮ </a>
                                                   <div class="dropdown-menu" x-placement="top-start" style="position: absolute; transform: translate3d(0px, -6px, 0px); top: 0px; left: 0px; will-change: transform;">
                                                     <a href="#" class="dropdown-item has-icon text-info"><i class="fas fa-eye"></i> View</a>
-                                                    <a href="#" class="dropdown-item has-icon text-warning"><i class="fas fa-exclamation"></i> Report an issue</a>
+                                                    <div class="dropdown-divider"></div>
+                                                  <a href="#" class="dropdown-item has-icon text-warning" data-toggle="modal" data-target=".issue-modal"  onclick="setIssueId({{$item->id}})" ><i class="fas fa-exclamation"></i> Report an issue</a>
                                                   </div>
                                                 </div>
                                           </td>
@@ -153,6 +158,30 @@
         margin-top: 1em !important;
       }
     </style>
+
+    <!-- Issue Modal modal -->
+<div class="modal fade issue-modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Report an issue</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form onsubmit="event.preventDefault(); submitIssueForm();">
+          <div class="form-group row">
+            <label class="col-form-label">Tell us about the issue :</label>
+            <textarea class="form-control" id="issueMessage" rows="10" style="height:100px;" placeholder="Tell us about issue"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send request</button>
+          <button type="reset" class="btn btn-primary ml-2" data-dismiss="modal" aria-label="Close">Cancel</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 @endsection
 @section('script')
 <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
@@ -190,5 +219,35 @@
       })
       .catch(err => { throw err });
     }
+      //issue form
+      var IssueItemId=0;
+      function setIssueId(e){
+        this.IssueItemId = e;
+        console.log(e)
+      }
+      function submitIssueForm(e){
+        $.ajax({
+        method: "POST",
+          data:{
+            '_token': '{{csrf_token()}}',
+            id: this.IssueItemId,
+            type:'d',
+            message:document.getElementById('issueMessage').value
+          },
+        url: "{{ route('home') }}/issue/submit",
+        }).done(function(result) {
+          console.log(result)
+          if(result){
+            $('.issue-modal').modal('hide');
+            if(result == 'true'){
+                swal('Report the issue', 'Your issue reqistered successfully', 'success');
+            } else {
+                swal('Report the issue', result, 'info');
+            }
+          } else{
+            swal('Report the issue', 'Opps! apparently something went wrong', 'info');
+          }
+         });
+      }
 </script>
 @endsection

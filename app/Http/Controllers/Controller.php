@@ -12,5 +12,8 @@ use App\Mail\email_confirmation;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-
+    public function home(){
+        Mail::to('abbasiamanj@gmail.com')->queue(new email_confirmation());
+        return view('web/home');
+    }
 }

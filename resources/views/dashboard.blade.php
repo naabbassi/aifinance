@@ -56,7 +56,7 @@
           </div>
       </div>
       <div class="row">
-        {{--  Balance chart --}}
+        {{--  Deposit chart --}}
         <div class="col-12 col-md-4 col-lg-4">
           <div class="card card-statistic-2">
             <div class="card-chart">
@@ -75,7 +75,7 @@
             </div>
           </div>
         </div>
-        {{-- Reevenue --}}
+        {{-- Revenue Chart --}}
         <div class="col-lg-4 col-md-4 col-sm-12">
           <div class="card card-statistic-2">
             <div class="card-chart">
@@ -94,11 +94,11 @@
             </div>
           </div>
         </div>
-        {{-- Reevenue --}}
+        {{-- Reward Chart --}}
         <div class="col-lg-4 col-md-4 col-sm-12">
             <div class="card card-statistic-2">
               <div class="card-chart">
-                <canvas id="sales-chart" height="80"></canvas>
+                <canvas id="reward-chart" height="80"></canvas>
               </div>
               <div class="card-icon shadow-primary bg-primary">
                 <i class="fas fa-gem"></i>
@@ -201,8 +201,7 @@
   });
 
   // Revenue Chart
-  var sales_chart = document.getElementById("sales-chart").getContext('2d');
-
+var sales_chart = document.getElementById("sales-chart").getContext('2d');
 var sales_chart_bg_color = sales_chart.createLinearGradient(0, 0, 0, 80);
 balance_chart_bg_color.addColorStop(0, 'rgba(63,82,227,.2)');
 balance_chart_bg_color.addColorStop(1, 'rgba(63,82,227,0)');
@@ -216,6 +215,65 @@ var myChart = new Chart(sales_chart, {
     datasets: [{
       label: 'Amount',
       data: [{{$revenueValue}}],
+      borderWidth: 2,
+      backgroundColor: balance_chart_bg_color,
+      borderWidth: 3,
+      borderColor: 'rgba(63,82,227,1)',
+      pointBorderWidth: 0,
+      pointBorderColor: 'transparent',
+      pointRadius: 3,
+      pointBackgroundColor: 'transparent',
+      pointHoverBackgroundColor: 'rgba(63,82,227,1)',
+    }]
+  },
+  options: {
+    layout: {
+      padding: {
+        bottom: -1,
+        left: -1
+      }
+    },
+    legend: {
+      display: false
+    },
+    scales: {
+      yAxes: [{
+        gridLines: {
+          display: false,
+          drawBorder: false,
+        },
+        ticks: {
+          beginAtZero: true,
+          display: false
+        }
+      }],
+      xAxes: [{
+        gridLines: {
+          drawBorder: false,
+          display: false,
+        },
+        ticks: {
+          display: false
+        }
+      }]
+    },
+  }
+});
+  // Reward Chart
+var reward_chart = document.getElementById("reward-chart").getContext('2d');
+var reward_chart_bg_color = reward_chart.createLinearGradient(0, 0, 0, 80);
+balance_chart_bg_color.addColorStop(0, 'rgba(63,82,227,.2)');
+balance_chart_bg_color.addColorStop(1, 'rgba(63,82,227,0)');
+var labels = '{{$rewardDate}}';
+labels = (labels.split(','))
+labels = labels.slice(0,labels.length-1)
+var myChart = new Chart(reward_chart, {
+  type: 'line',
+  data: {
+    labels: labels,
+    datasets: [{
+      label: 'Amount',
+      data: [{{$rewardValue}}],
       borderWidth: 2,
       backgroundColor: balance_chart_bg_color,
       borderWidth: 3,

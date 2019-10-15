@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Deposit extends Migration
+class CreateIssueMessageTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,15 @@ class Deposit extends Migration
      */
     public function up()
     {
-        Schema::create('deposit', function (Blueprint $table) {
+        Schema::create('issue_message', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('uid');
-            $table->decimal('btc');
-            $table->double('amount');
-            $table->string('type');
-            $table->string('wallet');
-            $table->longText('description')->nullanle();
-            $table->boolean('status')->default(0);
+            $table->integer('issue_id');
+            $table->string('type',5);
+            $table->longText('message');
             $table->timestamps();
         });
     }
+
     /**
      * Reverse the migrations.
      *
@@ -32,6 +29,6 @@ class Deposit extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('deposit');
+        Schema::dropIfExists('issue_message');
     }
 }

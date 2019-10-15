@@ -9,6 +9,8 @@ use App\revenue;
 use App\User;
 use App\country;
 use App\withdraw;
+use App\issue;
+use App\issue_message;
 use App\Mail\email_confirmation;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -32,14 +34,15 @@ class HomeController extends Controller
     function dashboard(){
         $myDeposits = Auth::user()->deposit()->where('status', true)->orderBy('created_at','asc')->get();
         $myRevenues = Auth::user()->revenue()->where('type','d')->orderBy('created_at','asc')->get();
-        $rewardAmount = Auth::user()->revenue()->where('type','r')->sum('amount');
+        $myRewards = Auth::user()->revenue()->where('type','r')->orderBy('created_at','asc')->get();
+        $rewardAmount = $myRewards->sum('amount');
         $revenueAmount = $myRevenues->sum('amount');
-        $depositAmount = $myDeposits->sum('usd');
+        $depositAmount = $myDeposits->sum('amount');
         $depositDate="";
         $depositValue=""; 
         foreach ($myDeposits as $key => $value) {
             $depositDate .= date_format($value->created_at,"d-m-Y").",";
-            $depositValue .= $value->usd.',';
+            $depositValue .= $value->amount.',';
         }
         $revenueDate="";
         $revenueValue=""; 
@@ -47,11 +50,19 @@ class HomeController extends Controller
             $revenueDate .= date_format($value->created_at,"d-m-Y").",";
             $revenueValue .= $value->amount.',';
         }
-        return view('dashboard',compact('depositDate','depositValue','revenueValue','revenueDate','depositAmount','revenueAmount','rewardAmount'));
+        $rewardDate="";
+        $rewardValue=""; 
+        foreach ($myRewards as $key => $value) {
+            $rewardDate .= date_format($value->created_at,"d-m-Y").",";
+            $rewardValue .= $value->amount.',';
+        }
+        return view('dashboard',compact('depositDate','depositValue','revenueValue','revenueDate','depositAmount','revenueAmount','rewardDate','rewardValue','rewardAmount'));
     }
     function deposit(){
-        $deposits = Auth::user()->deposit()->orderBy('created_at','desc')->paginate(10);
-        return view('deposit',compact('deposits'));
+        $deposit = Auth::user()->deposit();
+        $deposits = $deposit->orderBy('created_at','desc')->paginate(10);
+        $sum = $deposit->where('status', true)->sum('amount');
+        return view('deposit',compact('deposits','sum'));
     }
     function submitDeposit(Request $request){
         $request->validate([
@@ -61,11 +72,11 @@ class HomeController extends Controller
         if ($request->usd  >= 250) {
             $deposit = new deposit;
             $deposit->uid =  Auth::user()->id;
-            $deposit->usd =  $request->usd;
+            $deposit->amount =  $request->usd;
             $deposit->wallet =  $request->wallet_address;
             $deposit->btc =  $request->btc;
             $deposit->type = 'd';
-            $deposit->description =  "requested";
+            $deposit->description =  "requested - online claimed";
             $deposit->save();
             \Session::flash('alert-success','Your request is registered successfully, it takes some minutes to be activated.');
             return redirect('deposit');
@@ -101,7 +112,7 @@ class HomeController extends Controller
         if ($request->amount <= $available && $available >= 250) {
             $deposit = new deposit;
             $deposit->uid =  Auth::user()->id;
-            $deposit->usd =  $request->amount;
+            $deposit->amount =  $request->amount;
             $deposit->btc =  '0';
             $deposit->type = 'w';
             $deposit->wallet = 0;
@@ -124,7 +135,7 @@ class HomeController extends Controller
             \Session::flash('alert-success','successfully saved.');
             return redirect('finance/withdraw');
         }
-        return redirect('finance/withdraw')->with('alert-warning','To deposit the minimum acceptable amount is 250$ - your available amount: '.$available.'$');
+        return redirect('finance/withdraw')->with('alert-warning','To deposit the minimum acceptable amount is 250$ - your available amount is: '.$available.'$');
     }
     function withdraw_wallet(Request $request){
         $request->validate([
@@ -150,7 +161,7 @@ class HomeController extends Controller
             \Session::flash('alert-success','Congrs! Your request has been registered, we will process it sonn as possible');
             return redirect('finance/withdraw');
         }
-        return redirect('finance/withdraw')->with('alert-warning','To deposit the minimum acceptable amount is 250$ - your available amount: '.$available.'$');
+        return redirect('finance/withdraw')->with('alert-warning','To withdraw on your wallet the minimum acceptable amount is 50$ - your available amount is: '.$available.'$');
     }
     function wallet(){
         $wallets = Auth::user()->wallet;
@@ -195,7 +206,7 @@ class HomeController extends Controller
         }
     }
     function network(){
-        $sum = Auth::user()->deposit()->sum('usd');
+        $sum = Auth::user()->deposit()->sum('amount');
         $netDeposit = self::getNetDeposit(Auth::user()->id) - $sum;
         $netCount = self::getNetCount(Auth::user()->id);
         return view('network',compact('sum','netDeposit','netCount'));
@@ -208,7 +219,7 @@ class HomeController extends Controller
         $result = "";
         $level = $request->level +1;
         foreach ($user as $key => $value) {
-            $deposit = User::find($value->id)->deposit()->sum('usd');
+            $deposit = User::find($value->id)->deposit()->sum('amount');
             $netDeposit = self::getNetDeposit($value->id);
             $netPersons = self::getNetCount($value->id);
             $netDeposit = $netDeposit - $deposit;
@@ -230,7 +241,7 @@ class HomeController extends Controller
     function getNetDeposit($id){
         $user = User::find($id);
         $net = $user->network;
-        $sum = $user->deposit()->sum('usd');
+        $sum = $user->deposit()->sum('amount');
         if($net->count() != 0){
             foreach ($net as $key => $value) {
                 $sum += self::getNetDeposit($value->id);
@@ -255,11 +266,15 @@ class HomeController extends Controller
                 $countries = country::all();
                 return view('register',compact('email','countries'));
             } else {
-                return 'Unfortunatley your caller has reached maximal sub member';
+                $title = 'Reistration failed';
+                \Session::flash('alert-warning','Unfortunatley your inviter has reached maximal sub member');
+                return view('alert',compact('title'));
             }
         }
         else {
-            return "The invitation link isn't valid. to get a valid invitation link, please contact our support team.";
+            $title = 'Reistration failed';
+            \Session::flash('alert-warning',"The invitation link isn't valid. to get a valid invitation link, please contact our support team.");
+            return view('alert',compact('title'));
         }
     }
     function newMember(Request $request){
@@ -287,13 +302,44 @@ class HomeController extends Controller
                 $user->phone = $request->phone;
                 $user->type = true;
                 $user->save();
-                return view('registerCompleted');
+                $title = ' Registeration  Completed';
+                return view('alert',compact('title'))->with('alert-success','Congrs! Your registration was successfull');
             } else {
-                return 'Unfortunatley your inviter has reached maximal sub member';
+                $title = 'Reistration failed';
+                \Session::flash('alert-warning','Unfortunatley your inviter has reached maximal sub member');
+                return view('alert',compact('title'));
             }
         }
         else {
-            return "The invitation link isn't valid. to get a valid invitation link, please contact our support team.";
+            $title = 'Reistration failed';
+            \Session::flash('alert-warning',"The invitation link isn't valid. to get a valid invitation link, please contact our support team.");
+            return view('alert',compact('title'));
         }
+    }
+    //issues
+    function issueSubmit(Request $request){
+        $request->validate([
+            'id' => 'required',
+            'type' => 'required',
+            'message' => 'required',
+        ]);
+        $issue = new issue;
+        if(Auth::user()->issues()->where('type',$request->type)->where('item_id',$request->id)->count() > 0){
+            return "There is already registered an issue for this item, you can find more information in tickets page";
+        }
+        $issue->item_id = $request->id;
+        $issue->uid = Auth::user()->id;
+        $issue->type = $request->type;
+        $issue->save();
+        $issue_msg = new  issue_message;
+        $issue_msg->issue_id = $issue->id;
+        $issue_msg->type = $request->type;
+        $issue_msg->message = $request->message;
+        $issue_msg->save();
+        return 'true';
+    }
+    function tickets(){
+        $issues = Auth::user()->issues()->select('id','type','created_at')->orderBy('created_at','desc')->paginate(10);
+        return view('tickets',compact('issues'));
     }
 }

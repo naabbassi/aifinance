@@ -11,12 +11,16 @@
 |
 */
 Route::get('/', 'Controller@home')->name('home');
+// Registeration
 Route::get('/register/{email}','HomeController@Register');
 Route::post('/newmember','HomeController@newMember');
 Auth::routes();
+// Dashboard
 Route::get('/dashboard', 'HomeController@dashboard');
+// Deposit
 Route::get('/deposit', 'HomeController@deposit')->name('deposit');
 Route::post('/deposit/submit_deposit', 'HomeController@submitDeposit');
+// History
 Route::get('/finance/history', 'HomeController@history')->name('history');
 // Revenue
 Route::get('/finance/revenue', 'HomeController@revenue')->name('revenue');
@@ -34,3 +38,6 @@ Route::post('/finance/wallet/delete', 'HomeController@deleteWallet');
 Route::get('/network','HomeController@network');
 Route::post('/getnet','HomeController@getnet');
 Route::get('/getnet','HomeController@getnetwork');
+//issues
+Route::post('/issue/submit','HomeController@issueSubmit');
+Route::get('/tickets','HomeController@tickets');
