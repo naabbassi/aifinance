@@ -16,6 +16,7 @@
                         <tbody><tr>
                           <th>Ticket Nr</th>
                           <th>Type</th>
+                          <th>Status</th>
                           <th>Created At</th>
                           <th>Action</th>
                         </tr>
@@ -23,16 +24,20 @@
                         <tr>
                               <td class="align-middle">{{date_format($item->created_at,'my')}}{{strtoupper($item->type)}}-{{$item->id}}</td>
                               <td>
-                                @@switch($item->)
-                                    @case(1)
-                                        
-                                        @break
-                                    @case(2)
-                                        
+                                @switch($item->type)
+                                    @case("d")
+                                        <span class="badge badge-info">Deposit</span>
                                         @break
                                     @default
                                         
                                 @endswitch
+                              </td>
+                              <td>
+                                @if($item->status)
+                                      <span class="badge badge-success">open</span>
+                                    @else
+                                      <span class="badge badge-danger">closed</span>
+                                @endif
                               </td>
                               <td>
                                   {{ date_format($item->created_at,'d M. Y') }}
@@ -41,9 +46,9 @@
                                   <div class="dropdown">
                                       <a href="#" data-toggle="dropdown" class="btn btn-primary" aria-expanded="false">⋮</a>
                                       <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, -6px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                        <a href="/finance/wallet/edit/{{$item->id}}" class="dropdown-item has-icon"><i class="far fa-edit"></i> Edit</a>
+                                        <a href="/tickets/issue/open/{{$item->id}}" class="dropdown-item has-icon"><i class="fas fa-book-open"></i> Open</a>
                                         <div class="dropdown-divider"></div>
-                                        <a href="#" class="dropdown-item has-icon text-danger" id="deleteItem" data-id="{{$item->id}}"><i class="far fa-trash-alt"></i> Delete</a>
+                                        <a href="#" class="dropdown-item has-icon text-danger" id="disableItem" data-id="{{$item->id}}"><i class="far fa-bell-slash"></i> Close this issue</a>
                                       </div>
                                     </div>
                               </td>

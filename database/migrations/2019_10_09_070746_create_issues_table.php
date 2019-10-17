@@ -18,6 +18,7 @@ class CreateIssuesTable extends Migration
             $table->integer('uid');
             $table->integer('item_id');
             $table->string('type',5);
+            $table->boolean('status');
             $table->timestamps();
         });
     }

@@ -109,24 +109,26 @@
                                           </td>
                                           <td>
                                             @switch($item->type)
-                                            @case('w')
-                                            <span>Withdraw</span>
-                                            @break
-                                            @case('d')
-                                            <span >Request</span>
-                                            @break
-                                            @default
-                                            .... 
+                                              @case('w')
+                                                <span>Withdraw</span>
+                                              @break
+                                              @case('d')
+                                                <span >Request</span>
+                                              @break
+                                              @default
+                                                .... 
                                             @endswitch
                                           </td>
                                           <td>
                                               {{ date_format($item->created_at,'d M. Y') }}
                                           </td>
-                                          @if ($item->status)
-                                              <td><div class="badge badge-success">Accepted</div></td>    
+                                          <td>
+                                            @if ($item->status)
+                                                <span class="badge badge-success">Accepted</span>
                                               @else
-                                              <td><div class="badge badge-warning">Pending</div></td>
-                                          @endif
+                                                <span class="badge badge-warning">Pending</span>
+                                            @endif  
+                                          </td>
                                           <td class="options">
                                               <div class="dropdown">
                                                   <a href="#" data-toggle="dropdown" class="btn btn-primary " aria-expanded="false"> ⋮ </a>
