@@ -53,7 +53,7 @@
                 </li>
               </ul>
             </nav>
-        @extends('nav')
+        @extends('admin/nav')
         <!-- Main Content -->
         <div class="main-content">
         @if(Session::has('alert-success'))

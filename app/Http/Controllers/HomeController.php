@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\deposit;
 use App\wallet;
@@ -11,10 +10,12 @@ use App\country;
 use App\withdraw;
 use App\issue;
 use App\issue_message;
+use App\faq;
 use App\Mail\email_confirmation;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Console\Commands;
 class HomeController extends Controller
 {
     /**
@@ -58,6 +59,17 @@ class HomeController extends Controller
         }
         return view('dashboard',compact('depositDate','depositValue','revenueValue','revenueDate','depositAmount','revenueAmount','rewardDate','rewardValue','rewardAmount'));
     }
+    function getNetDeposit($id){
+        $user = User::find($id);
+        $net = $user->network;
+        $sum = $user->deposit()->where('status',true)->sum('amount');
+        if($net->count() != 0){
+            foreach ($net as $value) {
+                $sum += self::getNetDeposit($value->id);
+            }
+        }
+        return $sum;
+    }
     function deposit(){
         $deposit = Auth::user()->deposit();
         $deposits = $deposit->orderBy('created_at','desc')->paginate(10);
@@ -82,7 +94,6 @@ class HomeController extends Controller
             return redirect('deposit');
         }
         return redirect('deposit')->with('alert-warning','To deposit the minimum acceptable amount is 250$ ');
-
     }
     function history(){
         return view('history');
@@ -206,7 +217,7 @@ class HomeController extends Controller
         }
     }
     function network(){
-        $sum = Auth::user()->deposit()->sum('amount');
+        $sum = Auth::user()->deposit()->where('status',true)->sum('amount');
         $netDeposit = self::getNetDeposit(Auth::user()->id) - $sum;
         $netCount = self::getNetCount(Auth::user()->id);
         return view('network',compact('sum','netDeposit','netCount'));
@@ -219,7 +230,7 @@ class HomeController extends Controller
         $result = "";
         $level = $request->level +1;
         foreach ($user as $key => $value) {
-            $deposit = User::find($value->id)->deposit()->sum('amount');
+            $deposit = User::find($value->id)->deposit()->where('status',true)->sum('amount');
             $netDeposit = self::getNetDeposit($value->id);
             $netPersons = self::getNetCount($value->id);
             $netDeposit = $netDeposit - $deposit;
@@ -241,7 +252,7 @@ class HomeController extends Controller
     function getNetDeposit($id){
         $user = User::find($id);
         $net = $user->network;
-        $sum = $user->deposit()->sum('amount');
+        $sum = $user->deposit()->where('status',true)->sum('amount');
         if($net->count() != 0){
             foreach ($net as $key => $value) {
                 $sum += self::getNetDeposit($value->id);
@@ -303,7 +314,8 @@ class HomeController extends Controller
                 $user->type = true;
                 $user->save();
                 $title = ' Registeration  Completed';
-                return view('alert',compact('title'))->with('alert-success','Congrs! Your registration was successfull');
+                \Session::flash('alert-success','Congrs! Your registration was successfull');
+                return view('alert',compact('title'));
             } else {
                 $title = 'Reistration failed';
                 \Session::flash('alert-warning','Unfortunatley your inviter has reached maximal sub member');
@@ -324,8 +336,10 @@ class HomeController extends Controller
             'message' => 'required',
         ]);
         $issue = new issue;
-        if(Auth::user()->issues()->where('type',$request->type)->where('item_id',$request->id)->where('status', true)->count() > 0){
-            return "There is already registered an issue for this item, you can find more information in tickets page";
+        if($request->id != '0' && $request->type != 'c'){
+            if(Auth::user()->issues()->where('type',$request->type)->where('item_id',$request->id)->where('status', true)->count() > 0){
+                return "There is already registered an issue for this item, you can find more information in tickets page";
+            }
         }
         $issue->item_id = $request->id;
         $issue->uid = Auth::user()->id;
@@ -340,7 +354,87 @@ class HomeController extends Controller
         return 'true';
     }
     function tickets(){
-        $issues = Auth::user()->issues()->select('id','status','type','created_at')->orderBy('created_at','desc')->paginate(10);
+        $issues = Auth::user()->issues()->select('id','status','type','created_at')->orderBy('status','desc')->orderBy('created_at','desc')->paginate(10);
         return view('tickets',compact('issues'));
+    }
+    function ticketDetail(Request $request){
+        $ticket = Auth::user()->issues()->find($request->id);
+        $messages = $ticket->messages;
+        return view('ticketDetails',compact('ticket','messages'));
+    }
+    function newTicket(){
+        return view('newTicket');
+    }
+    function closeIssue(Request $request){
+        $issue = Auth::user()->issues()->find($request->id);
+        $issue->status = false;
+        $issue->save();
+    }
+    function submitDetail(Request $request,$id){
+        if(Auth::user()->issues()->find($id)->status == true){
+            $issue_msg = new  issue_message;
+            $issue_msg->issue_id = $id;
+            $issue_msg->type = 'u';
+            $issue_msg->message = $request->message;
+            $issue_msg->save();
+            $ticket = Auth::user()->issues()->find($request->id);
+            $messages = $ticket->messages;
+            return redirect('/tickets/issue/open/'.$id);
+        }
+        return 'false';
+    }
+    function getProfile(){
+        $user = Auth::user();
+        $countries = country::all();
+        return view('profile',compact('user','countries'));
+    }
+    function updateProfile(Request $request){
+        $request->validate([
+            'name' => 'required|min:3|max:20',
+            'family' => 'required|min:3|max:20',
+            'birthday' => 'required',
+            'sex' => 'required',
+            'country' => 'required',
+            'phone' => 'required'
+        ]);
+
+        $user = Auth::User();
+        $user->name = $request->name;
+        $user->family = $request->family;
+        $user->birthday = $request->birthday;
+        $user->sex = $request->sex;
+        $user->country = $request->country;
+        $user->phone = $request->phone;
+        $user->save();
+        \Session::flash('alert-success','Your personal information updated successfuly');
+        return redirect('/user/profile',);
+    }
+    function updatePassword(Request $request){
+        $request->validate([
+            'current_password' => 'required|min:8',
+            'password' => 'required|min:8|confirmed'
+        ]);
+        if(Auth::user()->password == Hash::check($request->current_password,Auth::user()->password)){
+            $user = Auth::User();
+            $user->password = Hash::make($request->password);
+            $user->save();
+            \Session::flash('alert-success','Your password updated successfuly');
+            return redirect('/user/profile');
+        } else {
+            \Session::flash('alert-warning','Your entered current password is incorrect');
+            return redirect('/user/profile');
+        }
+    }
+    //Loan
+    function loan(){
+        $datetime1 = Auth::user()->deposit()->where('status', true)->orderBy('created_at','desc')->first()->created_at;
+        $datetime2 = date_create("now");
+        $interval = $datetime1->diff($datetime2);
+        $remained =  $interval->format('%R%a');
+        return view('loan',compact('remained'));
+    }
+    function faq(){
+        $result = faq::get();
+        return view('faq',compact('result'));
     }
 }

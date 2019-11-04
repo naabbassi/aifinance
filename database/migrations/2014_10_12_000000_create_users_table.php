@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('family');
             $table->string('sex');
             $table->timestamp('birthday');
-            $table->string('country');
+            $table->integer('country');
             $table->string('owner')->nullable();
             $table->string('phone')->nullable();
             $table->string('avatar')->nullable();

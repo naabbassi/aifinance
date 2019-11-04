@@ -1,13 +1,8 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
 |
 */
 Route::get('/', 'Controller@home')->name('home');
@@ -41,3 +36,20 @@ Route::get('/getnet','HomeController@getnetwork');
 //issues
 Route::post('/issue/submit','HomeController@issueSubmit');
 Route::get('/tickets','HomeController@tickets');
+Route::get('tickets/issue/open/{id}','HomeController@ticketDetail');
+Route::get('/tickets/newTicket','HomeController@newTicket');
+Route::post('/issue/closeIssue','HomeController@closeIssue');
+Route::post('/issue/{id}/submit','HomeController@submitDetail');
+//Profile
+Route::get('user/profile', 'HomeController@getProfile')->name('profile');
+Route::post('user/profile/update', 'HomeController@updateProfile');
+Route::post('user/profile/password/update', 'HomeController@updatePassword');
+//Loan
+Route::get('loan','HomeController@loan');
+//FAQ
+Route::get('/faq','HomeController@faq');
+//Administration routing
+Route::get('/admin','AdminController@home');
+Route::get('/admin/deposit','AdminController@deposits');
+Route::get('/admin/users','AdminController@users');
+Route::get('/admin/tickets','AdminController@tickets');

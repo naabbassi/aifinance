@@ -67,7 +67,7 @@
                                               </div>
                                               <input type="number" name="amount" class="form-control"  placeholder="Amount in usd">
                                             </div>
-                                            <small class="form-text text-success ">Minimum amount to deposit is 50$</small>
+                                            <small class="form-text text-success ">Minimum amount to withdraw is 50$</small>
                                               @error('amount')
                                                  <small class="form-text text-danger ">The amount must be at least 50$ to deposit</small>
                                               @enderror

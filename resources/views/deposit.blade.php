@@ -1,4 +1,4 @@
-@extends('layout');
+@extends('layout')
 @section('title')
     AIF :: Deposit
 @endsection
@@ -175,7 +175,7 @@
         <form onsubmit="event.preventDefault(); submitIssueForm();">
           <div class="form-group row">
             <label class="col-form-label">Tell us about the issue :</label>
-            <textarea class="form-control" id="issueMessage" rows="10" style="height:100px;" placeholder="Tell us about issue"></textarea>
+            <textarea class="summernote" id="issueMessage" rows="10" style="height:100px;" placeholder="Tell us about issue"></textarea>
           </div>
           <button type="submit" class="btn btn-primary">Send request</button>
           <button type="reset" class="btn btn-primary ml-2" data-dismiss="modal" aria-label="Close">Cancel</button>
@@ -187,6 +187,8 @@
 @endsection
 @section('script')
 <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
 <script>
     var qrcode = new QRCode("qrcode");
     var exchangeRate = 0;
@@ -225,7 +227,6 @@
       var IssueItemId=0;
       function setIssueId(e){
         this.IssueItemId = e;
-        console.log(e)
       }
       function submitIssueForm(e){
         $.ajax({
@@ -249,7 +250,8 @@
           } else{
             swal('Report the issue', 'Opps! apparently something went wrong', 'info');
           }
-         });
+          document.getElementById('issueMessage').value = "";
+         })
       }
 </script>
 @endsection
