@@ -27,13 +27,16 @@
         <div class="row">
             <div class="form-group col-6">
                 <label >Birthday</label>
-                <input type="date" name="birthday" class="form-control" value="{{ $user->birthday }}">
+                @php
+                    $date = new DateTime($user->birthday);
+                @endphp
+                <input type="date" name="birthday" class="form-control" value="{{ $date->format('Y-m-d')}}">
                 @error('birthday')
               <small class="form-text text-danger ">{{ $message }}</small>
              @enderror
               </div>
           <div class="form-group col-6">
-              <label >Gender</label>
+              <label>Gender</label>
               <select class="form-control selectric" name="sex">
                   <option @if($user->sex == 'm') selected @endif value="m">Man</option>
                   <option @if($user->sex == 'w') selected @endif value="w">Woman</option>

@@ -124,7 +124,7 @@
                                           </td>
                                           <td>
                                             @if ($item->status)
-                                                <span class="badge badge-success">Accepted</span>
+                                                <span class="badge badge-success">Confirmed</span>
                                               @else
                                                 <span class="badge badge-warning">Pending</span>
                                             @endif  

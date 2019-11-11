@@ -4,8 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class issue_message extends Model
-{   
+class revenue_items extends Model
+{
     protected $keyType = 'string';
-    protected $table="issue_message";
+    protected $table = "revenue_items";
+
 }

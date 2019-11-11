@@ -46,8 +46,9 @@ Route::post('user/profile/update', 'HomeController@updateProfile');
 Route::post('user/profile/password/update', 'HomeController@updatePassword');
 //Loan
 Route::get('loan','HomeController@loan');
-//FAQ
+//FAQ and Downloads
 Route::get('/faq','HomeController@faq');
+Route::get('/downloads','HomeController@downloads');
 //Administration routing
 Route::get('/admin','AdminController@home');
 Route::get('/admin/deposit','AdminController@deposits');

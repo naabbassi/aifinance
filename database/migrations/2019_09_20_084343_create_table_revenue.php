@@ -14,12 +14,9 @@ class CreateTableRevenue extends Migration
     public function up()
     {
         Schema::create('revenue', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->bigInteger('uid');
-            $table->double('amount');
-            $table->string('title');
+            $table->uuid('id')->primary();
+            $table->uuid('uid');
             $table->string('type');
-            $table->boolean('status');
             $table->string('description');
             $table->timestamps();
         });

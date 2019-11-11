@@ -14,8 +14,8 @@ class CreateIssueMessageTable extends Migration
     public function up()
     {
         Schema::create('issue_message', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('issue_id');
+            $table->uuid('id')->primary();
+            $table->uuid('issue_id');
             $table->string('type',5);
             $table->longText('message');
             $table->timestamps();

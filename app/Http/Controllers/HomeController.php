@@ -11,11 +11,10 @@ use App\withdraw;
 use App\issue;
 use App\issue_message;
 use App\faq;
-use App\Mail\email_confirmation;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Console\Commands;
+use Webpatser\Uuid\Uuid;
 class HomeController extends Controller
 {
     /**
@@ -23,9 +22,11 @@ class HomeController extends Controller
      *
      * @return void
      */
+    static $userNetDeposit = array();
     public function __construct()
     {
         $this->middleware('auth');
+        
     }
     /**
      * Show the application dashboard.
@@ -57,18 +58,29 @@ class HomeController extends Controller
             $rewardDate .= date_format($value->created_at,"d-m-Y").",";
             $rewardValue .= $value->amount.',';
         }
-        return view('dashboard',compact('depositDate','depositValue','revenueValue','revenueDate','depositAmount','revenueAmount','rewardDate','rewardValue','rewardAmount'));
+        $networkDeposit = self::getUserNetDeposits(Auth::user()->id);
+        sort($networkDeposit);
+        $netDepositDate="";
+        $netDepositValue=""; 
+        foreach ($networkDeposit as $key => $value) {
+            $netDepositDate .= date_format($value->created_at,"d.M.y").",";
+            $netDepositValue .= $value->amount.',';
+        }
+        return view('dashboard',compact('depositDate','depositValue','revenueValue','revenueDate','depositAmount','revenueAmount','rewardDate','rewardValue','rewardAmount','netDepositDate','netDepositValue'));
     }
-    function getNetDeposit($id){
+    function getUserNetDeposits($id){
         $user = User::find($id);
         $net = $user->network;
-        $sum = $user->deposit()->where('status',true)->sum('amount');
+        $deposits = $user->deposit()->where('status',true)->get();
+        foreach($deposits as $deposit){
+           self::$userNetDeposit[$deposit->id] = $deposit;
+        }
         if($net->count() != 0){
-            foreach ($net as $value) {
-                $sum += self::getNetDeposit($value->id);
+            foreach ($net as  $value) {
+                self::getUserNetDeposits($value->id);
             }
         }
-        return $sum;
+        return self::$userNetDeposit;
     }
     function deposit(){
         $deposit = Auth::user()->deposit();
@@ -83,6 +95,7 @@ class HomeController extends Controller
         ]);
         if ($request->usd  >= 250) {
             $deposit = new deposit;
+            $deposit->id = (String) Uuid::generate();
             $deposit->uid =  Auth::user()->id;
             $deposit->amount =  $request->usd;
             $deposit->wallet =  $request->wallet_address;
@@ -99,19 +112,27 @@ class HomeController extends Controller
         return view('history');
     }
     function revenue(){
-        $revenue = Auth::user()->revenue();
-        $sum = $revenue->sum('amount');
-        $list = $revenue->orderBy('created_at','desc')->paginate(10);
-        return view('revenue', compact('list','sum'));
+        $list = Auth::user()->revenue()->orderBy('created_at','desc')->paginate(10);
+        $sum = self::sumRevenue();
+        return view('revenue',compact('list','sum'));
     }
     function withdraw(){
-        $revenue = Auth::user()->revenue()->sum('amount');
+        $revenue = self::sumRevenue();
         $withdraw = Auth::user()->withdraw();
         $sum = $withdraw->sum('amount');
         $withdraws = $withdraw->paginate(5);
         $wallets = Auth::user()->wallet;
         $available = $revenue - $sum;
         return view('withdraw',compact('available','wallets','withdraws','sum'));
+    }
+    function sumRevenue(){
+        $revenues = Auth::user()->revenue()->where('status',true)->get();
+        $sum = 0;
+        foreach ($revenues as $item) {
+            $sum =$sum + $item->items()->sum('amount');
+        }
+        return $sum;
+
     }
     function withdraw_deposit(Request $request){
         $request->validate([
@@ -122,6 +143,7 @@ class HomeController extends Controller
         $available = $revenueSum - $withdrawSum;
         if ($request->amount <= $available && $available >= 250) {
             $deposit = new deposit;
+            $deposit->id = (String) Uuid::generate();
             $deposit->uid =  Auth::user()->id;
             $deposit->amount =  $request->amount;
             $deposit->btc =  '0';
@@ -130,18 +152,18 @@ class HomeController extends Controller
             $deposit->status = 1;
             $deposit->description =  "Desposit from revenue";
             $deposit->save();
-            $deposit_Id = $deposit->id;
             // save withdraw
-            $wallet = new withdraw;
-            $wallet->uid = Auth::user()->id;
-            $wallet->amount = $request->amount;
-            $wallet->type = 'd';
-            $wallet->paid_at = date('Y-m-d H:i:s');
-            $wallet->wallet_id = 0;
-            $wallet->status = '1';
-            $wallet->deposit_id = $deposit_Id;
-            $wallet->description = $request->description . " ";
-            $wallet->save();
+            $withdraw = new withdraw;
+            $withdraw->uid = Auth::user()->id;
+            $withdraw->id = (String) Uuid::generate();
+            $withdraw->amount = $request->amount;
+            $withdraw->type = 'd';
+            $withdraw->paid_at = date('Y-m-d H:i:s');
+            $withdraw->wallet_id = 0;
+            $withdraw->status = '1';
+            $withdraw->deposit_id = $deposit->id;
+            $withdraw->description = $request->description . " ";
+            $withdraw->save();
             $request->session()->flash('alert-success', 'User was successful added!');
             \Session::flash('alert-success','successfully saved.');
             return redirect('finance/withdraw');
@@ -159,6 +181,7 @@ class HomeController extends Controller
         if ($request->amount <= $available && $available > 50) {
             // save withdraw
             $withdraw = new withdraw;
+            $withdraw->id = (String) Uuid::generate();
             $withdraw->uid = Auth::user()->id;
             $withdraw->amount = $request->amount;
             $withdraw->type = 'w';
@@ -185,6 +208,7 @@ class HomeController extends Controller
             'description' => 'nullable',
         ]);
         $wallet = new wallet;
+        $wallet->id = (String) Uuid::generate();
         $wallet->uid = Auth::user()->id;
         $wallet->title = $request->title;
         $wallet->address = $request->address;
@@ -229,7 +253,7 @@ class HomeController extends Controller
         $user = User::find($request->id)->network;
         $result = "";
         $level = $request->level +1;
-        foreach ($user as $key => $value) {
+        foreach ($user as $value) {
             $deposit = User::find($value->id)->deposit()->where('status',true)->sum('amount');
             $netDeposit = self::getNetDeposit($value->id);
             $netPersons = self::getNetCount($value->id);
@@ -302,6 +326,7 @@ class HomeController extends Controller
                     'phone' => 'required'
                 ]);
                 $user = new User;
+                $user->id = (String) Uuid::generate();
                 $user->name = $request->name;
                 $user->family = $request->family;
                 $user->birthday = $request->birthday;
@@ -341,6 +366,7 @@ class HomeController extends Controller
                 return "There is already registered an issue for this item, you can find more information in tickets page";
             }
         }
+        $issue->id = (String)Uuid::generate();
         $issue->item_id = $request->id;
         $issue->uid = Auth::user()->id;
         $issue->type = $request->type;
@@ -373,12 +399,12 @@ class HomeController extends Controller
     function submitDetail(Request $request,$id){
         if(Auth::user()->issues()->find($id)->status == true){
             $issue_msg = new  issue_message;
+            $issue_msg->id = (String)Uuid::generate();
             $issue_msg->issue_id = $id;
             $issue_msg->type = 'u';
             $issue_msg->message = $request->message;
             $issue_msg->save();
             $ticket = Auth::user()->issues()->find($request->id);
-            $messages = $ticket->messages;
             return redirect('/tickets/issue/open/'.$id);
         }
         return 'false';
@@ -427,7 +453,7 @@ class HomeController extends Controller
     }
     //Loan
     function loan(){
-        $datetime1 = Auth::user()->deposit()->where('status', true)->orderBy('created_at','desc')->first()->created_at;
+        $datetime1 = Auth::user()->deposit()->where('status', true)->orderBy('created_at','asc')->first()->created_at;
         $datetime2 = date_create("now");
         $interval = $datetime1->diff($datetime2);
         $remained =  $interval->format('%R%a');
@@ -436,5 +462,8 @@ class HomeController extends Controller
     function faq(){
         $result = faq::get();
         return view('faq',compact('result'));
+    }
+    function downloads(){
+        return view('downloads');
     }
 }

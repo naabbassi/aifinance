@@ -1,6 +1,6 @@
 @extends('layout')
 @section('title')
-    AIF :: My Dashboard 
+    AIF :: Dashboard
 @endsection
 @section('content')
  <!-- Main Content -->
@@ -114,17 +114,17 @@
             </div>
           </div>
         {{-- Network chart --}}
-        <div class="col-12 col-md-12 col-lg-6">
+        <div class="col-12 col-md-12 col-lg-7">
             <div class="card">
               <div class="card-header">
                 <h4>My Network investment</h4>
               </div>
               <div class="card-body p-2">
-                <canvas id="myChart" height="158"></canvas>
+                <canvas id="networkChart" height="158"></canvas>
               </div>
             </div>
           </div>
-          <div class="col-12 col-md-12 col-lg-6 mb-4">
+          <div class="col-12 col-md-12 col-lg-5 mb-4">
               <div class="hero align-items-center bg-primary text-white" >
                 <div class="hero-inner">
                   <h2>Invite your members</h2>
@@ -313,6 +313,56 @@ var myChart = new Chart(reward_chart, {
         },
         ticks: {
           display: false
+        }
+      }]
+    },
+  }
+});
+// Network chart
+var ctx = document.getElementById("networkChart").getContext('2d');
+var labels = '{{$netDepositDate}}';
+labels = (labels.split(','))
+labels = labels.slice(0,labels.length-1)
+var myChart = new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: labels,
+    datasets: [{
+      label: 'Network Deposit',
+      data: [{{$netDepositValue}}],
+      borderWidth: 2,
+      backgroundColor: 'rgba(63,82,227,.8)',
+      borderWidth: 0,
+      borderColor: 'transparent',
+      pointBorderWidth: 0,
+      pointRadius: 3.5,
+      pointBackgroundColor: 'transparent',
+      pointHoverBackgroundColor: 'rgba(63,82,227,.8)',
+    }]
+  },
+  options: {
+    legend: {
+      display: false
+    },
+    scales: {
+      yAxes: [{
+        gridLines: {
+          // display: false,
+          drawBorder: false,
+          color: '#f2f2f2',
+        },
+        ticks: {
+          beginAtZero: true,
+          stepSize: 1500,
+          callback: function(value, index, values) {
+            return '$' + value;
+          }
+        }
+      }],
+      xAxes: [{
+        gridLines: {
+          display: true,
+          tickMarkLength: 15,
         }
       }]
     },

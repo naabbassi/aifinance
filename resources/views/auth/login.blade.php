@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="css/style.css">
   {{-- <link rel="stylesheet" href="css/components.css"> --}}
 </head>
-
+{{Hash::make('password')}}
 <body>
   <div id="app">
     <section class="section">

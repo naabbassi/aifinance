@@ -14,8 +14,8 @@ class Deposit extends Migration
     public function up()
     {
         Schema::create('deposit', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->bigInteger('uid');
+            $table->uuid('id')->primary();
+            $table->uuid('uid');
             $table->decimal('btc');
             $table->double('amount');
             $table->string('type');

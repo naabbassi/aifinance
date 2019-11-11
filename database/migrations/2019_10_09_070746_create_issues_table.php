@@ -14,8 +14,8 @@ class CreateIssuesTable extends Migration
     public function up()
     {
         Schema::create('issues', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('uid');
+            $table->uuid('id')->primary();
+            $table->uuid('uid');
             $table->integer('item_id');
             $table->string('type',5);
             $table->boolean('status');

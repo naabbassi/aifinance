@@ -15,8 +15,13 @@ class User extends Authenticatable
      *
      * @var array
      */
+    // rename the id column, not mandatory
+   
+
+    // tell Eloquent that uuid is a string, not an integer
+    protected $keyType = 'string';
     protected $fillable = [
-        'name', 'family','birthday','email', 'password','type'
+        'id','name', 'family','birthday','email', 'password','type'
     ];
 
     /**

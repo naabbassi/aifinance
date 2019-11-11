@@ -92,7 +92,7 @@
                       <label>Country</label>
                       <select class="form-control selectric" name="country">
                         @foreach ($countries as $item)
-                        <option @if($user->country == old('country')) selected @endif value={{$item->id}}>{{$item->name}}</option>
+                        <option @if($item->id == old('country')) selected @endif value={{$item->id}}>{{$item->name}}</option>
                         @endforeach
                       </select>
                     </div>

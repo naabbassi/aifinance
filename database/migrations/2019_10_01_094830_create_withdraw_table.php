@@ -14,8 +14,8 @@ class CreateWithdrawTable extends Migration
     public function up()
     {
         Schema::create('withdraw', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->bigInteger('uid');
+            $table->uuid('id')->primary();
+            $table->uuid('uid');
             $table->double('amount');
             $table->string('type');
             $table->date('paid_at')->nullable();

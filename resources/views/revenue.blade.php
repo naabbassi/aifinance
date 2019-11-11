@@ -18,7 +18,7 @@
                                   <h4>My Revenue</h4>
                                   <div class="card-header-action">
                                     <span href="#" class="badge badge-secondary">
-                                      Total : {{$sum}}$
+                                    Total : {{$sum}}$
                                     </span>
                                   </div>
                                 </div>
@@ -42,7 +42,7 @@
                                             <tr>
                                                 <td>{{$indexKey+1}}</td>
                                                 <td>{{date_format($item->created_at,'my')}}{{strtoupper($item->type)}}-{{$item->id}}</td>
-                                                <td class="align-middle">{{$item->amount}}$</td>
+                                                <td class="align-middle">{{$item->items()->sum('amount')}}$</td>
                                                 <td >
                                                   @switch($item->type)
                                                       @case('d')

@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class withdraw extends Model
 {
-    //
+    protected $keyType = 'string';
     protected $table="withdraw";
 }
