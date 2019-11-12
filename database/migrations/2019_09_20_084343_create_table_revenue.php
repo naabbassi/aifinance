@@ -17,6 +17,7 @@ class CreateTableRevenue extends Migration
             $table->uuid('id')->primary();
             $table->uuid('uid');
             $table->string('type');
+            $table->boolean('status');
             $table->string('description');
             $table->timestamps();
         });
