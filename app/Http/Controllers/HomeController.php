@@ -247,9 +247,6 @@ class HomeController extends Controller
         return view('network',compact('sum','netDeposit','netCount'));
     }
     public function getnet(Request $request){
-        if($request->id > 10){
-            return;
-        }
         $user = User::find($request->id)->network;
         $result = "";
         $level = $request->level +1;
