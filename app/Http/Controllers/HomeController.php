@@ -430,7 +430,7 @@ class HomeController extends Controller
         $user->phone = $request->phone;
         $user->save();
         \Session::flash('alert-success','Your personal information updated successfuly');
-        return redirect('/user/profile',);
+        return redirect('/user/profile');
     }
     function updatePassword(Request $request){
         $request->validate([
