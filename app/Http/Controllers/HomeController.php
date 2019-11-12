@@ -450,10 +450,14 @@ class HomeController extends Controller
     }
     //Loan
     function loan(){
-        $datetime1 = Auth::user()->deposit()->where('status', true)->orderBy('created_at','asc')->first()->created_at;
-        $datetime2 = date_create("now");
-        $interval = $datetime1->diff($datetime2);
-        $remained =  $interval->format('%R%a');
+        if(Auth::user()->deposit()->count() > 0){
+            $datetime1 = Auth::user()->deposit()->where('status', true)->orderBy('created_at','asc')->first()->created_at;
+            $datetime2 = date_create("now");
+            $interval = $datetime1->diff($datetime2);
+            $remained =  $interval->format('%R%a');
+        } else {
+            $remained = 120;
+        }
         return view('loan',compact('remained'));
     }
     function faq(){

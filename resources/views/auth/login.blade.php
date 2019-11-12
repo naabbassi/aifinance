@@ -11,7 +11,6 @@
   <link rel="stylesheet" href="css/style.css">
   {{-- <link rel="stylesheet" href="css/components.css"> --}}
 </head>
-{{Hash::make('password')}}
 <body>
   <div id="app">
     <section class="section">
@@ -61,10 +60,6 @@
                 <button type="submit" class="btn btn-primary btn-lg btn-icon icon-right" tabindex="4">
                   Login
                 </button>
-              </div>
-
-              <div class="mt-5 text-center">
-                Don't have an account? <a href="{{ route('register') }}">Create new one</a>
               </div>
             </form>
 
