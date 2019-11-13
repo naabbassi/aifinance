@@ -7,8 +7,8 @@
 */
 Route::get('/', 'Controller@home')->name('home');
 // Registeration
-Route::get('/register/{email}','HomeController@Register');
-Route::post('/newmember','HomeController@newMember');
+Route::get('/register/{email}','Controller@Register');
+Route::post('/newmember','Controller@newMember');
 Auth::routes();
 // Dashboard
 Route::get('/dashboard', 'HomeController@dashboard');
