@@ -32,6 +32,10 @@
                                         @break
                                     @case('c')
                                           <span class="badge badge-primary">Custom</span>
+                                          @break
+                                    @case('r')
+                                          <span class="badge badge-secondary">Revenue</span>
+                                          @break
                                     @default
                                         
                                 @endswitch

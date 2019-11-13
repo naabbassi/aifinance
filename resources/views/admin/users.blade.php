@@ -5,7 +5,7 @@
 @section('content')
 <div class="section">
     <div class="section-header">
-        <h1>USERS</h1>
+        <h1>Users</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="/admin">Admin Panel</a></div>
               <div class="breadcrumb-item">Users</div>
@@ -38,7 +38,11 @@
                             {{$user->email }}
                           </td>
                           <td class="align-middle">
+                            @if ($user->owner)
                             {{$user->owner }} 
+                            @else 
+                              <span class="text-danger">Administrator</span>
+                            @endif
                           </td>
                           <td>
                             @switch($user->type)

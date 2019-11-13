@@ -42,22 +42,19 @@ class HomeController extends Controller
         $depositAmount = $myDeposits->sum('amount');
         $depositDate="";
         $depositValue=""; 
-        foreach ($myDeposits as $key => $value) {
+        foreach ($myDeposits as $value) {
             $depositDate .= date_format($value->created_at,"d-m-Y").",";
             $depositValue .= $value->amount.',';
         }
         $revenueDate="";
         $revenueValue=""; 
         foreach ($myRevenues as  $revenue) {
-            $items = $revenue->items()->where('status',true)->get();
-            foreach ($items as $item) {
-                $revenueDate .= date_format($item->created_at,"d-m-Y").",";
-                $revenueValue .= $item->amount.',';
-            }
+            $revenueDate .= date_format($revenue->created_at,"d-m-Y").",";
+            $revenueValue .= $revenue->items()->where('status',true)->sum('amount').',';
         }
         $rewardDate="";
         $rewardValue=""; 
-        foreach ($myRewards as $key => $value) {
+        foreach ($myRewards as $value) {
             $rewardDate .= date_format($value->created_at,"d-m-Y").",";
             $rewardValue .= $value->amount.',';
         }
@@ -65,7 +62,7 @@ class HomeController extends Controller
         sort($networkDeposit);
         $netDepositDate="";
         $netDepositValue=""; 
-        foreach ($networkDeposit as $key => $value) {
+        foreach ($networkDeposit as $value) {
             $netDepositDate .= date_format($value->created_at,"d.M.y").",";
             $netDepositValue .= $value->amount.',';
         }
@@ -84,6 +81,7 @@ class HomeController extends Controller
             }
         }
         return self::$userNetDeposit;
+        return $sum;
     }
     function deposit(){
         $deposit = Auth::user()->deposit();
@@ -285,7 +283,7 @@ class HomeController extends Controller
         $net = $user->network;
         $sum = $user->deposit()->where('status',true)->sum('amount');
         if($net->count() != 0){
-            foreach ($net as $key => $value) {
+            foreach ($net as $value) {
                 $sum += self::getNetDeposit($value->id);
             }
         }
@@ -296,7 +294,7 @@ class HomeController extends Controller
         $net = $user->network;
         $sum = $net->count();
         if($net->count() != 0){
-            foreach ($net as $key => $value) {
+            foreach ($net as $value) {
                 $sum += self::getNetCount($value->id);
             }
         }

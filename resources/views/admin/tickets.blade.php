@@ -41,6 +41,9 @@
                                     @case('d')
                                     <span class="badge badge-success">Deposit</span>
                                         @break
+                                    @case('r')
+                                    <span class="badge badge-secondary">Revenue</span>
+                                        @break
                                     @default
                                     <span class="badge badge-danger">Unknown</span>
                                 @endswitch

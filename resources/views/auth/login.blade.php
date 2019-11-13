@@ -18,7 +18,6 @@
         <div class="col-lg-4 col-md-6 col-12  min-vh-100  bg-white">
           <div class="p-4 m-3">
             <h2>AI Finance</h2><br><br><br>
-            {{Hash::make('password')}}
             <h4 class="text-dark font-weight-normal">Welcome to <span class="font-weight-bold">AIFinance</span></h4>
             <form method="POST" action="{{ route('login') }}" class="needs-validation" novalidate="">
                 @csrf

@@ -22,8 +22,24 @@ class AdminController extends Controller
         $deposits = deposit::orderBy('created_at','desc')->orderBy('status','asc')->get();
         return view('admin/deposits',compact('deposits'));
     }
+    function confirmDeposit(Request $request){
+        if($request->deposit_id){
+            $deposit = deposit::find($request->deposit_id);
+            if($deposit){
+                $deposit->status = true;
+                $deposit->confirmedBy = Auth::user()->id;
+                $deposit->save();
+                return 'true';
+            } else {
+                return "there is not such deposit";
+            }
+        } else {
+            return $request->deposit_id;
+        }
+        return 'false';
+    }
     function users(){
-        $users = User::get();
+        $users = User::orderBy('isAdmin','desc')->get();
         return view('admin/users',compact('users'));
     }
     function tickets(){

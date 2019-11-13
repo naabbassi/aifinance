@@ -54,3 +54,4 @@ Route::get('/admin','AdminController@home');
 Route::get('/admin/deposit','AdminController@deposits');
 Route::get('/admin/users','AdminController@users');
 Route::get('/admin/tickets','AdminController@tickets');
+Route::post('/admin/deposit/confirm','AdminController@confirmDeposit');

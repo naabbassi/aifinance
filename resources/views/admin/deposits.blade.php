@@ -20,7 +20,7 @@
                   </div>
                   <div class="card-body p-0">
                     <div class="table-responsive">
-                      <table class="table table-striped">
+                      <table class="table table-striped" id="depositTable">
                         <tbody><tr>
                           <th>Amount</th>
                           <th>Due to</th>
@@ -66,7 +66,7 @@
                                       <div class="dropdown-menu" x-placement="top-start" style="position: absolute; transform: translate3d(0px, -6px, 0px); top: 0px; left: 0px; will-change: transform;">
                                         <a href="#" class="dropdown-item has-icon text-info"><i class="fas fa-eye"></i> View</a>
                                         <div class="dropdown-divider"></div>
-                                      <a href="#" class="dropdown-item has-icon text-warning" data-toggle="modal" data-target=".issue-modal"  onclick="setIssueId({{$item->id}})" ><i class="fas fa-exclamation"></i> Report an issue</a>
+                                      <a href="#" class="dropdown-item has-icon text-warning" id="confirmItem" data-id="{{$item->id}}"  ><i class="fas fa-exclamation"></i>Confirm Payment</a>
                                       </div>
                                     </div>
                               </td>
@@ -82,4 +82,42 @@
   
         </div>
     </div>
+@endsection
+@section('script')
+    <script>
+      $("#depositTable").on('click','#confirmItem',function(e) {
+        var id = e.currentTarget.dataset.id;
+      swal({
+          title: 'Are you sure to confirm this payment?',
+          text: '',
+          icon: 'warning',
+          buttons: true,
+          dangerMode: true,
+        })
+        .then((willDelete) => {
+          if (willDelete) {
+            confirmAction(id)
+          }
+        });
+      })
+      const confirmAction = async (e) => {
+        const data = {
+            '_token': '{{csrf_token()}}',
+            deposit_id: e
+          }
+      const response = await fetch('{{ route("home") }}/admin/deposit/confirm/',
+         {
+            method: 'POST', // or 'PUT'
+            body: JSON.stringify(data), // data can be `string` or {object}!
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
+      if(await response){
+        swal('Deposit Confirmation!', 'Confirmation done successfully', 'success');
+      } else {
+        swal('Deposit Confirmation!', 'Opps! apparently something went wrong', 'info');
+      }
+  }
+    </script>
 @endsection

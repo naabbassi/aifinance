@@ -11,7 +11,7 @@
             @foreach ($messages as $item)
                 @if ($item->type == 'u')
                         <div class="message-left">
-                        <div class="message-body alert alert-info">{!!$item->message !!}</div></div>
+                        <div class="message-body alert alert-white text-dark">{!!$item->message !!}</div></div>
                         <div class="message-footer">Asked by you at : <span class="text-info">{{$item->created_at}}</span></div>
                      @else
                         <div class="message-right ">
