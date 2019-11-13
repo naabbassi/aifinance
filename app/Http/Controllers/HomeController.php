@@ -363,8 +363,10 @@ class HomeController extends Controller
             'type' => 'required',
             'message' => 'required',
         ]);
-        if(Auth::user()->issues()->where('type',$request->type)->where('item_id',$request->id)->where('status', true)->count() > 0){
-            return "There is already registered an issue for this item, you can find more information in tickets page";
+        if($request->id != 0 && $request->type != 'c'){
+            if(Auth::user()->issues()->where('type',$request->type)->where('item_id',$request->id)->where('status', true)->count() > 0){
+                return "There is already registered an issue for this item, you can find more information in tickets page";
+            }
         }
         $issue = new issue;
         $issue_id = (String)Uuid::generate();
@@ -377,7 +379,7 @@ class HomeController extends Controller
         $issue_msg = new  issue_message;
         $issue_msg->id = (String)Uuid::generate();
         $issue_msg->issue_id = $issue_id;
-        $issue_msg->type = $request->type;
+        $issue_msg->type = 'u';
         $issue_msg->message = $request->message;
         $issue_msg->save();
         return 'true';
