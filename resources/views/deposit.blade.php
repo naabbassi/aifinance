@@ -63,7 +63,6 @@
                                         </div> 
                                         <div class="col-12 col-md-12 col-xl-6 " id="qrcode"></div>
                                         <div class="col-12 col-md-12 col-xl-6 p-4">
-                                          <form action="/financial/deposit/submit_request" method="post">
                                             <div class="form-group">
                                               <label for="">Your Wallet Address: <a href=""></a></label>
                                             <input class="form-control" type="text" name="wallet_address" id="address" value="{{ old('wallet_address')}}">
@@ -240,7 +239,6 @@
           },
         url: "{{ route('home') }}/issue/submit",
         }).done(function(result) {
-          console.log(result)
           if(result){
             $('.issue-modal').modal('hide');
             if(result == 'true'){
@@ -251,7 +249,6 @@
           } else{
             swal('Report the issue', 'Opps! apparently something went wrong', 'info');
           }
-          document.getElementById('issueMessage').value = "";
          })
       }
 </script>

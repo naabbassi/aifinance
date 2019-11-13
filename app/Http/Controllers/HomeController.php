@@ -89,14 +89,14 @@ class HomeController extends Controller
         return view('deposit',compact('deposits','sum'));
     }
     function submitDeposit(Request $request){
-        if(!$request->btc){
-            \Session::flash('alert-warning','it seems you have trouble with internet connection. Connection Error 204 ');
+        if((!$request->btc > 0)){
+            \Session::flash('alert-warning','it seems you have trouble either with internet connection or you submitted 0$ amount. Connection Error 204 ');
             return redirect('deposit');
         }
         $request->validate([
             'usd' => 'required',
             'wallet_address' => 'required|min:32',
-            'amount' => 'required',
+            'usd' => 'required',
             'btc' => 'required'
         ]);
         if ($request->usd  >= 250) {
@@ -363,8 +363,8 @@ class HomeController extends Controller
             'type' => 'required',
             'message' => 'required',
         ]);
-        if($request->id != 0 && $request->type != 'c'){
-            if(Auth::user()->issues()->where('type',$request->type)->where('item_id',$request->id)->where('status', true)->count() > 0){
+        if($request->id != '0'){
+            if(Auth::user()->issues()->where('item_id',$request->id)->where('status', true)->count() > 0){
                 return "There is already registered an issue for this item, you can find more information in tickets page";
             }
         }

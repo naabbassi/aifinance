@@ -16,12 +16,7 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>My Deposits</h4>
-                    <div class="card-header-action">
-                        <span href="#" class="badge badge-secondary">
-                            Approved Amount :
-                        </span>
-                      </div>
+                    <h4>Deposits</h4>
                   </div>
                   <div class="card-body p-0">
                     <div class="table-responsive">
@@ -31,6 +26,7 @@
                           <th>Due to</th>
                           <th>Due Date</th>
                           <th>Status</th>
+                          <th>User</th>
                           <th>Action</th>
                         </tr>
                         @foreach ($deposits as $item)
@@ -60,6 +56,10 @@
                                     <span class="badge badge-warning">Pending</span>
                                 @endif  
                               </td>
+                              @php
+                                  $user =  App\user::find($item->uid);
+                              @endphp
+                            <td><a class="badge btn btn-outline-info" href="/admin/user/{{$item->uid}}">{{$user->name.' '.$user->family}}</a></td>
                               <td class="options">
                                   <div class="dropdown">
                                       <a href="#" data-toggle="dropdown" class="btn btn-primary " aria-expanded="false"> ⋮ </a>
