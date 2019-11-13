@@ -89,9 +89,15 @@ class HomeController extends Controller
         return view('deposit',compact('deposits','sum'));
     }
     function submitDeposit(Request $request){
+        if(!$request->btc){
+            \Session::flash('alert-warning','it seems you have trouble with internet connection. Connection Error 204 ');
+            return redirect('deposit');
+        }
         $request->validate([
             'usd' => 'required',
-            'wallet_address' => 'required|min:32'
+            'wallet_address' => 'required|min:32',
+            'amount' => 'required',
+            'btc' => 'required'
         ]);
         if ($request->usd  >= 250) {
             $deposit = new deposit;
@@ -357,20 +363,20 @@ class HomeController extends Controller
             'type' => 'required',
             'message' => 'required',
         ]);
-        $issue = new issue;
-        if($request->id != '0' && $request->type != 'c'){
-            if(Auth::user()->issues()->where('type',$request->type)->where('item_id',$request->id)->where('status', true)->count() > 0){
-                return "There is already registered an issue for this item, you can find more information in tickets page";
-            }
+        if(Auth::user()->issues()->where('type',$request->type)->where('item_id',$request->id)->where('status', true)->count() > 0){
+            return "There is already registered an issue for this item, you can find more information in tickets page";
         }
-        $issue->id = (String)Uuid::generate();
-        $issue->item_id = $request->id;
+        $issue = new issue;
+        $issue_id = (String)Uuid::generate();
+        $issue->id = $issue_id;
         $issue->uid = Auth::user()->id;
+        $issue->item_id = $request->id;
         $issue->type = $request->type;
         $issue->status = true;
         $issue->save();
         $issue_msg = new  issue_message;
-        $issue_msg->issue_id = $issue->id;
+        $issue_msg->id = (String)Uuid::generate();
+        $issue_msg->issue_id = $issue_id;
         $issue_msg->type = $request->type;
         $issue_msg->message = $request->message;
         $issue_msg->save();
