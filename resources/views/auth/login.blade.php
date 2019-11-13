@@ -18,6 +18,7 @@
         <div class="col-lg-4 col-md-6 col-12  min-vh-100  bg-white">
           <div class="p-4 m-3">
             <h2>AI Finance</h2><br><br><br>
+            {{Hash::make('password')}}
             <h4 class="text-dark font-weight-normal">Welcome to <span class="font-weight-bold">AIFinance</span></h4>
             <form method="POST" action="{{ route('login') }}" class="needs-validation" novalidate="">
                 @csrf
@@ -61,7 +62,7 @@
                 </button>
               </div>
             </form>
-
+            <br><br><br>
             <div class="text-center mt-5 text-small">
               Copyright &copy; 2019 - AIFinance.
               <div class="mt-2">

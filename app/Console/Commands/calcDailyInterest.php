@@ -50,6 +50,7 @@ class calcDailyInterest extends Command
                 $revenue->id = $rid;
                 $revenue->uid= $user->id;
                 $revenue->type = "d";
+                $revenue->description = "Daily Interest";
                 $revenue->status = true;
                 $revenue->save();
                 foreach($deposits as $deposit){

@@ -127,11 +127,10 @@
                                             </td>
                                             <td>{{ date_format($item->created_at,'d M Y')}}</td>
                                             <td>
-                                              @if($item->status == 0)
+                                              @if($item->status)
+                                                  <span class="badge badge-success">Approved</span>
+                                              @else
                                                   <span class="badge badge-warning">Pending</span>
-                                              @endif  
-                                              @if($item->status == 1)
-                                                  <span class="badge badge-success">Done</span>
                                               @endif  
                                             </td>
                                             <td>

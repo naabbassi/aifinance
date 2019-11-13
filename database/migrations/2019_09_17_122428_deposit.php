@@ -22,6 +22,7 @@ class Deposit extends Migration
             $table->string('wallet');
             $table->longText('description')->nullanle();
             $table->boolean('status')->default(0);
+            $table->uuid('confirmedBy')->default(0);
             $table->timestamps();
         });
     }

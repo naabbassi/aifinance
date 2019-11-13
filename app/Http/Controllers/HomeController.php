@@ -35,10 +35,10 @@ class HomeController extends Controller
      */
     function dashboard(){
         $myDeposits = Auth::user()->deposit()->where('status', true)->orderBy('created_at','asc')->get();
-        $myRevenues = Auth::user()->revenue()->where('type','d')->orderBy('created_at','asc')->get();
+        $myRevenues = Auth::user()->revenue()->where('type','d')->where('status',true)->orderBy('created_at','asc')->get();
         $myRewards = Auth::user()->revenue()->where('type','r')->orderBy('created_at','asc')->get();
         $rewardAmount = $myRewards->sum('amount');
-        $revenueAmount = $myRevenues->sum('amount');
+        $revenueAmount = self::sumRevenue();
         $depositAmount = $myDeposits->sum('amount');
         $depositDate="";
         $depositValue=""; 
@@ -48,9 +48,12 @@ class HomeController extends Controller
         }
         $revenueDate="";
         $revenueValue=""; 
-        foreach ($myRevenues as $key => $value) {
-            $revenueDate .= date_format($value->created_at,"d-m-Y").",";
-            $revenueValue .= $value->amount.',';
+        foreach ($myRevenues as  $revenue) {
+            $items = $revenue->items()->where('status',true)->get();
+            foreach ($items as $item) {
+                $revenueDate .= date_format($item->created_at,"d-m-Y").",";
+                $revenueValue .= $item->amount.',';
+            }
         }
         $rewardDate="";
         $rewardValue=""; 
@@ -135,7 +138,7 @@ class HomeController extends Controller
         $revenues = Auth::user()->revenue()->where('status',true)->get();
         $sum = 0;
         foreach ($revenues as $item) {
-            $sum =$sum + $item->items()->sum('amount');
+            $sum =$sum + $item->items()->where('status',true)->sum('amount');
         }
         return $sum;
 
@@ -144,34 +147,35 @@ class HomeController extends Controller
         $request->validate([
             'amount' => 'required'
         ]);
-        $revenueSum = Auth::user()->revenue()->sum('amount');
+        $revenueSum = self::sumRevenue();
         $withdrawSum = Auth::user()->withdraw()->sum('amount');
         $available = $revenueSum - $withdrawSum;
         if ($request->amount <= $available && $available >= 250) {
             $deposit = new deposit;
-            $deposit->id = (String) Uuid::generate();
+            $deposit_id = (String) Uuid::generate();
+            $deposit->id = $deposit_id;
             $deposit->uid =  Auth::user()->id;
             $deposit->amount =  $request->amount;
             $deposit->btc =  '0';
             $deposit->type = 'w';
             $deposit->wallet = 0;
-            $deposit->status = 1;
+            $deposit->status = 0;
             $deposit->description =  "Desposit from revenue";
             $deposit->save();
             // save withdraw
             $withdraw = new withdraw;
-            $withdraw->uid = Auth::user()->id;
             $withdraw->id = (String) Uuid::generate();
+            $withdraw->uid = Auth::user()->id;
             $withdraw->amount = $request->amount;
             $withdraw->type = 'd';
             $withdraw->paid_at = date('Y-m-d H:i:s');
             $withdraw->wallet_id = 0;
-            $withdraw->status = '1';
-            $withdraw->deposit_id = $deposit->id;
+            $withdraw->deposit_id = $deposit_id;
             $withdraw->description = $request->description . " ";
+            $withdraw->status = 0;
             $withdraw->save();
             $request->session()->flash('alert-success', 'User was successful added!');
-            \Session::flash('alert-success','successfully saved.');
+            \Session::flash('alert-success','successfully saved. It takes a while to be proccessed.');
             return redirect('finance/withdraw');
         }
         return redirect('finance/withdraw')->with('alert-warning','To deposit the minimum acceptable amount is 250$ - your available amount is: '.$available.'$');
@@ -181,7 +185,7 @@ class HomeController extends Controller
             'amount' => 'required',
             'wallet' => 'required'
         ]);
-        $revenueSum = Auth::user()->revenue()->sum('amount');
+        $revenueSum = self::sumRevenue();
         $withdrawSum = Auth::user()->withdraw()->sum('amount');
         $available = $revenueSum - $withdrawSum;
         if ($request->amount <= $available && $available > 50) {
@@ -193,8 +197,8 @@ class HomeController extends Controller
             $withdraw->type = 'w';
             $withdraw->paid_at = date('Y-m-d H:i:s');
             $withdraw->wallet_id = $request->wallet;
-            $withdraw->status = 0;
             $withdraw->deposit_id = 0;
+            $withdraw->status = 0;
             $withdraw->description = $request->description . " ";
             $withdraw->save();
             $request->session()->flash('alert-success', 'User was successful added!');
@@ -390,7 +394,7 @@ class HomeController extends Controller
     }
     function ticketDetail(Request $request){
         $ticket = Auth::user()->issues()->find($request->id);
-        $messages = $ticket->messages;
+        $messages = $ticket->messages()->orderBy('created_at','asc')->get();
         return view('ticketDetails',compact('ticket','messages'));
     }
     function newTicket(){
@@ -458,13 +462,13 @@ class HomeController extends Controller
     }
     //Loan
     function loan(){
-        if(Auth::user()->deposit()->count() > 0){
+        if(Auth::user()->deposit()->where('status',true)->count() > 0){
             $datetime1 = Auth::user()->deposit()->where('status', true)->orderBy('created_at','asc')->first()->created_at;
             $datetime2 = date_create("now");
             $interval = $datetime1->diff($datetime2);
             $remained =  $interval->format('%R%a');
         } else {
-            $remained = 120;
+            $remained = 0;
         }
         return view('loan',compact('remained'));
     }

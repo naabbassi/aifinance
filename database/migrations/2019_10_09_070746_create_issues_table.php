@@ -16,7 +16,7 @@ class CreateIssuesTable extends Migration
         Schema::create('issues', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('uid');
-            $table->integer('item_id');
+            $table->uuid('item_id');
             $table->string('type',5);
             $table->boolean('status');
             $table->timestamps();

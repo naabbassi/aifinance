@@ -20,10 +20,10 @@ class CreateUsersTable extends Migration
             $table->string('sex');
             $table->timestamp('birthday');
             $table->integer('country');
+            $table->string('email')->unique();
             $table->string('owner')->nullable();
             $table->string('phone')->nullable();
             $table->string('avatar')->nullable();
-            $table->string('email')->unique();
             $table->boolean('type')->nullable();
             $table->boolean('isAdmin')->default(0);
             $table->timestamp('email_verified_at')->nullable();

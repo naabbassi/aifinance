@@ -12,6 +12,7 @@
             <p class="lead">
               We tried it, but failed when requesting data to the server, sorry. (Code: <a href="#" class="bb">404</a>)
             </p>
+            <a href="{{ url()->previous() }}" class="btn btn-info mt-4"><i class="fas fa-arrow-circle-left"></i> Go Back to Previous Page</a>
           <a href="{{ route('home')}}" class="btn btn-dark mt-4"><i class="fas fa-home"></i> Go Back to home</a>
           </div>
       </div>

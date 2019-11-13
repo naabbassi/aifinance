@@ -21,18 +21,18 @@
                       <form action="/finance/wallet/new" method="POST">
                         @csrf
                         <div class="form-group">
+                          <label for="title">Wallet Name</label>
+                          <input type="text" class="form-control" name="title" placeholder="Set a name to your wallet..." value="{{ old('title') }}">
+                          @error('title')
+                          <small class="form-text text-danger">{{ $message }}</small>
+                          @enderror
+                        </div>
+                        <div class="form-group">
                           <label for="address">Wallet address</label>
                           <input type="text" class="form-control" name="address" placeholder="Enter your wallet address" value="{{ old('address') }}">
                           <small class="form-text text-muted">Be sure that you enter the wallet address correctly.</small>
                           @error('address')
-                             <small class="form-text text-danger">{{ $message }}</small>
-                          @enderror
-                        </div>
-                        <div class="form-group">
-                          <label for="title">Wallet Name</label>
-                          <input type="text" class="form-control" name="title" placeholder="Set a name to your wallet..." value="{{ old('title') }}">
-                          @error('title')
-                             <small class="form-text text-danger">{{ $message }}</small>
+                              <small class="form-text text-danger">{{ $message }}</small>
                           @enderror
                         </div>
                         <button type="submit" class="btn btn-primary">Save</button>

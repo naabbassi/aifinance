@@ -19,9 +19,10 @@ class CreateWithdrawTable extends Migration
             $table->double('amount');
             $table->string('type');
             $table->date('paid_at')->nullable();
-            $table->Integer('wallet_id');
-            $table->Integer('deposit_id');
+            $table->uuid('wallet_id');
+            $table->uuid('deposit_id');
             $table->string('description');
+            $table->boolean('status');
             $table->timestamps();
         });
     }

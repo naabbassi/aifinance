@@ -5,10 +5,10 @@
 @section('content')
 <div class="section">
         <div class="section-header">
-            <h1>USERS</h1>
+            <h1>Tickets</h1>
                 <div class="section-header-breadcrumb">
                   <div class="breadcrumb-item active"><a href="/admin">Admin Panel</a></div>
-                  <div class="breadcrumb-item">Users</div>
+                  <div class="breadcrumb-item">Tickets</div>
                 </div>
         </div>
         <div class="row">
@@ -16,47 +16,46 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Users</h4>
+                    <h4>Tickets</h4>
                   </div>
                   <div class="card-body p-0">
                     <div class="table-responsive">
                       <table class="table table-striped">
                         <tbody><tr>
+                          <th>Ticket ID</th>
+                          <th>Issue Type</th>
                           <th>User</th>
-                          <th>Email</th>
-                          <th>Owner</th>
-                          <th>Type</th>
-                          <th>is Admin</th>
+                          <th>Status</th>
                           <th>Action</th>
                         </tr>
-                        @foreach ($users as $user)
+                        @foreach ($tickets as $item)
                         <tr>
                               <td class="align-middle">
-                                {{$user->name }} {{$user->family}}
-                              </td>
-                              <td class="align-middle">
-                                {{$user->email }}
-                              </td>
-                              <td class="align-middle">
-                                {{$user->owner }} 
+                                {{ $item->id }}
                               </td>
                               <td>
-                                @switch($user->type)
-                                  @case('1')
-                                    <span class="text-success">Real</span>
-                                  @break
-                                  @case('0')
-                                    <span class="text-danger" >Fake</span>
-                                  @break
-                                  @default
-                                    .... 
+                                @switch($item->type)
+                                    @case('c')
+                                    <span class="badge badge-info">Custome</span>
+                                        @break
+                                    @case('d')
+                                    <span class="badge badge-success">Deposit</span>
+                                        @break
+                                    @default
+                                    <span class="badge badge-danger">Unknown</span>
                                 @endswitch
+                              </td>
+                              <td class="align-middle">
+                                @php
+                                    $user = App\user::find($item->uid)
+                                @endphp
+                                <a href="/admin/user/{{$item->uid}}">{{$user->name }}</a>
                               </td>
                               <td>
                                   @if ($user->isAdmin)
-                                    <span class="badge badge-success">Admin</span>
+                                    <span class="badge badge-success">Open</span>
                                     @else
-                                    <span class="badge badge-info" >User</span>
+                                    <span class="badge badge-info" >Close</span>
                                   @endif
                               </td>
                               <td class="options">

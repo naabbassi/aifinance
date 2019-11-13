@@ -18,6 +18,7 @@ class CreateRevenueItemsTable extends Migration
             $table->uuid('rid');
             $table->uuid('source');
             $table->integer('amount');
+            $table->boolean('status');
             $table->timestamps();
         });
     }

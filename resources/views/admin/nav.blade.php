@@ -21,8 +21,7 @@
               </li>
             <li class="{{ request()->is('deposit*') ? 'active' : '' }}"><a href="/admin/deposit"><i class="fas fa-money-check-alt"></i> <span>Deposit</span></a></li>
             <li class="{{ request()->is('users*') ? 'active' : '' }}"><a href="/admin/users"><i class="fas fa-users"></i> <span>Users</span></a></li>
-              <li class="{{ request()->is('tickets*') ? 'active' : '' }}"><a href="/admin/tickets"><i class="fas fa-ticket-alt"></i> <span>Tickets</span></a></li>
-              <li class="{{ request()->is('loan*') ? 'active' : '' }}"><a href="/loan"><i class="fas fa-landmark"></i> <span>Loan</span></a></li>
+            <li class="{{ request()->is('tickets*') ? 'active' : '' }}"><a href="/admin/tickets"><i class="fas fa-ticket-alt"></i> <span>Tickets</span></a></li>
             </ul>
           </aside>
         </div>
