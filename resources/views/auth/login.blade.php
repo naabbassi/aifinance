@@ -72,7 +72,7 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-8 col-md-6 col-12  min-vh-100 d-md-block background-walk-y position-relative overlay-gradient-bottom" data-background="img/nature2.jpg">
+        <div class="col-lg-8 col-md-6 col-12  min-vh-100 d-md-block background-walk-y position-relative overlay-gradient-bottom" data-background="img/login-bg.jpg">
           <div class="absolute-bottom-left index-2">
             <div class="text-light p-5 pb-2">
               <div class="mb-5 pb-3">

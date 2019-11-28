@@ -1,688 +1,1042 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>FAI Finance :: Home</title>
-    <meta name="description" content="">
-    <script src="themekit/scripts/jquery.min.js"></script>
-    <script src="themekit/scripts/main.js"></script>
-    <link rel="stylesheet" href="themekit/css/bootstrap-grid.css">
-    <link rel="stylesheet" href="themekit/css/style.css">
-    <link rel="stylesheet" href="themekit/css/glide.css">
-    <link rel="stylesheet" href="themekit/css/magnific-popup.css">
-    <link rel="stylesheet" href="themekit/css/content-box.css">
-    <link rel="stylesheet" href="themekit/css/contact-form.css">
-    <link rel="stylesheet" href="themekit/css/media-box.css">
-    <link rel="stylesheet" href="skin.css">
-    <link rel="icon" href="media/favicon.png">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="forntEnd-Developer" content="Mamunur Rashid">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title> AI Finance :: Cryptocurrency Investment Inistitue</title>
+	<!-- favicon -->
+	<link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<!-- Plugin css -->
+	<link rel="stylesheet" href="assets/css/plugin.css">
+
+	<!-- stylesheet -->
+	<link rel="stylesheet" href="assets/css/style.css">
+	<!-- responsive -->
+	<link rel="stylesheet" href="assets/css/responsive.css">
 </head>
+
 <body>
-    <div id="preloader"></div>
-    <nav class="menu-classic menu-fixed menu-transparent menu-one-page align-right light" data-menu-anima="fade-bottom" data-scroll-detect="true">
-        <div class="container">
-            <div class="menu-brand">
-                <a href="#">
-                    <img class="logo-default" src="media/logo-light.svg" alt="logo" />
-                    <img class="logo-retina" src="media/logo-light.svg" alt="logo" />
-                </a>
-            </div>
-            <i class="menu-btn"></i>
-            <div class="menu-cnt">
-                <ul>
-                    <li>
-                        <a href="#overview">Overview</a>
-                    </li>
-                    <li>
-                        <a href="#features">Features</a>
-                    </li>
-                    <li>
-                        <a href="#reviews">Reviews</a>
-                    </li>
-                    <li>
-                        <a href="#pricing">Pricing</a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#">Pages</a>
-                        <ul>
-                            <li class="dropdown-submenu">
-                                <a href="#">Sites</a>
-                                <ul>
-                                    <li><a href="index-saas.html">Saas</a></li>
-                                    <li><a href="index-fintech.html">Fintech</a></li>
-                                    <li><a href="index-sport.html">Sport</a></li>
-                                    <li><a href="index-food.html">Food</a></li>
-                                    <li><a href="index-chat.html">Chat</a></li>
-                                    <li><a href="index-music.html">Music</a></li>
-                                    <li><a href="index-photo.html">Photo</a></li>
-                                    <li><a href="index-travel.html">Travel</a></li>
-                                    <li><a href="index-news.html">News</a></li>
-                                    <li><a href="index.html">Intro</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown-submenu">
-                                <a href="#">Pages</a>
-                                <ul>
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a href="careers.html">Careers</a></li>
-                                    <li><a href="faq.html">Faqs</a></li>
-                                    <li><a href="customers.html">Success stories</a></li>
-                                    <li><a href="pricing-1.html">Pricing one</a></li>
-                                    <li><a href="pricing-2.html">Pricing two</a></li>
-                                    <li><a href="team.html">Team</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown-submenu">
-                                <a href="#">Blog</a>
-                                <ul>
-                                    <li><a href="blog-1.html">Blog one</a></li>
-                                    <li><a href="blog-2.html">Blog two</a></li>
-                                    <li><a href="post.html">Post</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown-submenu">
-                                <a href="#">Contacts</a>
-                                <ul>
-                                    <li><a href="contacts-1.html">Contacts one</a></li>
-                                    <li><a href="contacts-2.html">Contacts two</a></li>
-                                    <li><a href="contacts-3.html">Contacts three</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="elements/components/buttons.html">Elements</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-                <div class="menu-right">
-                    <ul class="lan-menu">
-                        <li class="dropdown">
-                            <a href="#"><img src="media/en.png" alt="" />EN </a>
-                            <ul>
-                                <li><a href="#"><img src="media/it.png" alt="" />IT</a></li>
-                                <li><a href="#"><img src="media/es.png" alt="" />ES</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <div class="menu-custom-area">
-                        <a class="btn btn-border btn-circle btn-xs" href="/login">Dashboard</a>
-                    </div>
-                </div>
-                <div class="clear"></div>
-            </div>
-        </div>
-    </nav>
-    <main>
-        <section class="section-image section-full-width-right light section-bottom-layer" style="background-image:url(media/bg.svg)">
-            <div class="container">
-                <hr class="space" />
-                <div class="row">
-                    <div class="col-lg-6" data-anima="fade-in" data-time="1000">
-                        <hr class="space" />
-                        <h1>
-                            The cheap, fast way to publish your apps.
-                        </h1>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboriso.
-                        </p>
-                        <a href="#" class="btn btn-sm btn-circle shadow-1 full-width-sm">Purchase now</a><span class="space"></span>
-                        <a href="https://www.youtube.com/watch?v=Lb4IcGF5iTQ" data-lightbox-anima="fade-top" class="btn-text btn-video lightbox hidden-sm">View video</a>
-                        <hr class="space" />
-                    </div>
-                    <div class="col-lg-6">
-                        <img class="width-min-835" src="media/iso-1.png" alt="" />
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="section-base">
-            <div class="container">
-                <ul class="slider" data-options="type:carousel,arrows:false,nav:false,perView:5,perViewMd:3,perViewSm:2,perViewXs:1,gap:100,autoplay:3000">
-                    <li>
-                        <img src="media/logos/logo-1.png" alt="" />
-                    </li>
-                    <li>
-                        <img src="media/logos/logo-2.png" alt="" />
-                    </li>
-                    <li>
-                        <img src="media/logos/logo-3.png" alt="" />
-                    </li>
-                    <li>
-                        <img src="media/logos/logo-6.png" alt="" />
-                    </li>
-                    <li>
-                        <img src="media/logos/logo-5.png" alt="" />
-                    </li>
-                    <li>
-                        <img src="media/logos/logo-4.png" alt="" />
-                    </li>
-                </ul>
-                <hr class="space-lg" />
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="grid-list" data-columns="2" data-columns-xs="1">
-                            <div class="grid-box">
-                                <div class="grid-item">
-                                    <div class="cnt-box cnt-box-top-icon boxed">
-                                        <i class="im-globe"></i>
-                                        <div class="caption">
-                                            <h2>Global support</h2>
-                                            <p>
-                                                Lorem ipsum dolor sitamet consect sed do eiusmod tempore.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="grid-item">
-                                    <div class="cnt-box cnt-box-top-icon boxed">
-                                        <i class="im-bar-chart4"></i>
-                                        <div class="caption">
-                                            <h2>Rich features</h2>
-                                            <p>
-                                                Lorem ipsum dolor sitamet consect sed do eiusmod tempore.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <hr class="space-sm visible-md" />
-                        <h2>Global support in a<br />range of different languages.</h2>
-                        <p>
-                            Lorem ipsum dolor sit amet.  no sea takimata sanctus est Lorem ipsum dolor sit amete.
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco  sea takimata sanctus eslaboriso.
-                        </p>
-                        <a href="#" class="btn-text">Explore features</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="overview" class="section-base section-color section-full-width-left section-bottom-layer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <img src="media/iso-2.png" alt="" />
-                    </div>
-                    <div class="col-lg-6" data-anima="fade-right" data-time="1000">
-                        <hr class="space" />
-                        <h2>Trusted all over the world<br />by a wide range of companies.</h2>
-                        <p>
-                            Lorem ipsum dolor sit amet.  no sea takimata sanctus est Lorem ipsum dolor sit amete.
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco  sea takimata sanctus eslaboriso.
-                        </p>
-                        <a href="#" class="btn btn-circle btn-sm">Explore services</a>
-                        <hr class="space hidden-md" />
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="section-base">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <h2>All your questsions are<br />very important to us and help us grow better.</h2>
-                    </div>
-                    <div class="col-lg-4">
-                        <ul class="accordion-list">
-                            <li>
-                                <a href="#">In what countries is the app available?</a>
-                                <div class="content">
-                                    <p>
-                                        Lorem ipsum dolor sit amet consectetur adipiscing elitsed do eiusmod tempor incididunt utlabore et dolore magna aliqua.
-                                        Utenim ad minim veniam quis nostrud exercitation ullamco laboris.
-                                    </p>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    When the earnings will arrive?
-                                </a>
-                                <div class="content">
-                                    <p>
-                                        Lorem ipsum dolor sit amet consectetur adipiscing elitsed do eiusmod tempor incididunt utlabore et dolore magna aliqua.
-                                        Utenim ad minim veniam quis nostrud exercitation ullamco laboris.
-                                    </p>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="#">Where can I contact the support team?</a>
-                                <div class="content">
-                                    <p>
-                                        Lorem ipsum dolor sit amet consectetur adipiscing elitsed do eiusmod tempor incididunt utlabore et dolore magna aliqua.
-                                        Utenim ad minim veniam quis nostrud exercitation ullamco laboris.
-                                    </p>
-                                </div>
-                            </li>
+	<!-- preloader area start -->
+	<div class="preloader" id="preloader">
+		<div class="loader loader-1">
+			<div class="loader-outter"></div>
+			<div class="loader-inner"></div>
+		</div>
+	</div>
+	<!-- preloader area end -->
 
-                        </ul>
-                    </div>
-                    <div class="col-lg-4">
-                        <ul class="accordion-list">
-                            <li>
-                                <a href="#">How does the summary dial work?</a>
-                                <div class="content">
-                                    <p>
-                                        Lorem ipsum dolor sit amet consectetur adipiscing elitsed do eiusmod tempor incididunt utlabore et dolore magna aliqua.
-                                        Utenim ad minim veniam quis nostrud exercitation ullamco laboris.
-                                    </p>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="#">Exporting my projects and restore?</a>
-                                <div class="content">
-                                    <p>
-                                        Lorem ipsum dolor sit amet consectetur adipiscing elitsed do eiusmod tempor incididunt utlabore et dolore magna aliqua.
-                                        Utenim ad minim veniam quis nostrud exercitation ullamco laboris.
-                                    </p>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="#">Can I get the money back for a refund?</a>
-                                <div class="content">
-                                    <p>
-                                        Lorem ipsum dolor sit amet consectetur adipiscing elitsed do eiusmod tempor incididunt utlabore et dolore magna aliqua.
-                                        Utenim ad minim veniam quis nostrud exercitation ullamco laboris.
-                                    </p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="features" class="section-base section-color">
-            <div class="container">
-                <h2 class="align-center">A large range of features.</h2>
-                <p class="align-center width-650">
-                    Lorem ipsum dolor sit amet no sea takimata sanctus est Lorem ipsum dolor sit amete
-                    sare nostrud exercitation ullamco sea takiquis nostrud exercitatio.
-                </p>
-                <hr class="space" />
-                <div class="grid-list" data-columns="3" data-columns-md="2" data-columns-xs="1">
-                    <div class="grid-box">
-                        <div class="grid-item">
-                            <div class="cnt-box cnt-box-top-icon boxed">
-                                <i class="im-bar-chart4"></i>
-                                <div class="caption">
-                                    <h2>Real time chars</h2>
-                                    <p>
-                                        Lorem ipsum dolor sitamet consect  sed do eiusmod tempore.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid-item">
-                            <div class="cnt-box cnt-box-top-icon boxed">
-                                <i class="im-cool-guy"></i>
-                                <div class="caption">
-                                    <h2>Premium support</h2>
-                                    <p>
-                                        Lorem ipsum dolor sitamet consect  sed do eiusmod tempore.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid-item">
-                            <div class="cnt-box cnt-box-top-icon boxed">
-                                <i class="im-laptop-3"></i>
-                                <div class="caption">
-                                    <h2>Cross platform</h2>
-                                    <p>
-                                        Lorem ipsum dolor sitamet consect  sed do eiusmod tempore.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid-item">
-                            <div class="cnt-box cnt-box-top-icon boxed">
-                                <i class="im-lock-user"></i>
-                                <div class="caption">
-                                    <h2>Security features</h2>
-                                    <p>
-                                        Lorem ipsum dolor sitamet consect  sed do eiusmod tempore.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid-item">
-                            <div class="cnt-box cnt-box-top-icon boxed">
-                                <i class="im-shuffle-4"></i>
-                                <div class="caption">
-                                    <h2>Business network</h2>
-                                    <p>
-                                        Lorem ipsum dolor sitamet consect  sed do eiusmod tempore.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid-item">
-                            <div class="cnt-box cnt-box-top-icon boxed">
-                                <i class="im-security-settings"></i>
-                                <div class="caption">
-                                    <h2>Validation</h2>
-                                    <p>
-                                        Lorem ipsum dolor sitamet consect  sed do eiusmod tempore.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="section-image align-center light" style="background-image:url(media/bg.svg)">
-            <div class="container">
-                <h2>A solution for every level.</h2>
-                <p class="width-650">
-                    Lorem ipsum dolor sit amet no sea takimata sanctus est Lorem ipsum dolor sit amete
-                    sare nostrud exercitation ullamco sea takiquis nostrud exercitatio.
-                </p>
-                <hr class="space" />
-                <a href="https://www.youtube.com/watch?v=Lb4IcGF5iTQ" class="btn-video lightbox" data-lightbox-anima="fade-top"></a>
-            </div>
-        </section>
-        <section id="reviews" class="section-base">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 order-md-last">
-                        <ul class="slider controls-bottom-right" data-options="type:carousel,arrows:true,nav:true,perView:3,perViewSm:1,controls:out">
-                            <li>
-                                <div class="cnt-box cnt-box-testimonials rating-5">
-                                    <img src="media/users/user-1.jpg" alt="" />
-                                    <p>
-                                        Lorem ipsum dolor sitamet consectetur adipisicing elito sed do eiusmod tempore.
-                                    </p>
-                                    <p class="testimonial-info">
-                                        <span>Robert Junior</span>
-                                        <span>Slack</span>
-                                    </p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="cnt-box cnt-box-testimonials rating-5">
-                                    <img src="media/users/user-3.jpg" alt="" />
-                                    <p>
-                                        Lorem ipsum dolor sitamet consectetur adipisicing elito sed do eiusmod tempore.
-                                    </p>
-                                    <p class="testimonial-info">
-                                        <span>Jessica Poster</span>
-                                        <span>Facebook</span>
-                                    </p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="cnt-box cnt-box-testimonials rating-4">
-                                    <img src="media/users/user-4.jpg" alt="" />
-                                    <p>
-                                        Lorem ipsum dolor sitamet consectetur adipisicing elito sed do eiusmod tempore.
-                                    </p>
-                                    <p class="testimonial-info">
-                                        <span>Brad Manson</span>
-                                        <span>Google</span>
-                                    </p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="cnt-box cnt-box-testimonials rating-5">
-                                    <img src="media/users/user-5.jpg" alt="" />
-                                    <p>
-                                        Lorem ipsum dolor sitamet consectetur adipisicing elito sed do eiusmod tempore.
-                                    </p>
-                                    <p class="testimonial-info">
-                                        <span>Richard Pall</span>
-                                        <span>Microsoft</span>
-                                    </p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-4 order-md-first">
-                        <h2>Worldwide awards<br />and the best customer satisfaction ratio.</h2>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="section-base section-color section-full-width-right section-bottom-layer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <hr class="space" />
-                        <h2>Our numbers do not lie<br />become part of the revolution now.</h2>
-                        <p>
-                            Lorem ipsum dolor sit ameta no sea takimata sanctus est Lorem ipsum dolor sit amete.
-                            Ut enim ad minim veniam, quis nostruo.
-                        </p>
-                        <table class="table table-grid table-border no-padding-y align-left table-auto">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="counter counter-horizontal counter-icon">
-                                            <div>
-                                                <h3>Downloads</h3>
-                                                <div class="value text-lg">
-                                                    <span data-to="150" data-speed="3000">150</span>
-                                                    <span>K</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="counter counter-horizontal counter-icon">
-                                            <div>
-                                                <h3>Positive reviews</h3>
-                                                <div class="value text-lg">
-                                                    <span data-to="10" data-speed="3000">10</span>
-                                                    <span>K</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
+	<!-- Header Area Start  -->
+	<header class="header">
+		<!-- Top Header Area Start -->
+		<section class="top-header" style="background-color:white">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="content">
+							<div class="left-content">
+								<ul class="left-list">
+									<li>
+										<p>
+											<i class="fas fa-headset"></i>	Support
+										</p>
+									</li>
+								</ul>
+							</div>
+							<div class="right-content">
+								<ul class="right-list">
+									<li>
+										<div class="language-selector">
+											<select name="language" class="language">
+												<option value="en">ENG</option>
+												<option value="de">GER</option>
+											</select>
+										</div>
+									</li>
+									<li>
+										<ul class="social-link">
+											<li>
+												<a href="#">
+													<i class="fab fa-facebook-f"></i>
+												</a>
+											</li>
+											<li>
+												<a href="#">
+													<i class="fab fa-twitter"></i>
+												</a>
+											</li>
+											<li>
+												<a href="#">
+													<i class="fab fa-linkedin-in"></i>
+												</a>
+											</li>
+											<li>
+												<a href="#">
+													<i class="fab fa-instagram"></i>
+												</a>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Top Header Area End -->
+		<!--Main-Menu Area Start-->
+		<div class="mainmenu-area">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">                 
+						<nav class="navbar navbar-expand-lg navbar-light">
+							<a class="navbar-brand" href="index.html">
+								<h3>AI Finance</h3>
+							</a>
+							<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_menu" aria-controls="main_menu"
+								aria-expanded="false" aria-label="Toggle navigation">
+								<span class="navbar-toggler-icon"></span>
+							</button>
+							<div class="collapse navbar-collapse fixed-height" id="main_menu">
+								<ul class="navbar-nav ml-auto">
+									
+									<li class="nav-item">
+										<a class="nav-link" href="aboutus.html">Home</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="aboutus.html">About</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="lend.html">Lend</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="borrow.html">Borrow</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="trade.html">Trade</a>
+									</li>
+								</ul>
+								<a href="/dashboard" class="mybtn1">Get Started </a>
+							</div>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--Main-Menu Area Start-->
+	</header>
+	<!-- Header Area End  -->
 
-                                </tr>
-                            </tbody>
-                        </table>
-                        <a href="#" class="btn btn-sm btn-icon btn-circle btn-border"><i class="im-apple-bite"></i>App store</a>
-                        <a href="#" class="btn btn-sm btn-icon btn-circle btn-border"><i class="im-android"></i>App store</a>
-                        <hr class="space" />
-                    </div>
-                    <div class="col-lg-6">
-                        <img class="width-min-835" src="media/iso-3.png" alt="" />
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="pricing" class="section-base">
-            <div class="container">
-                <h2 class="align-center">The best prices on the market.</h2>
-                <p class="align-center width-650">
-                    Lorem ipsum dolor sit amet no sea takimata sanctus est Lorem ipsum dolor sit amete
-                    sare nostrud exercitation ullamco sea takiquis nostrud exercitatio.
-                </p>
-                <hr class="space" /><hr class="space-xs" />
-                <div class="row" data-anima="fade-bottom" data-time="1000" data-timeline="asc">
-                    <div class="col-lg-4 anima">
-                        <div class="cnt-box cnt-pricing-table">
-                            <div class="top-area">
-                                <h2>Personal plan</h2>
-                                <div class="price">$<span>19</span></div>
-                                <p>Per month</p>
-                            </div>
-                            <ul>
-                                <li>1000 messages</li>
-                                <li>15GB storage</li>
-                                <li>10 projects</li>
-                                <li>Premium support</li>
-                            </ul>
-                            <div class="bottom-area">
-                                <a class="btn btn-circle btn-sm btn-border" href="#">Order now</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 anima">
-                        <div class="cnt-box cnt-pricing-table pricing-table-big">
-                            <div class="top-area">
-                                <h2>Business plan</h2>
-                                <div class="price">$<span>49</span></div>
-                                <p>Per month</p>
-                            </div>
-                            <ul>
-                                <li>2000 messages</li>
-                                <li>20GB storage</li>
-                                <li>50 projects</li>
-                                <li>Premium support</li>
-                            </ul>
-                            <div class="bottom-area">
-                                <a class="btn btn-circle btn-sm btn-border" href="#">Order now</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 anima">
-                        <div class="cnt-box cnt-pricing-table">
-                            <div class="top-area">
-                                <h2>Enterprise plan</h2>
-                                <div class="price">$<span>89</span></div>
-                                <p>Per month</p>
-                            </div>
-                            <ul>
-                                <li>8000 messages</li>
-                                <li>30GB storage</li>
-                                <li>100 projects</li>
-                                <li>Premium support</li>
-                            </ul>
-                            <div class="bottom-area">
-                                <a class="btn btn-circle btn-sm btn-border" href="#">Order now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="section-base section-color">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 order-md-last">
-                        <form action="themekit/scripts/contact-form/contact-form.php" class="form-box form-ajax form-inline" method="post" data-email="example@domain.com">
-                            <div class="row">
-                                <div class="col-lg-8">
-                                    <p>Type your email</p>
-                                    <input id="email" name="email" placeholder="" type="email" class="input-text" required>
-                                </div>
-                                <div class="col-lg-4">
-                                    <p></p>
-                                    <button class="btn btn-sm" type="submit">Subscribe</button>
-                                </div>
-                            </div>
-                            <div class="form-checkbox">
-                                <input type="checkbox" id="check" name="check" value="check" required>
-                                <label for="check">You accept the terms of service and the privacy policy</label>
-                            </div>
-                            <div class="success-box">
-                                <div class="alert alert-success">Congratulations. Your message has been sent successfully</div>
-                            </div>
-                            <div class="error-box">
-                                <div class="alert alert-warning">Error, please retry. Your message has not been sent</div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-lg-4 order-md-first">
-                        <h2>Subscribe now.</h2>
-                        <hr class="space-xs" />
-                        <p>Sare nostrud exercitation ullamco sea takiquis nostrud message bareteso exercitatio.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-    <i class="scroll-top-btn scroll-top show"></i>
-    <footer class="footer-parallax light">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <h4>Company and team</h4>
-                    <div class="menu-inner menu-inner-vertical">
-                        <ul>
-                            <li>
-                                <a href="#">Company details and team</a>
-                            </li>
-                            <li>
-                                <a href="#">News and blog</a>
-                            </li>
-                            <li>
-                                <a href="#">Press area</a>
-                            </li>
-                            <li>
-                                <a href="#">Affiliates and marketing</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <h4>Help and support</h4>
-                    <div class="menu-inner menu-inner-vertical">
-                        <ul>
-                            <li>
-                                <a href="#">Help centre</a>
-                            </li>
-                            <li>
-                                <a href="#">Feedbacks</a>
-                            </li>
-                            <li>
-                                <a href="#">Request new features</a>
-                            </li>
-                            <li>
-                                <a href="#">Contact us</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <h4>Learn more</h4>
-                    <div class="menu-inner menu-inner-vertical">
-                        <ul>
-                            <li>
-                                <a href="#">Apps stores</a>
-                            </li>
-                            <li>
-                                <a href="#">Partners</a>
-                            </li>
-                            <li>
-                                <a href="#">Privacy and terms</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <h4>Follow us</h4>
-                    <div class="icon-links icon-social icon-links-grid social-colors">
-                        <a class="facebook"><i class="icon-facebook"></i></a>
-                        <a class="twitter"><i class="icon-twitter"></i></a>
-                        <a class="linkedin"><i class="icon-linkedin"></i></a>
-                        <a class="youtube"><i class="icon-youtube"></i></a>
-                        <a class="instagram"><i class="icon-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bar">
-            <div class="container">
-                <span>© Codrop LTD 2019. Codrop is a powerful Landing Page App Template built with <a target="_blank" href="https://themekit.dev/code/">Themekit</a> by the <a target="_blank" href="https://schiocco.com/">Schiocco</a> Team. </span>
-                <span><img src="media/logo-light.svg" alt="" /></span>
-            </div>
-        </div>
-        <link rel="stylesheet" href="themekit/media/icons/iconsmind/line-icons.min.css">
-        <script src="themekit/scripts/parallax.min.js"></script>
-        <script src="themekit/scripts/glide.min.js"></script>
-        <script src="themekit/scripts/magnific-popup.min.js"></script>
-        <script src="themekit/scripts/tab-accordion.js"></script>
-        <script src="themekit/scripts/imagesloaded.min.js"></script>
-        <script src="themekit/scripts/contact-form/contact-form.js"></script>
-        <script src="themekit/scripts/progress.js"></script>
-        <script src="media/custom.js"></script>
-        <script data-setting="codrop" src="https://themekit.dev/tools/sidebar/sidebar.js"></script>
-    </footer>
+	<!-- Hero Area Start -->
+	<div class="hero-area partical-area">
+		<div id="particles-js"></div>
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-6 d-flex align-self-center">
+					<div class="left-content">
+						<div class="content text-center">
+							<h5 class="subtitle">
+								Secure. Fast. Profitable
+							</h5>
+							<h1 class="title">
+								Lend and Borrow
+								Cryptocurrency
+							</h1>
+							<p class="text">
+								Borrow, Lend and margin trade crypto
+								assets on AI Finance								   
+							</p>
+							<div class="links">
+								<a href="#" class="mybtn1 link1"><span>Start Borrowing</span> </a>
+								<a href="#" class="mybtn1 link2"><span>Start Lending</span> </a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Hero Area End -->
+
+	<!-- Features Area Start -->
+	<section class="features">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4 col-md-6">
+					<div class="single-feature">
+						<div class="left">
+							<img src="assets/images/feat1.png" alt="">
+						</div>
+						<div class="right">
+							<p class="sub-title">
+							Monthly Interest
+							</p>
+							<h4 class="title">
+								6%
+							</h4>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6">
+					<div class="single-feature">
+						<div class="left">
+							<img src="assets/images/feat2.png" alt="">
+						</div>
+						<div class="right">
+							<p class="sub-title">
+								Loan Duration
+							</p>
+							<h4 class="title">
+								0-12Mo
+							</h4>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6">
+					<div class="single-feature">
+						<div class="left">
+							<img src="assets/images/feat3.png" alt="">
+						</div>
+						<div class="right">
+							<p class="sub-title">
+								Fee as low as
+							</p>
+							<h4 class="title">
+								0%
+							</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Features Area End -->
+
+	<!-- Whay Choose us Area Start -->
+	<section class="why-choose-us">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-8 col-md-10">
+					<div class="section-heading">
+						<h5 class="subtitle">
+							The Most Trusted
+						</h5>
+						<h2 class="title extra-padding">
+							Cryptocurrency Investing Platform
+						</h2>
+						<p class="text">
+							Here are a few reasons why you should choose Lendbo
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="single-why">
+						<div class="left">
+							<div class="icon">
+								<img src="assets/images/why1.png" alt="">
+							</div>
+						</div>
+						<div class="right">
+							<h4 class="title">
+								Reliable and Safe
+							</h4>
+							<p class="text">
+								Advanced security and reliability
+								of your collateral									
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="single-why">
+						<div class="left">
+							<div class="icon">
+								<img src="assets/images/why2.png" alt="">
+							</div>
+						</div>
+						<div class="right">
+							<h4 class="title">
+								Crypto as Collateral
+							</h4>
+							<p class="text">
+								Advanced security and reliability
+								of your collateral									
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="single-why">
+						<div class="left">
+							<div class="icon">
+								<img src="assets/images/why3.png" alt="">
+							</div>
+						</div>
+						<div class="right">
+							<h4 class="title">
+									Easy to Use
+							</h4>
+							<p class="text">
+								Advanced security and reliability
+								of your collateral									
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="single-why">
+						<div class="left">
+							<div class="icon">
+								<img src="assets/images/why4.png" alt="">
+							</div>
+						</div>
+						<div class="right">
+							<h4 class="title">
+									Simple Process
+							</h4>
+							<p class="text">
+								Advanced security and reliability
+								of your collateral									
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="single-why">
+						<div class="left">
+							<div class="icon">
+								<img src="assets/images/why5.png" alt="">
+							</div>
+						</div>
+						<div class="right">
+							<h4 class="title">
+									Available Worldwide
+							</h4>
+							<p class="text">
+								Advanced security and reliability
+								of your collateral									
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="single-why">
+						<div class="left">
+							<div class="icon">
+								<img src="assets/images/why6.png" alt="">
+							</div>
+						</div>
+						<div class="right">
+							<h4 class="title">
+									Variety of Currencies
+							</h4>
+							<p class="text">
+								Advanced security and reliability
+								of your collateral									
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Whay Choose us Area End -->
+
+	<!-- Lend Area Start -->
+	{{-- <section class="lend">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-8 col-md-10">
+					<div class="section-heading">
+						<h5 class="subtitle extra-padding">
+							The Smarter Way 
+						</h5>
+						<h2 class="title">
+							Lend and Borrow
+						</h2>
+						<p class="text">
+							The World's First Crypto Lending Marketplace and 
+							Affordable and competitive interest rates
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="tab-menu-area">
+						<ul class="nav nav-lend mb-3" id="pills-tab" role="tablist">
+							<li class="nav-item">
+								<a class="nav-link active" id="pills-lend-tab" data-toggle="pill" href="#pills-lend" role="tab" aria-controls="pills-lend" aria-selected="true">Lend</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" id="pills-borrow-tab" data-toggle="pill" href="#pills-borrow" role="tab" aria-controls="pills-borrow" aria-selected="false">Borrow</a>
+							</li>
+						</ul>
+					</div>
+					<div class="tab-content" id="pills-tabContent">
+						<div class="tab-pane fade show active" id="pills-lend" role="tabpanel" aria-labelledby="pills-lend-tab">
+							<div class="responsive-table">
+								<table class="table">
+									<thead>
+										<tr>
+										<th scope="col">TOKEN NAME</th>
+										<th scope="col">LEND APR</th>
+										<th scope="col">BORROW APR</th>
+										<th scope="col">LOANS ACTIVE</th>
+										<th scope="col">RESERVE POOL</th>
+										<th scope="col">LEND & EARN</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+										<td>
+											<img src="assets/images/icon1.png" alt="">
+											BTC
+										</td>
+										<td>9.8%</td>
+										<td>17.9%</td>
+										<td>$325,650</td>
+										<td>$481,694</td>
+										<td>
+											<a href="#">
+												Lend
+											</a>
+										</td>
+										</tr>
+										<tr>
+										<td>
+											<img src="assets/images/icon2.png" alt="">
+											ETH
+										</td>
+										<td>9.8%</td>
+										<td>17.9%</td>
+										<td>$325,650</td>
+										<td>$481,694</td>
+										<td>
+											<a href="#">
+												Lend
+											</a>
+										</td>
+										</tr>
+										<tr>
+										<td>
+											<img src="assets/images/icon3.png" alt="">
+											DASH
+										</td>
+										<td>9.8%</td>
+										<td>17.9%</td>
+										<td>$325,650</td>
+										<td>$481,694</td>
+										<td>
+											<a href="#">
+												Lend
+											</a>
+										</td>
+										</tr>
+										<tr>
+										<td>
+											<img src="assets/images/icon4.png" alt="">
+											ETC
+										</td>
+										<td>9.8%</td>
+										<td>17.9%</td>
+										<td>$325,650</td>
+										<td>$481,694</td>
+										<td>
+											<a href="#">
+												Lend
+											</a>
+										</td>
+										</tr>
+										<tr>
+										<td>
+											<img src="assets/images/icon5.png" alt="">
+											TRX
+										</td>
+										<td>9.8%</td>
+										<td>17.9%</td>
+										<td>$325,650</td>
+										<td>$481,694</td>
+										<td>
+											<a href="#">
+												Lend
+											</a>
+										</td>
+										</tr>
+										<tr>
+										<td>
+											<img src="assets/images/icon1.png" alt="">
+											BTC
+										</td>
+										<td>9.8%</td>
+										<td>17.9%</td>
+										<td>$325,650</td>
+										<td>$481,694</td>
+										<td>
+											<a href="#">
+												Lend
+											</a>
+										</td>
+										</tr>
+									</tbody>
+									</table>
+							</div>
+						</div>
+						<div class="tab-pane fade" id="pills-borrow" role="tabpanel" aria-labelledby="pills-borrow-tab">
+							<div class="responsive-table">
+								<table class="table">
+									<thead>
+										<tr>
+										<th scope="col">TOKEN NAME</th>
+										<th scope="col">LEND APR</th>
+										<th scope="col">BORROW APR</th>
+										<th scope="col">LOANS ACTIVE</th>
+										<th scope="col">RESERVE POOL</th>
+										<th scope="col">LEND & EARN</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+										<td>
+											<img src="assets/images/icon1.png" alt="">
+											BTC
+										</td>
+										<td>9.8%</td>
+										<td>17.9%</td>
+										<td>$325,650</td>
+										<td>$481,694</td>
+										<td>
+											<a href="#">
+												Lend
+											</a>
+										</td>
+										</tr>
+										<tr>
+										<td>
+											<img src="assets/images/icon2.png" alt="">
+											ETH
+										</td>
+										<td>9.8%</td>
+										<td>17.9%</td>
+										<td>$325,650</td>
+										<td>$481,694</td>
+										<td>
+											<a href="#">
+												Lend
+											</a>
+										</td>
+										</tr>
+										<tr>
+										<td>
+											<img src="assets/images/icon3.png" alt="">
+											DASH
+										</td>
+										<td>9.8%</td>
+										<td>17.9%</td>
+										<td>$325,650</td>
+										<td>$481,694</td>
+										<td>
+											<a href="#">
+												Lend
+											</a>
+										</td>
+										</tr>
+										<tr>
+										<td>
+											<img src="assets/images/icon4.png" alt="">
+											ETC
+										</td>
+										<td>9.8%</td>
+										<td>17.9%</td>
+										<td>$325,650</td>
+										<td>$481,694</td>
+										<td>
+											<a href="#">
+												Lend
+											</a>
+										</td>
+										</tr>
+										<tr>
+										<td>
+											<img src="assets/images/icon5.png" alt="">
+											TRX
+										</td>
+										<td>9.8%</td>
+										<td>17.9%</td>
+										<td>$325,650</td>
+										<td>$481,694</td>
+										<td>
+											<a href="#">
+												Lend
+											</a>
+										</td>
+										</tr>
+										<tr>
+										<td>
+											<img src="assets/images/icon1.png" alt="">
+											BTC
+										</td>
+										<td>9.8%</td>
+										<td>17.9%</td>
+										<td>$325,650</td>
+										<td>$481,694</td>
+										<td>
+											<a href="#">
+												Lend
+											</a>
+										</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section> --}}
+	<!-- Lend Area End -->
+
+	<!-- fact Area Start -->
+	<section class="fact">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-8 col-md-10">
+					<div class="section-heading">
+						<h5 class="subtitle">
+							Some Facts
+						</h5>
+						<h2 class="title">
+							Lendbo In Numbers
+						</h2>
+						<p class="text">
+								Lendbo has a variety of features that make it the best place to start trading
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-4 col-md-6">
+					<div class="single-fun">
+						<div class="left">
+							<img src="assets/images/icon6.png" alt="">
+						</div>
+						<div class="right">
+							<h4 class="title">
+								$840K
+							</h4>
+							<p class="sub-title">
+								LOANS
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6">
+					<div class="single-fun">
+						<div class="left">
+							<img src="assets/images/icon7.png" alt="">
+						</div>
+						<div class="right">
+							<h4 class="title">
+								$2.42M
+							</h4>
+							<p class="sub-title">
+								RESERVES
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6">
+					<div class="single-fun">
+						<div class="left">
+							<img src="assets/images/icon8.png" alt="">
+						</div>
+						<div class="right">
+							<h4 class="title">
+								3046
+							</h4>
+							<p class="sub-title">
+								ORDERS
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- fact Area End -->
+
+	<!-- How it work Area Start -->
+	<section class="how-it-work">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-8 col-md-10">
+					<div class="section-heading">
+						<h5 class="subtitle">
+								Try To Check Out
+						</h5>
+						<h2 class="title">
+								How Everything Works!
+						</h2>
+						<p class="text">
+								We help you save time and money by easily finding the best loan options. 3 simple step to get Started
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-4">
+					<div class="single-work">
+						<div class="icon">
+							<img src="assets/images/how-work1.png" alt="">
+						</div>
+						<div class="content">
+							<span class="num">01</span>
+							<h4 class="title">
+								Register
+								within a minute
+							</h4>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="single-work">
+						<div class="icon">
+							<img src="assets/images/how-work2.png" alt="">
+						</div>
+						<div class="content">
+							<span class="num">02</span>
+							<h4 class="title">
+									Deposit &
+									collateral
+							</h4>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="single-work">
+						<div class="icon">
+							<img src="assets/images/how-work3.png" alt="">
+						</div>
+						<div class="content">
+							<span class="num">03</span>
+							<h4 class="title">
+									Confirm the loan terms 
+									
+							</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- How it work Area End -->
+
+	<!-- Get Start Area Start -->
+	<section class="get-start">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-5">
+					<div class="left-image">
+						<img src="assets/images/get-start.png" alt="">
+					</div>
+				</div>
+				<div class="col-lg-7">
+					<div class="rihgt-area">
+						<div class="section-heading">
+							<h5 class="subtitle extra-padding">
+								Ready To Start
+							</h5>
+							<h2 class="title  extra-padding">
+								Lending Or Borrowing
+							</h2>
+							<p class="text">
+									What Are You Waiting For? Make Things Happen The Way
+									You Want With Lendbo!
+							</p>
+							<a href="#" class="mybtn1">Get Started Today</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Get Start Area End -->
+
+	<!-- Testimonial Area Start -->
+	<section class="testimonial">
+		<div class="testimonial-top-area">
+			<img class="shape" src="assets/images/testi-shape.png" alt="">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-7 d-flex align-self-center">
+						<div class="left-area">
+							<div class="section-heading">
+								<h5 class="subtitle extra-padding">
+										Don‘t Take Our Word For It
+								</h5>
+								<h2 class="title  extra-padding">
+										Take Our Customers
+								</h2>
+								<p class="text">
+										Over 7,000 Happy Customers.We have many
+										happy investors invest with us .Some impresions
+										from our Customers!  PLease read some of the
+										lovely things our Customers say about us.
+								</p>
+								<a href="#" class="mybtn1">WHAT WE OFFER</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-5 d-flex align-self-center">
+						<div class="right-img">
+							<img src="assets/images/testimonial-right.png" alt="">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<!-- Footer Area Start -->
+	<footer class="footer" id="footer">
+		<div class="subscribe-area">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="subscribe-box">
+							<div class="row">
+								<div class="col-lg-4 col-md-4 ">
+									<div class="image-area">
+										<img src="assets/images/subimg.png" alt="">
+									</div>
+								</div>
+								<div class="col-lg-8 col-md-8 d-flex">
+									<div class="right-area">
+										<h5 class="sub-title">
+												Subscribe to Lendbo
+										</h5>
+										<h4 class="title">
+											To Get Exclusive Benefits
+										</h4>
+										<form action="#">
+											<input type="text" placeholder="Your Email Address">
+											<button type="submit">Subscribe</button>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6 col-lg-3">
+					<div class="footer-widget info-link-widget">
+						<h4 class="title">
+							About 
+						</h4>
+						<ul class="link-list">
+							<li>
+								<a href="#">
+									<i class="fas fa-angle-double-right"></i>	About Us
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="fas fa-angle-double-right"></i>	Contact Us
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="fas fa-angle-double-right"></i>	Latest Blog
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="fas fa-angle-double-right"></i>	Authenticity Guarantee
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="fas fa-angle-double-right"></i>	Customer Reviews
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="fas fa-angle-double-right"></i>	Privacy Policy
+
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-sm-6 col-lg-3">
+					<div class="footer-widget info-link-widget">
+						<h4 class="title">
+							My Account
+						</h4>
+						<ul class="link-list">
+							<li>
+								<a href="#">
+									<i class="fas fa-angle-double-right"></i> Manage Your Account
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="fas fa-angle-double-right"></i> How to Deposit
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="fas fa-angle-double-right"></i> How to Withdraw
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="fas fa-angle-double-right"></i> Account Varification
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="fas fa-angle-double-right"></i> Safety & Security
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="fas fa-angle-double-right"></i> Membership Level
+
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-sm-6 col-lg-3">
+					<div class="footer-widget info-link-widget">
+						<h4 class="title">
+							help center 
+						</h4>
+						<ul class="link-list">
+							<li>
+								<a href="#">
+									<i class="fas fa-angle-double-right"></i>Help centre
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="fas fa-angle-double-right"></i>FAQ
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="fas fa-angle-double-right"></i>Quick Start Guide
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="fas fa-angle-double-right"></i>Tutorials
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="fas fa-angle-double-right"></i>Borrow
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="fas fa-angle-double-right"></i>Lend
+
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-sm-6 col-lg-3">
+					<div class="footer-widget info-link-widget">
+						<h4 class="title">
+							Legal Info
+						</h4>
+						<ul class="link-list">
+							<li>
+								<a href="#">
+									<i class="fas fa-angle-double-right"></i>Risk Warnings
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="fas fa-angle-double-right"></i>Privacy Notice
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="fas fa-angle-double-right"></i>Security
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="fas fa-angle-double-right"></i>Terms of Service
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="fas fa-angle-double-right"></i>Become Affiliate
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="fas fa-angle-double-right"></i>Complaints Policy
+
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="copy-bg">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="content">
+							<div class="content">
+								<p>Copyright © 2019.All Rights Reserved By <a href="#">Lendbo</a>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- Footer Area End -->
+
+	<!-- Back to Top Start -->
+	<div class="bottomtotop">
+		<i class="fas fa-chevron-right"></i>
+	</div>
+	<!-- Back to Top End -->
+
+
+	<!-- jquery -->
+	<script src="assets/js/jquery.js"></script>
+	<!-- popper -->
+	<script src="assets/js/popper.min.js"></script>
+	<!-- bootstrap -->
+	<script src="assets/js/bootstrap.min.js"></script>
+	<!-- plugin js-->
+	<script src="assets/js/plugin.js"></script>
+	<!-- main -->
+	<script src="assets/js/main.js"></script>
 </body>
+
 </html>

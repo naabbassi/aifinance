@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 use App\deposit;
 use App\User;
 use App\issue;
+use App\faq;
+use App\revenue;
+use App\revenue_items;
 use Illuminate\Support\Facades\Auth;
+use Webpatser\Uuid\Uuid;
 class AdminController extends Controller
 {
     //
@@ -29,6 +33,9 @@ class AdminController extends Controller
                 $deposit->status = true;
                 $deposit->confirmedBy = Auth::user()->id;
                 $deposit->save();
+                if($deposit->amount >= 1000){
+                    self::submitReward($deposit);
+                }
                 return 'true';
             } else {
                 return "there is not such deposit";
@@ -38,6 +45,31 @@ class AdminController extends Controller
         }
         return 'false';
     }
+    function submitReward($deposit){
+        if($deposit){
+            $rid= (String) Uuid::generate();
+            $user = User::find($deposit->uid);
+            $owner = User::where('email','=', $user->owner)->first();
+            $revenue = new revenue;
+            $revenue->id = $rid;
+            $revenue->uid= $owner->id;
+            $revenue->type = "r";
+            $revenue->description = "Reward due network deposit";
+            $revenue->status = true;
+            $revenue->save();
+            // save details
+            $revenue_item = new revenue_items;
+            $revenue_item->id = (String) Uuid::generate();
+            $revenue_item->rid = $rid;
+            $revenue_item->source = $deposit->id;
+            $revenue_item->amount = $deposit->amount * 0.10;
+            $revenue_item->status = true;
+            $revenue_item->save();
+        }
+    }
+    function checkDepositReward(){
+        
+    }
     function users(){
         $users = User::orderBy('isAdmin','desc')->get();
         return view('admin/users',compact('users'));
@@ -45,5 +77,9 @@ class AdminController extends Controller
     function tickets(){
         $tickets = issue::orderBy('created_at','desc')->get();
         return view('admin/tickets',compact('tickets'));
+    }
+    function faq(){
+        $faq = faq::all();
+        return view('admin/faq',compact('faq'));
     }
 }

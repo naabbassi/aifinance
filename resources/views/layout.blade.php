@@ -36,7 +36,7 @@
                       <i class="far fa-user"></i> My Profile
                     </a>
                     <a href="/tickets" class="dropdown-item has-icon">
-                      <i class="fas fa-bolt"></i> My Tickets
+                      <i class="fas fa-exclamation-circle"></i> My Tickets
                     </a>
                   <a href="#" class="dropdown-item has-icon" onclick="show()">
                         <i class="fas fa-user-plus"></i> Show my Invitation Link

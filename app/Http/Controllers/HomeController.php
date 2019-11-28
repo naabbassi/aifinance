@@ -269,8 +269,8 @@ class HomeController extends Controller
                                 <h4>'.$value->name.'</h4>
                             </div>
                             <div class="card-body" >
-                                <h6>Deposit : '.$deposit.'</h6>
-                                <h6>Network Deposit : '.$netDeposit.'</h6>
+                                <h6>Deposit : '.$deposit.'$</h6>
+                                <h6>Network Deposit : '.$netDeposit.'$</h6>
                                 <h6>Network Scale : '.$netPersons.'</h6>
                             </div>
                             </div>

@@ -1,6 +1,6 @@
 @extends('layout')
 @section('title')
-    AIF :: Dashboard
+    AIF :: Dashboard 
 @endsection
 @section('content')
  <!-- Main Content -->

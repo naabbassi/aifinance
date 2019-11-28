@@ -26,7 +26,7 @@
                   <button class="btn" type="submit"><i class="fas fa-search"></i></button>
                 </div> --}}
               </form>
-              <input type="hidden" id="invitation" data-hash=" {{ route('home') }}/register/{{ encrypt(Auth::user()->email) }}">
+              <input type="hidden" id="invitation" data-hash="{{ route('home')}}/register/{{ encrypt(Auth::user()->email) }}">
               <ul class="navbar-nav navbar-right">
                 <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                   <img alt="image" src="/img/avatar/avatar-1.png" width="30" class="rounded-circle mr-1">
@@ -36,7 +36,7 @@
                       <i class="far fa-user"></i> My Profile
                     </a>
                     <a href="/tickets" class="dropdown-item has-icon">
-                      <i class="fas fa-bolt"></i> My Tickets
+                      <i class="fas fa-exclamation-circle"></i> My Tickets
                     </a>
                   <a href="#" class="dropdown-item has-icon" onclick="show()">
                         <i class="fas fa-user-plus"></i> Show my Invitation Link
