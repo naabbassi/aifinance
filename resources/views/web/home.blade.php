@@ -96,7 +96,7 @@
 				<div class="row">
 					<div class="col-lg-12">                 
 						<nav class="navbar navbar-expand-lg navbar-light">
-							<a class="navbar-brand" href="index.html">
+							<a class="navbar-brand" href="/">
 								<h3>AI Finance</h3>
 							</a>
 							<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_menu" aria-controls="main_menu"
@@ -107,19 +107,19 @@
 								<ul class="navbar-nav ml-auto">
 									
 									<li class="nav-item">
-										<a class="nav-link" href="aboutus.html">Home</a>
+										<a class="nav-link" href="/">Home</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="aboutus.html">About</a>
+										<a class="nav-link" href="/about">About</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="lend.html">Lend</a>
+										<a class="nav-link" href="/lend">Lend</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="borrow.html">Borrow</a>
+										<a class="nav-link" href="/invest">Borrow</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="trade.html">Trade</a>
+										<a class="nav-link" href="/trade">Trade</a>
 									</li>
 								</ul>
 								<a href="/dashboard" class="mybtn1">Get Started </a>
@@ -231,7 +231,7 @@
 							Cryptocurrency Investing Platform
 						</h2>
 						<p class="text">
-							Here are a few reasons why you should choose Lendbo
+							Here are a few reasons why you should choose AI Finance
 						</p>
 					</div>
 				</div>
@@ -615,10 +615,10 @@
 							Some Facts
 						</h5>
 						<h2 class="title">
-							Lendbo In Numbers
+							AI Finance In Numbers
 						</h2>
 						<p class="text">
-								Lendbo has a variety of features that make it the best place to start trading
+								AI Finance has a variety of features that make it the best place to start trading
 						</p>
 					</div>
 				</div>
@@ -760,7 +760,7 @@
 							</h2>
 							<p class="text">
 									What Are You Waiting For? Make Things Happen The Way
-									You Want With Lendbo!
+									You Want With AI Finance!
 							</p>
 							<a href="#" class="mybtn1">Get Started Today</a>
 						</div>
@@ -805,7 +805,7 @@
 			</div>
 		</div>
 	</section>
-	
+
 	<!-- Footer Area Start -->
 	<footer class="footer" id="footer">
 		<div class="subscribe-area">
@@ -822,7 +822,7 @@
 								<div class="col-lg-8 col-md-8 d-flex">
 									<div class="right-area">
 										<h5 class="sub-title">
-												Subscribe to Lendbo
+												Subscribe to AI Finance
 										</h5>
 										<h4 class="title">
 											To Get Exclusive Benefits
@@ -1009,7 +1009,7 @@
 					<div class="col-lg-12">
 						<div class="content">
 							<div class="content">
-								<p>Copyright © 2019.All Rights Reserved By <a href="#">Lendbo</a>
+								<p>Copyright © 2019.All Rights Reserved By <a href="#">AI Finance</a>
 								</p>
 							</div>
 						</div>

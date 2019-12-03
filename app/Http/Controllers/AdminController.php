@@ -15,7 +15,7 @@ class AdminController extends Controller
 {
     //
     public function __construct(){
-        $this->middleware('admin');
+        // $this->middleware('admin');
     }
     function home(){
         $tickets = issue::orderBy('created_at','desc')->get();
@@ -68,7 +68,9 @@ class AdminController extends Controller
         }
     }
     function checkDepositReward(){
-        
+        $rid= (String) Uuid::generate();
+        $user = User::find($deposit->uid);
+        $owner = User::where('email','=', $user->owner)->first();
     }
     function users(){
         $users = User::orderBy('isAdmin','desc')->get();
@@ -82,4 +84,5 @@ class AdminController extends Controller
         $faq = faq::all();
         return view('admin/faq',compact('faq'));
     }
+    lengh
 }

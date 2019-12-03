@@ -9,7 +9,7 @@ Route::get('/', 'Controller@home')->name('home');
 // Registeration
 Route::get('/register/{email}','Controller@Register');
 Route::post('/newmember','Controller@newMember');
-Auth::routes();
+// Auth::routes();
 // Dashboard
 Route::get('/dashboard', 'HomeController@dashboard');
 // Deposit
@@ -56,5 +56,6 @@ Route::get('/admin/users','AdminController@users');
 Route::get('/admin/tickets','AdminController@tickets');
 Route::post('/admin/deposit/confirm','AdminController@confirmDeposit');
 Route::get('/admin/faq','AdminController@faq');
-Route::get('/admin/test','AdminController@submitReward');
+Route::post('/admin/test','AdminController@checkDepositReward');
+
 
