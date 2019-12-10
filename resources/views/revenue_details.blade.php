@@ -18,7 +18,7 @@
                                   <h4>My Revenue</h4>
                                   <div class="card-header-action">
                                     <span href="#" class="badge badge-secondary">
-                                    Total : {{$sum}}$
+                                    Total : {{$details->sum('amount')}}$
                                     </span>
                                   </div>
                                 </div>
@@ -30,7 +30,8 @@
                                           <th class="text-center">
                                             #
                                           </th>
-                                          <th>Transaction</th>
+                                          <th>Source</th>
+                                          <th>Description</th>
                                           <th>Amount</th>
                                           <th>Due to</th>
                                           <th>Due Date</th>
@@ -38,13 +39,14 @@
                                         </tr>
                                       </thead>
                                       <tbody>
-                                        @foreach ($list as $indexKey => $item)
+                                        @foreach ($details as $i => $item)
                                             <tr>
-                                                <td>{{$indexKey+1}}</td>
-                                                <td>{{date_format($item->created_at,'my')}}{{strtoupper($item->type)}}-{{$item->id}}</td>
-                                                <td class="align-middle">{{$item->items()->sum('amount')}}$</td>
+                                            <td>{{$i + 1 }}</td>
+                                            <td>{{$item->source}}</td>
+                                            <td>{{$revenue->description}}</td>
+                                                <td class="align-middle">{{$item->amount}}$</td>
                                                 <td >
-                                                  @switch($item->type)
+                                                  @switch($revenue->type)
                                                       @case('d')
                                                           <span class="badge badge-primary">Deposit</span>
                                                           @break
@@ -62,7 +64,7 @@
                                                         <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, -6px, 0px); top: 0px; left: 0px; will-change: transform;">
                                                           <a href="#" class="dropdown-item has-icon" onclick="setIssueId('{{$item->id}}')"><i class="fas fa-exclamation"></i> Report an issue</a>
                                                           <div class="dropdown-divider"></div>
-                                                          <a href="/finance/revenue/details/{{$item->id}}" class="dropdown-item has-icon text-info"><i class="far fa-eye"></i> Details</a>
+                                                          <a href="/finance/details/{{$item->id}}" class="dropdown-item has-icon text-info"><i class="far fa-eye"></i> Details</a>
                                                         </div>
                                                       </div>
                                                 </td>
@@ -70,69 +72,10 @@
                                         @endforeach
                                       </tbody>
                                     </table>
-                                   <div class="p-2"> {!! $list->render() !!}</div>
                                   </div>
                                 </div>
                               </div>
                 </div>
             </div>
         </div>
-            <!-- Issue Modal modal -->
-<div class="modal fade issue-modal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Report an issue</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form onsubmit="event.preventDefault(); submitIssueForm();">
-            <div class="form-group row">
-              <label class="col-form-label">Tell us about the issue :</label>
-              <textarea class="summernote" id="issueMessage" rows="10" style="height:100px;" placeholder="Tell us about issue"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Send request</button>
-            <button type="reset" class="btn btn-primary ml-2" data-dismiss="modal" aria-label="Close">Cancel</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
 @endsection 
-@section('script')
-<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
-    <script>
-          //issue form
-          var IssueItemId=0;
-      function setIssueId(e){
-        this.IssueItemId = e;
-        console.log(e)
-        $('.issue-modal').modal('show');
-      }
-      function submitIssueForm(e){
-        $.ajax({
-        method: "POST",
-          data:{
-            '_token': '{{csrf_token()}}',
-            id: this.IssueItemId,
-            type:'r',
-            message:document.getElementById('issueMessage').value
-          },
-        url: "{{ route('home') }}/issue/submit",
-        }).done(function(result) {
-          if(result){
-            $('.issue-modal').modal('hide');
-            if(result == 'true'){
-                swal('Report the issue', 'Your issue reqistered successfully', 'success');
-            } else {
-                swal('Report the issue', result, 'info');
-            }
-          } else{
-            swal('Report the issue', 'Opps! apparently something went wrong', 'info');
-          }
-         })
-      }</script>
-@endsection

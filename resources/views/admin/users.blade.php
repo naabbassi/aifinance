@@ -67,7 +67,7 @@
                               <div class="dropdown">
                                   <a href="#" data-toggle="dropdown" class="btn btn-primary " aria-expanded="false"> ⋮ </a>
                                   <div class="dropdown-menu" x-placement="top-start" style="position: absolute; transform: translate3d(0px, -6px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                    <a href="#" class="dropdown-item has-icon text-info"><i class="fas fa-eye"></i> View</a>
+                                  <a href="/admin/users/{{$user->id}}" class="dropdown-item has-icon text-info"><i class="fas fa-eye"></i> View</a>
                                     <div class="dropdown-divider"></div>
                                   <a href="#" class="dropdown-item has-icon text-warning" data-toggle="modal" data-target=".issue-modal"  onclick="setIssueId({{$user->id}})" ><i class="fas fa-exclamation"></i> Report an issue</a>
                                   </div>

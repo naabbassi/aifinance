@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\deposit;
 use App\wallet;
 use App\revenue;
+use App\revenue_items;
 use App\User;
 use App\country;
 use App\withdraw;
@@ -122,6 +123,15 @@ class HomeController extends Controller
         $list = Auth::user()->revenue()->orderBy('created_at','desc')->paginate(10);
         $sum = self::sumRevenue();
         return view('revenue',compact('list','sum'));
+    }
+    function revenue_details(Request $request){
+        if ($request->id ) {
+            $revenue = Auth::user()->revenue()->find($request->id);
+            $details = $revenue->items()->get();   
+            return view('revenue_details',compact('revenue','details'));
+        } else {
+        return view('error/404');
+    }
     }
     function withdraw(){
         $revenue = self::sumRevenue();

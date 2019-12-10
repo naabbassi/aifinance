@@ -9,13 +9,14 @@ use App\issue;
 use App\faq;
 use App\revenue;
 use App\revenue_items;
+use App\withdraw;
 use Illuminate\Support\Facades\Auth;
 use Webpatser\Uuid\Uuid;
 class AdminController extends Controller
 {
     //
     public function __construct(){
-        // $this->middleware('admin');
+        $this->middleware('admin');
     }
     function home(){
         $tickets = issue::orderBy('created_at','desc')->get();
@@ -72,9 +73,18 @@ class AdminController extends Controller
         $user = User::find($deposit->uid);
         $owner = User::where('email','=', $user->owner)->first();
     }
+
+    function withdraw(){
+        $withdraw = withdraw::orderBy('created_at','desc')->orderBy('status','asc')->paginate(15);
+        return view('admin/withdraw',compact('withdraw'));
+    }
     function users(){
         $users = User::orderBy('isAdmin','desc')->get();
         return view('admin/users',compact('users'));
+    }
+    function userDetails(Request $request){
+        $user = User::find($request->id);
+        return view('admin/user_details',compact('user'));
     }
     function tickets(){
         $tickets = issue::orderBy('created_at','desc')->get();
@@ -84,5 +94,5 @@ class AdminController extends Controller
         $faq = faq::all();
         return view('admin/faq',compact('faq'));
     }
-    lengh
+    
 }

@@ -9,7 +9,7 @@ Route::get('/', 'Controller@home')->name('home');
 // Registeration
 Route::get('/register/{email}','Controller@Register');
 Route::post('/newmember','Controller@newMember');
-// Auth::routes();
+Auth::routes();
 // Dashboard
 Route::get('/dashboard', 'HomeController@dashboard');
 // Deposit
@@ -19,6 +19,7 @@ Route::post('/deposit/submit_deposit', 'HomeController@submitDeposit');
 Route::get('/finance/history', 'HomeController@history')->name('history');
 // Revenue
 Route::get('/finance/revenue', 'HomeController@revenue')->name('revenue');
+Route::get('/finance/revenue/details/{id}', 'HomeController@revenue_details')->name('revenue');
 // Withdraw
 Route::get('/finance/withdraw','HomeController@withdraw');
 Route::post('/finance/withdraw_deposit','HomeController@withdraw_deposit');
@@ -53,9 +54,11 @@ Route::get('/downloads','HomeController@downloads');
 Route::get('/admin','AdminController@home');
 Route::get('/admin/deposit','AdminController@deposits');
 Route::get('/admin/users','AdminController@users');
+Route::get('/admin/users/{id}','AdminController@userDetails');
 Route::get('/admin/tickets','AdminController@tickets');
 Route::post('/admin/deposit/confirm','AdminController@confirmDeposit');
 Route::get('/admin/faq','AdminController@faq');
 Route::post('/admin/test','AdminController@checkDepositReward');
+Route::get('/admin/withdraw','AdminController@withdraw');
 
 
