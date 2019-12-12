@@ -218,7 +218,7 @@
         document.getElementById('btc').innerHTML = btc + '₿';
         document.getElementById('btc_input').value = (amount / exchangeRate);
         document.getElementById('link').innerHTML = walletAddress;
-        document.getElementById('revenue').innerHTML = (amount * 0.075).toFixed(0) +' $';
+        document.getElementById('revenue').innerHTML = (amount * 0.08).toFixed(0) +' $';
       })
       .catch(err => { throw err });
     }

@@ -16,7 +16,6 @@ class calcDailyInterest extends Command
      * @var string
      */
     protected $signature = 'command:calcDailyInterest';
-
     /**
      * The console command description.
      *
@@ -42,6 +41,8 @@ class calcDailyInterest extends Command
     public function handle()
     {
         $users = User::where('type',true)->get();
+        $dailyDepositInterestRate = 0.0025;
+        $dailyNetInterestRate =  0.05;
         foreach($users as $user){
             $deposits = $user->deposit()->where('status',true)->get();
             if($deposits->count() > 0){
@@ -50,7 +51,7 @@ class calcDailyInterest extends Command
                 $revenue->id = $rid;
                 $revenue->uid= $user->id;
                 $revenue->type = "d";
-                $revenue->description = "Daily Interest";
+                $revenue->description = "Daily Deposit Interest and Network Interest";
                 $revenue->status = true;
                 $revenue->save();
                 foreach($deposits as $deposit){
@@ -58,12 +59,34 @@ class calcDailyInterest extends Command
                     $revenue_item->id = (String) Uuid::generate();
                     $revenue_item->rid = $rid;
                     $revenue_item->source = $deposit->id;
-                    $revenue_item->amount = $deposit->amount * 0.02;
+                    $revenue_item->amount = $deposit->amount * $dailyDepositInterestRate;
                     $revenue_item->status = true;
                     $revenue_item->save();
-                }
+                }  
+            }
+            $net = self::getNetDeposit($user->id);
+                $net = $net - $user->deposit()->where('status',true)->sum('amount');
+                if($net > 0){
+                    $revenue_item = new revenue_items;
+                    $revenue_item->id = (String) Uuid::generate();
+                    $revenue_item->rid = $rid;
+                    $revenue_item->source = 'Network Deposits Interest';
+                    $revenue_item->amount = $net * $dailyDepositInterestRate * $dailyNetInterestRate;
+                    $revenue_item->status = true;
+                    $revenue_item->save();
+                } 
+        }
+    }
+    
+    private function getNetDeposit($id){
+        $user = User::find($id);
+        $net = $user->network;
+        $sum = $user->deposit()->where('status',true)->sum('amount');
+        if($net->count() != 0){
+            foreach ($net as $value) {
+                $sum += self::getNetDeposit($value->id);
             }
         }
-        
+        return $sum;
     }
 }

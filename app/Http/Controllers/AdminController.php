@@ -22,8 +22,24 @@ class AdminController extends Controller
     }
     function home(){
         $tickets = issue::orderBy('created_at','desc')->get();
-        $deposits = deposit::orderBy('created_at','desc')->orderBy('status','asc')->get();
-        return view('admin/home');
+        $depositsAmount = deposit::where('status',true)->sum('amount');
+        $interests = revenue::where('type','d')->where('status',true)->get();
+        $interestsAmount = 0;
+        foreach ($interests as $item) {
+            $interestsAmount += $item->items()->sum('amount');
+        }
+        $rewards = revenue::where('type','r')->where('status',true)->get();
+        $rewardsAmount = 0;
+        foreach ($rewards as $item) {
+            $rewardsAmount += $item->items()->sum('amount');
+        }
+        $netRewards = revenue::where('type','nr')->where('status',true)->get();
+        $netRewardsAmount = 0;
+        foreach ($netRewards as $item) {
+            $netRewardsAmount += $item->items()->sum('amount');
+        }
+        $deposits = deposit::orderBy('created_at','desc')->where('status',false)->get();
+        return view('admin/home',compact('depositsAmount','interestsAmount','rewardsAmount','netRewardsAmount'));
     }
     function deposits(){
         $deposits = deposit::orderBy('created_at','desc')->orderBy('status','asc')->get();

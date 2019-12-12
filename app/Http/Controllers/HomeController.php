@@ -121,7 +121,7 @@ class HomeController extends Controller
     }
     function revenue(){
         $list = Auth::user()->revenue()->orderBy('created_at','desc')->paginate(10);
-        $sum = self::sumRevenue();
+        $sum = self::sumRevenue() + self::sumReward();
         return view('revenue',compact('list','sum'));
     }
     function revenue_details(Request $request){
@@ -134,7 +134,7 @@ class HomeController extends Controller
     }
     }
     function withdraw(){
-        $revenue = self::sumRevenue();
+        $revenue = self::sumRevenue() + self::sumReward();
         $withdraw = Auth::user()->withdraw();
         $sum = $withdraw->sum('amount');
         $withdraws = $withdraw->paginate(5);

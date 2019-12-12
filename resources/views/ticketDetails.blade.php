@@ -15,7 +15,7 @@
                         <div class="message-footer">Asked by you at : <span class="text-info">{{$item->created_at}}</span></div>
                      @else
                         <div class="message-right ">
-                        <div class="message-body alert alert-success">{!!$item->message !!}</div>
+                        <div class="message-body alert alert-info">{!!$item->message !!}</div>
                         <div class="message-footer">Answered by support at : <span class="text-info">{{$item->created_at}}</span></div></div>
                 @endif
             @endforeach

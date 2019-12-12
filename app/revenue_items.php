@@ -8,5 +8,4 @@ class revenue_items extends Model
 {
     protected $keyType = 'string';
     protected $table = "revenue_items";
-
 }
