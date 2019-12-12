@@ -37,8 +37,8 @@ class HomeController extends Controller
     function dashboard(){
         $myDeposits = Auth::user()->deposit()->where('status', true)->orderBy('created_at','asc')->get();
         $myRevenues = Auth::user()->revenue()->where('type','d')->where('status',true)->orderBy('created_at','asc')->get();
-        $myRewards = Auth::user()->revenue()->where('type','r')->orderBy('created_at','asc')->get();
-        $rewardAmount = $myRewards->sum('amount');
+        $myRewards = Auth::user()->revenue()->orderBy('created_at','asc')->get();
+        $rewardAmount = self::sumReward();
         $revenueAmount = self::sumRevenue();
         $depositAmount = $myDeposits->sum('amount');
         $depositDate="";
@@ -57,7 +57,7 @@ class HomeController extends Controller
         $rewardValue=""; 
         foreach ($myRewards as $value) {
             $rewardDate .= date_format($value->created_at,"d-m-Y").",";
-            $rewardValue .= $value->amount.',';
+            $rewardValue .= $value->items->sum('amount').',';
         }
         $networkDeposit = self::getUserNetDeposits(Auth::user()->id);
         sort($networkDeposit);
@@ -67,6 +67,7 @@ class HomeController extends Controller
             $netDepositDate .= date_format($value->created_at,"d.M.y").",";
             $netDepositValue .= $value->amount.',';
         }
+      
         return view('dashboard',compact('depositDate','depositValue','revenueValue','revenueDate','depositAmount','revenueAmount','rewardDate','rewardValue','rewardAmount','netDepositDate','netDepositValue'));
     }
     function getUserNetDeposits($id){
@@ -143,13 +144,20 @@ class HomeController extends Controller
         return view('withdraw',compact('available','wallets','withdraws','sum'));
     }
     function sumRevenue(){
-        $revenues = Auth::user()->revenue()->where('status',true)->get();
+        $revenues = Auth::user()->revenue()->where('status',true)->where('type','d')->get();
         $sum = 0;
         foreach ($revenues as $item) {
             $sum =$sum + $item->items()->where('status',true)->sum('amount');
         }
         return $sum;
-
+    }
+    function sumReward(){
+        $revenues = Auth::user()->revenue()->where('status',true)->where('type','!=','d')->get();
+        $sum = 0;
+        foreach ($revenues as $item) {
+            $sum =$sum + $item->items()->where('status',true)->sum('amount');
+        }
+        return $sum;
     }
     function withdraw_deposit(Request $request){
         $request->validate([

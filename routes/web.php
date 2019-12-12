@@ -9,6 +9,9 @@ Route::get('/', 'Controller@home')->name('home');
 // Registeration
 Route::get('/register/{email}','Controller@Register');
 Route::post('/newmember','Controller@newMember');
+//Test
+Route::get('/test','test@test');
+//Authentication
 Auth::routes();
 // Dashboard
 Route::get('/dashboard', 'HomeController@dashboard');
@@ -56,9 +59,13 @@ Route::get('/admin/deposit','AdminController@deposits');
 Route::get('/admin/users','AdminController@users');
 Route::get('/admin/users/{id}','AdminController@userDetails');
 Route::get('/admin/tickets','AdminController@tickets');
+Route::get('/admin/tickets/{ticketId}','AdminController@showTicket');
+Route::post('/admin/issue/{ticketId}/','AdminController@submitTicketDetail');
 Route::post('/admin/deposit/confirm','AdminController@confirmDeposit');
 Route::get('/admin/faq','AdminController@faq');
-Route::post('/admin/test','AdminController@checkDepositReward');
 Route::get('/admin/withdraw','AdminController@withdraw');
+
+
+
 
 

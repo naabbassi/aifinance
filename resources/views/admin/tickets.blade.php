@@ -20,7 +20,7 @@
                   </div>
                   <div class="card-body p-0">
                     <div class="table-responsive">
-                      <table class="table table-striped">
+                      <table class="table table-striped" id="issueTable">
                         <tbody><tr>
                           <th>Ticket ID</th>
                           <th>Issue Type</th>
@@ -44,6 +44,9 @@
                                     @case('r')
                                     <span class="badge badge-secondary">Revenue</span>
                                         @break
+                                    @case('w')
+                                    <span class="badge badge-secondary">Withdraw</span>
+                                        @break
                                     @default
                                     <span class="badge badge-danger">Unknown</span>
                                 @endswitch
@@ -55,19 +58,19 @@
                                 <a href="/admin/user/{{$item->uid}}">{{$user->name }}</a>
                               </td>
                               <td>
-                                  @if ($user->isAdmin)
+                                  @if ($item->status)
                                     <span class="badge badge-success">Open</span>
                                     @else
-                                    <span class="badge badge-info" >Close</span>
+                                    <span class="badge badge-danger" >Close</span>
                                   @endif
                               </td>
                               <td class="options">
                                   <div class="dropdown">
-                                      <a href="#" data-toggle="dropdown" class="btn btn-primary " aria-expanded="false"> ⋮ </a>
+                                      <a href="#" data-toggle="dropdown" class="btn btn-light" aria-expanded="false"> ⋮ </a>
                                       <div class="dropdown-menu" x-placement="top-start" style="position: absolute; transform: translate3d(0px, -6px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                        <a href="#" class="dropdown-item has-icon text-info"><i class="fas fa-eye"></i> View</a>
+                                        <a href="/admin/tickets/{{$item->id}}" class="dropdown-item has-icon "><i class="fas fa-book-open"></i> View Ticket</a>
                                         <div class="dropdown-divider"></div>
-                                      <a href="#" class="dropdown-item has-icon text-warning" data-toggle="modal" data-target=".issue-modal"  onclick="setIssueId({{$user->id}})" ><i class="fas fa-exclamation"></i> Report an issue</a>
+                                      <a href="#" class="dropdown-item has-icon text-danger" id="closeIssue" data-id="{{$item->id}}"><i class="far fa-bell-slash"></i>Close the Ticket</a>
                                       </div>
                                     </div>
                               </td>
@@ -84,3 +87,40 @@
         </div>
     </div>
 @endsection
+@section('script')
+    <script>
+     $("#issueTable").on('click','#closeIssue',function(e) {
+            var id = e.currentTarget.dataset.id;
+        swal({
+            title: 'Are you sure to close this issue?',
+            text: '',
+            icon: 'warning',
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((result) => {
+            if (result) {
+                closeIssue(id)
+                swal('The issue has been closed!', {
+                icon: 'success',
+              });
+            }
+          });
+      });
+      function closeIssue(id){
+        $.ajax({
+        method: "POST",
+          data:{
+            '_token': '{{csrf_token()}}',
+            id: id
+          },
+        url: "{{ route('home') }}/issue/closeIssue",
+        }).done(function(result) {
+          if(result){
+            return true;
+          } else{
+            return false;
+          }
+         });
+      }</script>
+@endsection 

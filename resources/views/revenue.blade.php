@@ -49,7 +49,10 @@
                                                           <span class="badge badge-primary">Deposit</span>
                                                           @break
                                                       @case('r')
-                                                      <span class="badge badge-info">Reward</span>
+                                                         <span class="badge badge-info">Reward</span>
+                                                          @break
+                                                      @case('nr')
+                                                        <span class="badge badge-success">Network Reward</span>
                                                           @break
                                                       @default
                                                       <span class="badge badge-primary"></span>

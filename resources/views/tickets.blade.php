@@ -36,6 +36,9 @@
                                     @case('r')
                                           <span class="badge badge-secondary">Revenue</span>
                                           @break
+                                    @case('w')
+                                          <span class="badge badge-secondary">Withdraw</span>
+                                          @break
                                     @default
                                         
                                 @endswitch

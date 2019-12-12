@@ -14,6 +14,7 @@
 <body>
   <div id="app">
     <section class="section">
+      {{-- {{Hash::make('password')}} --}}
       <div class="d-flex flex-wrap align-items-stretch">
         <div class="col-lg-4 col-md-6 col-12  min-vh-100  bg-white">
           <div class="p-4 m-3">

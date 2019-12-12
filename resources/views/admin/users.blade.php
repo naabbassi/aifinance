@@ -26,7 +26,7 @@
                       <th>Email</th>
                       <th>Owner</th>
                       <th>Type</th>
-                      <th>is Admin</th>
+                      <th>User Type</th>
                       <th>Action</th>
                     </tr>
                     @foreach ($users as $user)

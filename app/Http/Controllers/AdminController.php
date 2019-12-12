@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\deposit;
 use App\User;
 use App\issue;
+use App\issue_message;
 use App\faq;
 use App\revenue;
 use App\revenue_items;
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Webpatser\Uuid\Uuid;
 class AdminController extends Controller
 {
-    //
+    private $netDepositReward = true;
     public function __construct(){
         $this->middleware('admin');
     }
@@ -34,9 +35,10 @@ class AdminController extends Controller
                 $deposit->status = true;
                 $deposit->confirmedBy = Auth::user()->id;
                 $deposit->save();
-                if($deposit->amount >= 1000){
-                    self::submitReward($deposit);
+                if($deposit->amount >= 1000 && self::$netDepositReward){
+                    self::submitNetDepositReward($deposit);
                 }
+                self::checkNetReward();
                 return 'true';
             } else {
                 return "there is not such deposit";
@@ -46,7 +48,7 @@ class AdminController extends Controller
         }
         return 'false';
     }
-    function submitReward($deposit){
+    function submitNetDepositReward($deposit){
         if($deposit){
             $rid= (String) Uuid::generate();
             $user = User::find($deposit->uid);
@@ -68,6 +70,7 @@ class AdminController extends Controller
             $revenue_item->save();
         }
     }
+    
     function checkDepositReward(){
         $rid= (String) Uuid::generate();
         $user = User::find($deposit->uid);
@@ -90,9 +93,70 @@ class AdminController extends Controller
         $tickets = issue::orderBy('created_at','desc')->get();
         return view('admin/tickets',compact('tickets'));
     }
+    function showTicket(Request $request){
+        $ticket = issue::find($request->ticketId);
+        $messages = $ticket->messages()->orderBy('created_at','asc')->get();
+        return view('admin/ticketDetails',compact('ticket','messages'));
+    }
+    function submitTicketDetail(Request $request, $ticketId){
+            $issue_msg = new  issue_message;
+            $issue_msg->id = (String)Uuid::generate();
+            $issue_msg->issue_id = $ticketId;
+            $issue_msg->type = 's';
+            $issue_msg->message = $request->message;
+            $issue_msg->save();
+            return redirect('/admin/tickets/'.$ticketId);
+    }
     function faq(){
         $faq = faq::all();
         return view('admin/faq',compact('faq'));
+    }
+    // Network Reward
+    function checkNetReward(){ 
+        $users = User::all();
+        foreach ($users as $user) {
+            if($user->network()->count() == 3){
+                $nrCount = revenue::where('uid',$user->id)->where('status',true)->where('type','nr')->count();
+                $net = $user->network;
+                $u1 = self::getNetDeposit($net[0]->id);
+                $u2 = self::getNetDeposit($net[1]->id);
+                $u3 = self::getNetDeposit($net[2]->id);
+                $goal = ($nrCount +1) * 5000;
+                if($u1 >= $goal && $u2 >= $goal && $u3 >= $goal){
+                    self::submitNetReward($user);
+                }
+            }
+        }
+    }
+
+    function submitNetReward($user){
+        $rid= (String) Uuid::generate();
+        $revenue = new revenue;
+        $revenue->id = $rid;
+        $revenue->uid= $user->id;
+        $revenue->type = "nr";
+        $revenue->description = "Network Range Reward";
+        $revenue->status = true;
+        $revenue->save();
+        $revenue_item = new revenue_items;
+        $revenue_item->id = (String) Uuid::generate();
+        $revenue_item->rid = $rid;
+        $revenue_item->source = $rid;
+        $revenue_item->amount = 1000;
+        $revenue_item->status = true;
+        $revenue_item->save();
+         dd($revenue_item);
+    }
+    function getNetDeposit($id){
+        $user = User::find($id);
+        $net = $user->network;
+        $sum = $user->deposit()->where('status',true)->sum('amount');
+        if($net->count() != 0){
+            foreach ($net as $value) {
+                $sum += self::getNetDeposit($value->id);
+            }
+        }
+        return $sum;
     }
     
 }
