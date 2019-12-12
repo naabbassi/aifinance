@@ -58,6 +58,7 @@ Route::get('/admin','AdminController@home');
 Route::get('/admin/deposit','AdminController@deposits');
 Route::get('/admin/users','AdminController@users');
 Route::get('/admin/users/{id}','AdminController@userDetails');
+Route::post('/admin/users/{userId}','AdminController@changeUserPassword');
 Route::get('/admin/tickets','AdminController@tickets');
 Route::get('/admin/tickets/{ticketId}','AdminController@showTicket');
 Route::post('/admin/issue/{ticketId}/','AdminController@submitTicketDetail');

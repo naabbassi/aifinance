@@ -12,6 +12,7 @@ use App\revenue;
 use App\revenue_items;
 use App\withdraw;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Webpatser\Uuid\Uuid;
 class AdminController extends Controller
 {
@@ -157,6 +158,16 @@ class AdminController extends Controller
             }
         }
         return $sum;
+    }
+    function changeUserPassword(Request $request,$userId){
+        $request->validate([
+            'password' => 'required|min:8|confirmed'
+        ]);
+            $user = User::find($userId);
+            $user->password = Hash::make($request->password);
+            $user->save();
+            \Session::flash('alert-success','Your password updated successfuly');
+            return redirect('/admin/users/');
     }
     
 }

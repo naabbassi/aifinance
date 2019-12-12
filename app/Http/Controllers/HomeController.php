@@ -83,7 +83,6 @@ class HomeController extends Controller
             }
         }
         return self::$userNetDeposit;
-        return $sum;
     }
     function deposit(){
         $deposit = Auth::user()->deposit();
