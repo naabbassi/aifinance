@@ -36,10 +36,10 @@ class AdminController extends Controller
                 $deposit->status = true;
                 $deposit->confirmedBy = Auth::user()->id;
                 $deposit->save();
-                if($deposit->amount >= 1000 && self::$netDepositReward){
+                self::checkNetReward();
+                if($deposit->amount >= 1000 && self::$netDepositReward == true){
                     self::submitNetDepositReward($deposit);
                 }
-                self::checkNetReward();
                 return 'true';
             } else {
                 return "there is not such deposit";
