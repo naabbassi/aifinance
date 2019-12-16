@@ -11,6 +11,7 @@ use App\faq;
 use App\revenue;
 use App\revenue_items;
 use App\withdraw;
+use App\country;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Webpatser\Uuid\Uuid;
@@ -111,7 +112,30 @@ class AdminController extends Controller
     }
     function userDetails(Request $request){
         $user = User::find($request->id);
-        return view('admin/user_details',compact('user'));
+        $countries = country::all();
+        return view('admin/user_details',compact('user','countries'));
+    }
+    function updateProfile(Request $request, $userId){
+        $request->validate([
+            'name' => 'required|min:3|max:20',
+            'family' => 'required|min:3|max:20',
+            'birthday' => 'required',
+            'sex' => 'required',
+            'country' => 'required',
+            'phone' => 'required'
+        ]);
+
+        $user = User::find($userId);
+        $user->name = $request->name;
+        $user->family = $request->family;
+        $user->birthday = $request->birthday;
+        $user->sex = $request->sex;
+        $user->country = $request->country;
+        $user->phone = $request->phone;
+        $user->isAdmin = $request->is_admin == 'on' ? 1 : 0;
+        $user->save();
+        \Session::flash('alert-success',"User's personal information successfuly updated");
+        return redirect('/admin/users');
     }
     function tickets(){
         $tickets = issue::orderBy('created_at','desc')->get();

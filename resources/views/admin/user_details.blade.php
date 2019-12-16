@@ -6,7 +6,7 @@
 <div class="card card">
     <div class="card-header bg-"><h4 class="">Personal Information</h4></div>
     <div class="card-body">
-      {{-- <form method="POST" action="/user/profile/update">
+      <form method="POST" action="/admin/users/update/{{$user->id}}">
         @csrf
         <div class="row">
           <div class="form-group col-6">
@@ -63,13 +63,19 @@
              @enderror
             </div>
         </div>
+        <div class="row">
+          <div class="form-group col-6">
+              <label>Is Admin</label>
+          <input class="form-control" type="checkbox" name="is_admin" {{$user->isAdmin == 1 ? 'checked' : null}}>
+            </div>
+        </div>
 
         <div class="form-group">
           <button type="submit" class="btn btn-primary ">
             Update information
           </button>
         </div>
-      </form> --}}
+      </form>
     </div>
   </div>
   <div class="card card">
