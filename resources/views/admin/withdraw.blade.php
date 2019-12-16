@@ -33,6 +33,7 @@
                         <tr>
                               <td>{{ $i+1 }}</td>
                         <td><a href="/admin/users/{{$item->uid}}">{{ App\User::find($item->uid)->name}}</a></td>
+                        <td>{{$item->amount}}$</td>
                               <td>
                                 @switch($item->type)
                                     @case('w')
@@ -42,7 +43,7 @@
                                     <span class="badge badge-success">Deposit</span>
                                         @break
                                     @default
-                                    <span class="badge badge-danger">Unknown</span>
+                                    <span class="badge badge-warning">Unknown</span>
                                 @endswitch
                               </td>
                               <td>
@@ -50,20 +51,21 @@
                                     @case('0')
                                     <span class="badge badge-warning">Pending</span>
                                         @break
-                                    @case('d')
-                                    <span class="badge badge-success">Done</span>
+                                    @case('1')
+                                    <span class="badge badge-success">Confirmed</span>
                                         @break
                                     @default
                                     <span class="badge badge-danger">Unknown</span>
                                 @endswitch
                               </td>
 
-                            <td>{{$item->amount}}$</td>
                               <td class="options">
                                   <div class="dropdown">
                                       <a href="#" data-toggle="dropdown" class="btn btn-primary " aria-expanded="false"> ⋮ </a>
                                       <div class="dropdown-menu" x-placement="top-start" style="position: absolute; transform: translate3d(0px, -6px, 0px); top: 0px; left: 0px; will-change: transform;">
                                         <a href="#" class="dropdown-item has-icon text-info" onclick="getWithdrawDetails('{{$item->id}}')"><i class="fas fa-eye"></i> View</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a href="#" class="dropdown-item has-icon text-danger" onclick="confirmWithdraw('{{$item->id}}')"><i class="far fa-trash-alt"></i> Confirm</a>
                                       </div>
                                     </div>
                               </td>
@@ -118,7 +120,7 @@
               'Content-Type': 'application/json'
             }
           });
-        if(response){
+        if(response.status == 200){
           result = await response.json();
           br = '<br>';
          document.getElementById('amount').innerHTML = result.amount;
@@ -128,6 +130,23 @@
          document.getElementById('date').innerHTML = result.created_at;
          $('.details-modal').modal('show');
         }
+      }
+
+      async function confirmWithdraw(e){
+        const data = {
+            '_token': '{{csrf_token()}}',
+            id: e
+          };
+          const response = await fetch('{{ route("home") }}/admin/withdraw/confirm',{
+            method:'PUT',
+            body : JSON.stringify(data),
+            headers:{
+              'Content-Type':'application/json'
+            }
+          });
+          if(response.status == 200){
+            swal('Withdraw Confirmation', 'withdraw is confirmed', 'success');
+          }
       }
     </script>
 @endsection

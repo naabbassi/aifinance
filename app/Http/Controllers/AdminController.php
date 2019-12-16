@@ -106,6 +106,14 @@ class AdminController extends Controller
         $withdraw = withdraw::find($request->id);
         return $withdraw->toJson();
     }
+    function withdrawConfirm(Request $request){
+        $withdraw = withdraw::find($request->id);
+        // $withdraw->approvedBy = Auth::user()->id;
+        $withdraw->status = 1;
+        $withdraw->paid_at = date('Y-m-d');
+        $withdraw->save();
+        return 'true';
+    }
     function users(){
         $users = User::orderBy('isAdmin','desc')->get();
         return view('admin/users',compact('users'));

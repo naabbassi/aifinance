@@ -68,6 +68,7 @@ Route::get('/admin/faq','AdminController@faq');
 Route::post('/admin/faq/new','AdminController@faqNew');
 Route::get('/admin/withdraw','AdminController@withdraw');
 Route::post('/admin/withdraw/details','AdminController@withdrawDetails');
+Route::put('/admin/withdraw/confirm','AdminController@withdrawConfirm');
 
 
 
