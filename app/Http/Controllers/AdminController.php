@@ -16,9 +16,10 @@ use Illuminate\Support\Facades\Hash;
 use Webpatser\Uuid\Uuid;
 class AdminController extends Controller
 {
-    private $netDepositReward = true;
+    private $netDepositReward = false;
     public function __construct(){
         $this->middleware('admin');
+        setlocale(LC_MONETARY, 'en_US');
     }
     function home(){
         $tickets = issue::orderBy('created_at','desc')->get();
@@ -38,12 +39,14 @@ class AdminController extends Controller
         foreach ($netRewards as $item) {
             $netRewardsAmount += $item->items()->sum('amount');
         }
-        $deposits = deposit::orderBy('created_at','desc')->where('status',false)->get();
-        return view('admin/home',compact('depositsAmount','interestsAmount','rewardsAmount','netRewardsAmount'));
+        $deposits = deposit::where('status',false)->orderBy('created_at','desc')->get();
+        $tickets = issue::where('status',true)->orderBy('created_at','desc')->get();
+        return view('admin/home',compact('depositsAmount','interestsAmount','rewardsAmount','netRewardsAmount','deposits','tickets'));
     }
     function deposits(){
         $deposits = deposit::orderBy('created_at','desc')->orderBy('status','asc')->get();
-        return view('admin/deposits',compact('deposits'));
+        $depositsSum = $deposits->sum('amount');
+        return view('admin/deposits',compact('deposits','depositsSum'));
     }
     function confirmDeposit(Request $request){
         if($request->deposit_id){
@@ -98,6 +101,10 @@ class AdminController extends Controller
         $withdraw = withdraw::orderBy('created_at','desc')->orderBy('status','asc')->paginate(15);
         return view('admin/withdraw',compact('withdraw'));
     }
+    function withdrawDetails(Request $request){
+        $withdraw = withdraw::find($request->id);
+        return $withdraw->toJson();
+    }
     function users(){
         $users = User::orderBy('isAdmin','desc')->get();
         return view('admin/users',compact('users'));
@@ -127,6 +134,17 @@ class AdminController extends Controller
     function faq(){
         $faq = faq::all();
         return view('admin/faq',compact('faq'));
+    }
+    function faqNew(Request $request){
+        if($request->id == 0 ){
+            $faq = new faq;
+        } else {
+            $faq = faq::find($request->id);
+        }
+        $faq->question = $request->question;
+        $faq->answer = $request->answer;
+        $faq->save();
+        return 'true';
     }
     // Network Reward
     function checkNetReward(){ 

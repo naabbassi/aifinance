@@ -54,7 +54,7 @@ Route::get('loan','HomeController@loan');
 Route::get('/faq','HomeController@faq');
 Route::get('/downloads','HomeController@downloads');
 //Administration routing
-Route::get('/admin','AdminController@home');
+Route::get('/admin/dashboard','AdminController@home');
 Route::get('/admin/deposit','AdminController@deposits');
 Route::get('/admin/users','AdminController@users');
 Route::get('/admin/users/{id}','AdminController@userDetails');
@@ -64,7 +64,10 @@ Route::get('/admin/tickets/{ticketId}','AdminController@showTicket');
 Route::post('/admin/issue/{ticketId}/','AdminController@submitTicketDetail');
 Route::post('/admin/deposit/confirm','AdminController@confirmDeposit');
 Route::get('/admin/faq','AdminController@faq');
+Route::post('/admin/faq/new','AdminController@faqNew');
 Route::get('/admin/withdraw','AdminController@withdraw');
+Route::post('/admin/withdraw/details','AdminController@withdrawDetails');
+
 
 
 

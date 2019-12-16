@@ -39,86 +39,162 @@
             </div>
         </div>
         <div class="row">
-          {{--  Deposit chart --}}
-          <div class="col-12 col-md-4 col-lg-4">
-            <div class="card card-statistic-2">
-              <div class="card-chart">
-                <canvas id="deposit-chart" height="80"></canvas>
-              </div>
-              <div class="card-icon shadow-primary bg-primary">
-                  <i class="fas fa-donate"></i>
-              </div>
-              <div class="card-wrap">
-                <div class="card-header">
-                  <h4>My Deposite</h4>
+          {{--  Deposit  --}}
+          <div class="card col-12 col-md-12 col-lg-12 p-0">
+              <span class="badge badge-secondary">Deposits</span>
+              <div class="card-body p-0">
+                  <div class="table-responsive">
+                    <table class="table table-striped" id="depositTable">
+                      <tbody><tr>
+                        <th>Amount</th>
+                        <th>Due to</th>
+                        <th>Due Date</th>
+                        <th>Status</th>
+                        <th>User</th>
+                        <th>Action</th>
+                      </tr>
+                      @foreach ($deposits as $item)
+                      <tr>
+                            <td class="align-middle">
+                              {{$item->amount }} $
+                            </td>
+                            <td>
+                              @switch($item->type)
+                                @case('w')
+                                  <span>Withdraw</span>
+                                @break
+                                @case('d')
+                                  <span >Request</span>
+                                @break
+                                @default
+                                  .... 
+                              @endswitch
+                            </td>
+                            <td>
+                                {{ date_format($item->created_at,'d M. Y') }}
+                            </td>
+                            <td>
+                              @if ($item->status)
+                                  <span class="badge badge-success">Accepted</span>
+                                @else
+                                  <span class="badge badge-warning">Pending</span>
+                              @endif  
+                            </td>
+                            @php
+                                $user =  App\user::find($item->uid);
+                            @endphp
+                          <td><a class="badge btn btn-outline-info" href="/admin/user/{{$item->uid}}">{{$user->name.' '.$user->family}}</a></td>
+                            <td class="options">
+                                <div class="dropdown">
+                                    <a href="#" data-toggle="dropdown" class="btn btn-primary " aria-expanded="false"> ⋮ </a>
+                                    <div class="dropdown-menu" x-placement="top-start" style="position: absolute; transform: translate3d(0px, -6px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                      <a href="#" class="dropdown-item has-icon text-info"><i class="fas fa-eye"></i> View</a>
+                                      <div class="dropdown-divider"></div>
+                                    <a href="#" class="dropdown-item has-icon text-warning" id="confirmItem" data-id="{{$item->id}}"  ><i class="fas fa-exclamation"></i>Confirm Payment</a>
+                                    </div>
+                                  </div>
+                            </td>
+                          </tr>
+                    @endforeach
+                    </tbody>
+                  </table>
+                  </div>
                 </div>
-                <div class="card-body">
-                  {{-- {{ money_format("%i", $depositAmount)}} $ --}}
-                </div>
-              </div>
-            </div>
           </div>
-          {{-- Revenue Chart --}}
-          <div class="col-lg-4 col-md-4 col-sm-12">
-            <div class="card card-statistic-2">
-              <div class="card-chart">
-                <canvas id="sales-chart" height="80"></canvas>
-              </div>
-              <div class="card-icon shadow-primary bg-primary">
-                  <i class="fas fa-hand-holding-usd"></i>
-              </div>
-              <div class="card-wrap">
-                <div class="card-header">
-                  <h4>My Revenue</h4>
+          {{--  Open Tickets Table --}}
+          <div class="card col-12 col-md-12 col-lg-12 p-0">
+            <span class="badge badge-secondary">Open Tickets</span>
+              <div class="card-body p-0">
+                  <div class="table-responsive">
+                    <table class="table table-striped" id="depositTable">
+                      <tbody><tr>
+                        <th>Issue Type</th>
+                        <th>User</th>
+                        <th>Created At</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                      </tr>
+                      @foreach ($tickets as $item)
+                      <tr>
+                            <td>
+                              @switch($item->type)
+                                @case('w')
+                                  <span>Withdraw</span>
+                                @break
+                                @case('d')
+                                  <span >Request</span>
+                                @break
+                                @default
+                                  .... 
+                              @endswitch
+                            </td>
+                            @php
+                                $user =  App\user::find($item->uid);
+                            @endphp
+                          <td><a class="badge btn btn-outline-info" href="/admin/users/{{$item->uid}}">{{$user->name.' '.$user->family}}</a></td>
+                            <td>
+                                {{ date_format($item->created_at,'d M. Y') }}
+                            </td>
+                            <td>
+                              @if ($item->status)
+                                  <span class="badge badge-success">Accepted</span>
+                                @else
+                                  <span class="badge badge-warning">Pending</span>
+                              @endif  
+                            </td>
+                            <td class="options">
+                                <div class="dropdown">
+                                    <a href="#" data-toggle="dropdown" class="btn btn-primary " aria-expanded="false"> ⋮ </a>
+                                    <div class="dropdown-menu" x-placement="top-start" style="position: absolute; transform: translate3d(0px, -6px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                      <a href="/admin/tickets/{{$item->id}}" class="dropdown-item has-icon text-info"><i class="fas fa-eye"></i> View</a>
+                                    </div>
+                                  </div>
+                            </td>
+                          </tr>
+                    @endforeach
+                    </tbody>
+                  </table>
+                  </div>
                 </div>
-                <div class="card-body">
-                  {{-- {{$revenueAmount}} $ --}}
-                </div>
-              </div>
-            </div>
           </div>
-          {{-- Reward Chart --}}
-          <div class="col-lg-4 col-md-4 col-sm-12">
-              <div class="card card-statistic-2">
-                <div class="card-chart">
-                  <canvas id="reward-chart" height="80"></canvas>
-                </div>
-                <div class="card-icon shadow-primary bg-primary">
-                  <i class="fas fa-gem"></i>
-                </div>
-                <div class="card-wrap">
-                  <div class="card-header">
-                    <h4>My Reward</h4>
-                  </div>
-                  <div class="card-body">
-                      {{-- {{$rewardAmount}} $ --}}
-                  </div>
-                </div>
-              </div>
-            </div>
-          {{-- Network chart --}}
-          <div class="col-12 col-md-12 col-lg-7">
-              <div class="card">
-                <div class="card-header">
-                  <h4>My Network investment</h4>
-                </div>
-                <div class="card-body p-2">
-                  <canvas id="networkChart" height="158"></canvas>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-12 col-lg-5 mb-4">
-                <div class="hero align-items-center bg-primary text-white" >
-                  <div class="hero-inner">
-                    <h2>Invite your members</h2>
-                    <p class="lead">In order to expand your network and achieve more profit, invite your member just in way send them your invitation link</p>
-                    <div class="mt-4">
-                      <a href="#" class="btn btn-lg btn-outline-white btn-icon icon-left mt-2  mr-2" onclick="show()"><i class="fas fa-user-plus"></i> Show Invitation</a>
-                      <a href="#" class="btn btn-lg btn-outline-white btn-icon icon-left mt-2"><i class="far fa-question-circle"></i> More Information</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-        </div>
+</div>
       </section>
 @endsection 
+@section('script')
+    <script>
+      $("#depositTable").on('click','#confirmItem',function(e) {
+        var id = e.currentTarget.dataset.id;
+      swal({
+          title: 'Are you sure to confirm this payment?',
+          text: '',
+          icon: 'warning',
+          buttons: true,
+          dangerMode: true,
+        })
+        .then((willDelete) => {
+          if (willDelete) {
+            confirmAction(id)
+          }
+        });
+      })
+      const confirmAction = async (e) => {
+        const data = {
+            '_token': '{{csrf_token()}}',
+            deposit_id: e
+          }
+      const response = await fetch('{{ route("home") }}/admin/deposit/confirm/',
+         {
+            method: 'POST', // or 'PUT'
+            body: JSON.stringify(data), // data can be `string` or {object}!
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
+      if(await response){
+        swal('Deposit Confirmation!', 'Confirmation done successfully', 'success');
+      } else {
+        swal('Deposit Confirmation!', 'Opps! apparently something went wrong', 'info');
+      }
+  }
+    </script>
+@endsection

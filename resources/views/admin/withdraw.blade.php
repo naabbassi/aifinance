@@ -63,7 +63,7 @@
                                   <div class="dropdown">
                                       <a href="#" data-toggle="dropdown" class="btn btn-primary " aria-expanded="false"> ⋮ </a>
                                       <div class="dropdown-menu" x-placement="top-start" style="position: absolute; transform: translate3d(0px, -6px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                        <a href="#" class="dropdown-item has-icon text-info"><i class="fas fa-eye"></i> View</a>
+                                        <a href="#" class="dropdown-item has-icon text-info" onclick="getWithdrawDetails('{{$item->id}}')"><i class="fas fa-eye"></i> View</a>
                                       </div>
                                     </div>
                               </td>
@@ -79,4 +79,55 @@
     
         </div>
     </div>
+        <!-- Modal -->
+<div class="modal fade details-modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Withdraw's Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Amount : <p id="amount"></p>
+        User : <p id="user"></p>
+        Type : <p id="type"></p>
+        wallet : <p id="wallet"></p>
+        status : <p id="status"></p>
+        Date : <p id="date"></p>
+        approved by : <p id="proccedBy"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+@endsection
+@section('script')
+    <script>
+      async function getWithdrawDetails(e){
+        const data = {
+            '_token': '{{csrf_token()}}',
+            id: e
+          }
+      const response = await fetch('{{ route("home") }}/admin/withdraw/details',
+         {
+            method: 'POST', // or 'PUT'
+            body: JSON.stringify(data), // data can be `string` or {object}!
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
+        if(response){
+          result = await response.json();
+          br = '<br>';
+         document.getElementById('amount').innerHTML = result.amount;
+         document.getElementById('type').innerHTML = result.type;
+         document.getElementById('wallet').innerHTML = result.wallet_id;
+         document.getElementById('status').innerHTML = result.status;
+         document.getElementById('date').innerHTML = result.created_at;
+         $('.details-modal').modal('show');
+        }
+      }
+    </script>
 @endsection

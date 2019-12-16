@@ -8,4 +8,5 @@ class faq extends Model
 {
     //
     protected $table= "faq";
+    public $timestamps =false;
 }

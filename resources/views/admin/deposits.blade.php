@@ -17,6 +17,11 @@
                 <div class="card">
                   <div class="card-header">
                     <h4>Deposits</h4>
+                    <div class="card-header-action">
+                      <span href="#" class="badge badge-secondary">
+                          Approved Amount : {{money_format('%i',$depositsSum)}}
+                      </span>
+                    </div>
                   </div>
                   <div class="card-body p-0">
                     <div class="table-responsive">

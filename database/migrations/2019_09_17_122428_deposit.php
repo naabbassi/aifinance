@@ -17,7 +17,7 @@ class Deposit extends Migration
             $table->uuid('id')->primary();
             $table->uuid('uid');
             $table->decimal('btc');
-            $table->double('amount');
+            $table->decimal('amount',13,2);
             $table->string('type');
             $table->string('wallet');
             $table->longText('description')->nullanle();
