@@ -35,7 +35,7 @@
                                           <div class="dropdown">
                                               <a href="#" data-toggle="dropdown" class="btn btn-primary" aria-expanded="false">⋮</a>
                                               <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, -6px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                                <a href="#" class="dropdown-item has-icon" onclick="editFaq({{$item}})"><i class="far fa-edit"></i> Edit</a>
+                                                <a href="#" class="dropdown-item has-icon" onclick="editFaq({{$item->id}})"><i class="far fa-edit"></i> Edit</a>
                                                 <div class="dropdown-divider"></div>
                                                 <a href="#" class="dropdown-item has-icon text-danger" id="deleteItem" data-id="{{$item->id}}"><i class="far fa-trash-alt"></i> Delete</a>
                                               </div>
@@ -55,7 +55,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title ">Submit new FAQ</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close" onclick="closeModal()">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -70,7 +70,7 @@
                 <textarea class="summernote"  name="answer" id="answer" ></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
-            <button type="reset" class="btn btn-primary ml-2" data-dismiss="modal" aria-label="Close">Cancel</button>
+            <button type="reset" class="btn btn-primary ml-2" onclick="closeModal()">Cancel</button>
           </form>
         </div>
       </div>
@@ -83,11 +83,21 @@
     <script>
       
       editFaqID = 0;
-      function editFaq(data){
-        this.editFaqID = data['id'];
-        document.getElementById('question').value = data['question'];
-        $('.summernote').summernote('pasteHTML', data['answer']);
-        $('.faq-modal').modal('show');
+      async function editFaq(id){
+        this.editFaqID = id;
+        result = await fetch("{{ route('home') }}/admin/faq/get/" + id,{
+          method: 'POST', // or 'PUT'
+            body: JSON.stringify({'_token': '{{csrf_token()}}'}), // data can be `string` or {object}!
+            headers: {
+              'Content-Type': 'application/json'
+            }
+        })
+        if(result.status == 200){
+          result = await result.json();
+          document.getElementById('question').value = result.question;
+          $('.summernote').summernote('pasteHTML', result.answer);
+          $('.faq-modal').modal('show');
+        }
       }
       function submitIssueForm(e){
         $.ajax({
@@ -100,13 +110,12 @@
           },
         url: "{{ route('home') }}/admin/faq/new",
         }).done(function(result) {
-          console.log(result)
           if(result){
             $('.faq-modal').modal('hide');
             if(result == 'true'){
                 swal('Report the issue', 'Your issue reqistered successfully', 'success');
                 document.getElementById('question').value = "";
-                document.getElementById('answer').value = "";
+                $('.summernote').summernote('reset');
             } else {
                 swal('Report the issue', result, 'info');
             }
@@ -114,6 +123,11 @@
             swal('Report the issue', 'Opps! apparently something went wrong', 'info');
           }
          })
+      }
+      function closeModal(){
+           document.getElementById('question').value = "";
+           $('.summernote').summernote('reset');
+           $('.faq-modal').modal('hide');
       }
     </script>
 @endsection

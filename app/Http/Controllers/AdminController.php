@@ -178,6 +178,9 @@ class AdminController extends Controller
         $faq->save();
         return 'true';
     }
+    function getFaqById($id){
+        return faq::find($id)->toJson();
+    }
     // Network Reward
     function checkNetReward(){ 
         $users = User::all();
