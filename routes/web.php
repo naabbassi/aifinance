@@ -60,6 +60,7 @@ Route::get('/admin/users','AdminController@users');
 Route::get('/admin/users/{id}','AdminController@userDetails');
 Route::post('/admin/users/update/{userId}','AdminController@updateProfile');
 Route::post('/admin/users/{userId}','AdminController@changeUserPassword');
+Route::post('/admin/users/active/{userId}','AdminController@disableUser');
 Route::get('/admin/tickets','AdminController@tickets');
 Route::get('/admin/tickets/{ticketId}','AdminController@showTicket');
 Route::post('/admin/issue/{ticketId}/','AdminController@submitTicketDetail');

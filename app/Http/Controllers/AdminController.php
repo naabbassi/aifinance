@@ -123,6 +123,11 @@ class AdminController extends Controller
         $countries = country::all();
         return view('admin/user_details',compact('user','countries'));
     }
+    function disableUser($userId){
+        $user = User::find($userId);
+        $user->enabled = !$user->enabled;
+        $user->save();
+    }
     function updateProfile(Request $request, $userId){
         $request->validate([
             'name' => 'required|min:3|max:20',

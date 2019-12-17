@@ -23,7 +23,10 @@
                             <h4> {{$index+1}} - {{$item->question}} </h4>
                         </div>
                         <div class="accordion-body collapse" id="panel-body-{{$index}}" data-parent="#accordion">
-                            <p>{{$item->answer}}</p>
+                            @php
+                                $data = str_replace('&','&amp;',$item->answer);
+                            @endphp
+                            <p>{{ htmlspecialchars_decode($item->answer)}}</p>
                         </div>
                     </div>
                   @endforeach

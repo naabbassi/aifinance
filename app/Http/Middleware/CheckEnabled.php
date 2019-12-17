@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Middleware;
-
 use Illuminate\Support\Facades\Auth;
 use Closure;
-class isAdmin
+
+class CheckEnabled
 {
     /**
      * Handle an incoming request.
@@ -15,10 +15,10 @@ class isAdmin
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user() &&  Auth::user()->isAdmin == 1 && Auth::user()->enabled == 1) {
+        if (Auth::user() &&  Auth::user()->enabled == 1) {
             return $next($request);
      }
 
-    return redirect()->back();
+     return redirect()->back();
     }
 }
