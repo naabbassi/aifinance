@@ -111,7 +111,6 @@
                         <th>Issue Type</th>
                         <th>User</th>
                         <th>Created At</th>
-                        <th>Status</th>
                         <th>Action</th>
                       </tr>
                       @foreach ($tickets as $item)
@@ -119,10 +118,13 @@
                             <td>
                               @switch($item->type)
                                 @case('w')
-                                  <span>Withdraw</span>
+                                  <span class="badge btn btn-sm btn-outline-success">Withdraw</span>
                                 @break
-                                @case('d')
-                                  <span >Request</span>
+                                @case('r')
+                                  <span class="badge btn btn-sm btn-outline-success">Revenue</span>
+                                @break
+                                @case('c')
+                                  <span class="badge btn btn-sm btn-outline-success">Custom</span>
                                 @break
                                 @default
                                   .... 
@@ -131,16 +133,9 @@
                             @php
                                 $user =  App\user::find($item->uid);
                             @endphp
-                          <td><a class="badge btn btn-outline-info" href="/admin/users/{{$item->uid}}">{{$user->name.' '.$user->family}}</a></td>
+                          <td><a class="badge btn btn-sm btn-outline-info" href="/admin/users/{{$item->uid}}">{{$user->name.' '.$user->family}}</a></td>
                             <td>
                                 {{ date_format($item->created_at,'d M. Y') }}
-                            </td>
-                            <td>
-                              @if ($item->status)
-                                  <span class="badge badge-success">Accepted</span>
-                                @else
-                                  <span class="badge badge-warning">Pending</span>
-                              @endif  
                             </td>
                             <td class="options">
                                 <div class="dropdown">

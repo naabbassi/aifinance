@@ -6,6 +6,11 @@
 |
 */
 Route::get('/', 'Controller@home')->name('home');
+Route::get('/web', 'Controller@home');
+Route::get('/web/about', 'Controller@about');
+Route::get('/web/lend', 'Controller@lend');
+Route::get('/web/trade', 'Controller@trade');
+
 // Registeration
 Route::get('/register/{email}','Controller@Register');
 Route::post('/newmember','Controller@newMember');
@@ -20,6 +25,7 @@ Route::get('/deposit', 'HomeController@deposit')->name('deposit');
 Route::post('/deposit/submit_deposit', 'HomeController@submitDeposit');
 // History
 Route::get('/finance/history', 'HomeController@history')->name('history');
+Route::get('/finance/reports', 'HomeController@reports');
 // Revenue
 Route::get('/finance/revenue', 'HomeController@revenue')->name('revenue');
 Route::get('/finance/revenue/details/{id}', 'HomeController@revenue_details')->name('revenue');

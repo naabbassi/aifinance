@@ -1,138 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<meta name="forntEnd-Developer" content="Mamunur Rashid">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title> AI Finance :: Cryptocurrency Investment Inistitue</title>
-	<!-- favicon -->
-	<link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
-	<!-- bootstrap -->
-	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-	<!-- Plugin css -->
-	<link rel="stylesheet" href="assets/css/plugin.css">
-
-	<!-- stylesheet -->
-	<link rel="stylesheet" href="assets/css/style.css">
-	<!-- responsive -->
-	<link rel="stylesheet" href="assets/css/responsive.css">
-</head>
-
-<body>
-	<!-- preloader area start -->
-	<div class="preloader" id="preloader">
-		<div class="loader loader-1">
-			<div class="loader-outter"></div>
-			<div class="loader-inner"></div>
-		</div>
-	</div>
-	<!-- preloader area end -->
-
-	<!-- Header Area Start  -->
-	<header class="header">
-		<!-- Top Header Area Start -->
-		<section class="top-header" style="background-color:white">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="content">
-							<div class="left-content">
-								<ul class="left-list">
-									<li>
-										<p>
-											<i class="fas fa-headset"></i>	Support
-										</p>
-									</li>
-								</ul>
-							</div>
-							<div class="right-content">
-								<ul class="right-list">
-									<li>
-										<div class="language-selector">
-											<select name="language" class="language">
-												<option value="en">ENG</option>
-												<option value="de">GER</option>
-											</select>
-										</div>
-									</li>
-									<li>
-										<ul class="social-link">
-											<li>
-												<a href="#">
-													<i class="fab fa-facebook-f"></i>
-												</a>
-											</li>
-											<li>
-												<a href="#">
-													<i class="fab fa-twitter"></i>
-												</a>
-											</li>
-											<li>
-												<a href="#">
-													<i class="fab fa-linkedin-in"></i>
-												</a>
-											</li>
-											<li>
-												<a href="#">
-													<i class="fab fa-instagram"></i>
-												</a>
-											</li>
-										</ul>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- Top Header Area End -->
-		<!--Main-Menu Area Start-->
-		<div class="mainmenu-area">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12">                 
-						<nav class="navbar navbar-expand-lg navbar-light">
-							<a class="navbar-brand" href="/">
-								<h3>AI Finance</h3>
-							</a>
-							<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_menu" aria-controls="main_menu"
-								aria-expanded="false" aria-label="Toggle navigation">
-								<span class="navbar-toggler-icon"></span>
-							</button>
-							<div class="collapse navbar-collapse fixed-height" id="main_menu">
-								<ul class="navbar-nav ml-auto">
-									
-									<li class="nav-item">
-										<a class="nav-link" href="/">Home</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="/about">About</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="/lend">Lend</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="/invest">Borrow</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="/trade">Trade</a>
-									</li>
-								</ul>
-								<a href="/dashboard" class="mybtn1">Get Started </a>
-							</div>
-						</nav>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--Main-Menu Area Start-->
-	</header>
-	<!-- Header Area End  -->
-
+@extends('web/layout')
+@section('title')
+AI Finance :: Cryptocurrency Investment Inistitue
+@endsection
+@section('content')
 	<!-- Hero Area Start -->
 	<div class="hero-area partical-area">
 		<div id="particles-js"></div>
@@ -142,7 +12,7 @@
 					<div class="left-content">
 						<div class="content text-center">
 							<h5 class="subtitle">
-								Secure. Fast. Profitable
+								Secure & Profitable
 							</h5>
 							<h1 class="title">
 								Lend and Borrow
@@ -178,7 +48,7 @@
 							Monthly Interest
 							</p>
 							<h4 class="title">
-								6%
+								7%
 							</h4>
 						</div>
 					</div>
@@ -193,7 +63,7 @@
 								Loan Duration
 							</p>
 							<h4 class="title">
-								0-12Mo
+								0-12 Mo
 							</h4>
 						</div>
 					</div>
@@ -701,8 +571,7 @@
 						<div class="content">
 							<span class="num">01</span>
 							<h4 class="title">
-								Register
-								within a minute
+								Register within a minute
 							</h4>
 						</div>
 					</div>
@@ -715,8 +584,7 @@
 						<div class="content">
 							<span class="num">02</span>
 							<h4 class="title">
-									Deposit &
-									collateral
+									Deposit & collateral
 							</h4>
 						</div>
 					</div>
@@ -729,8 +597,7 @@
 						<div class="content">
 							<span class="num">03</span>
 							<h4 class="title">
-									Confirm the loan terms 
-									
+									Start your investment 
 							</h4>
 						</div>
 					</div>
@@ -762,281 +629,11 @@
 									What Are You Waiting For? Make Things Happen The Way
 									You Want With AI Finance!
 							</p>
-							<a href="#" class="mybtn1">Get Started Today</a>
+							<a href="#" class="mybtn1">Get Started now</a>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-	<!-- Get Start Area End -->
-
-	<!-- Testimonial Area Start -->
-	<section class="testimonial">
-		<div class="testimonial-top-area">
-			<img class="shape" src="assets/images/testi-shape.png" alt="">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-7 d-flex align-self-center">
-						<div class="left-area">
-							<div class="section-heading">
-								<h5 class="subtitle extra-padding">
-										Don‘t Take Our Word For It
-								</h5>
-								<h2 class="title  extra-padding">
-										Take Our Customers
-								</h2>
-								<p class="text">
-										Over 7,000 Happy Customers.We have many
-										happy investors invest with us .Some impresions
-										from our Customers!  PLease read some of the
-										lovely things our Customers say about us.
-								</p>
-								<a href="#" class="mybtn1">WHAT WE OFFER</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-5 d-flex align-self-center">
-						<div class="right-img">
-							<img src="assets/images/testimonial-right.png" alt="">
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<!-- Footer Area Start -->
-	<footer class="footer" id="footer">
-		<div class="subscribe-area">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="subscribe-box">
-							<div class="row">
-								<div class="col-lg-4 col-md-4 ">
-									<div class="image-area">
-										<img src="assets/images/subimg.png" alt="">
-									</div>
-								</div>
-								<div class="col-lg-8 col-md-8 d-flex">
-									<div class="right-area">
-										<h5 class="sub-title">
-												Subscribe to AI Finance
-										</h5>
-										<h4 class="title">
-											To Get Exclusive Benefits
-										</h4>
-										<form action="#">
-											<input type="text" placeholder="Your Email Address">
-											<button type="submit">Subscribe</button>
-										</form>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-6 col-lg-3">
-					<div class="footer-widget info-link-widget">
-						<h4 class="title">
-							About 
-						</h4>
-						<ul class="link-list">
-							<li>
-								<a href="#">
-									<i class="fas fa-angle-double-right"></i>	About Us
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fas fa-angle-double-right"></i>	Contact Us
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fas fa-angle-double-right"></i>	Latest Blog
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fas fa-angle-double-right"></i>	Authenticity Guarantee
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fas fa-angle-double-right"></i>	Customer Reviews
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fas fa-angle-double-right"></i>	Privacy Policy
-
-								</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-sm-6 col-lg-3">
-					<div class="footer-widget info-link-widget">
-						<h4 class="title">
-							My Account
-						</h4>
-						<ul class="link-list">
-							<li>
-								<a href="#">
-									<i class="fas fa-angle-double-right"></i> Manage Your Account
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fas fa-angle-double-right"></i> How to Deposit
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fas fa-angle-double-right"></i> How to Withdraw
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fas fa-angle-double-right"></i> Account Varification
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fas fa-angle-double-right"></i> Safety & Security
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fas fa-angle-double-right"></i> Membership Level
-
-								</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-sm-6 col-lg-3">
-					<div class="footer-widget info-link-widget">
-						<h4 class="title">
-							help center 
-						</h4>
-						<ul class="link-list">
-							<li>
-								<a href="#">
-									<i class="fas fa-angle-double-right"></i>Help centre
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fas fa-angle-double-right"></i>FAQ
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fas fa-angle-double-right"></i>Quick Start Guide
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fas fa-angle-double-right"></i>Tutorials
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fas fa-angle-double-right"></i>Borrow
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fas fa-angle-double-right"></i>Lend
-
-								</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-sm-6 col-lg-3">
-					<div class="footer-widget info-link-widget">
-						<h4 class="title">
-							Legal Info
-						</h4>
-						<ul class="link-list">
-							<li>
-								<a href="#">
-									<i class="fas fa-angle-double-right"></i>Risk Warnings
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fas fa-angle-double-right"></i>Privacy Notice
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fas fa-angle-double-right"></i>Security
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fas fa-angle-double-right"></i>Terms of Service
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fas fa-angle-double-right"></i>Become Affiliate
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fas fa-angle-double-right"></i>Complaints Policy
-
-								</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="copy-bg">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="content">
-							<div class="content">
-								<p>Copyright © 2019.All Rights Reserved By <a href="#">AI Finance</a>
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>
-	<!-- Footer Area End -->
-
-	<!-- Back to Top Start -->
-	<div class="bottomtotop">
-		<i class="fas fa-chevron-right"></i>
-	</div>
-	<!-- Back to Top End -->
-
-
-	<!-- jquery -->
-	<script src="assets/js/jquery.js"></script>
-	<!-- popper -->
-	<script src="assets/js/popper.min.js"></script>
-	<!-- bootstrap -->
-	<script src="assets/js/bootstrap.min.js"></script>
-	<!-- plugin js-->
-	<script src="assets/js/plugin.js"></script>
-	<!-- main -->
-	<script src="assets/js/main.js"></script>
-</body>
-
-</html>
+@endsection

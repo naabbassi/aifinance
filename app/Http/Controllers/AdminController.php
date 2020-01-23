@@ -91,12 +91,6 @@ class AdminController extends Controller
             $revenue_item->save();
         }
     }
-    
-    function checkDepositReward(){
-        $rid= (String) Uuid::generate();
-        $user = User::find($deposit->uid);
-        $owner = User::where('email','=', $user->owner)->first();
-    }
 
     function withdraw(){
         $withdraw = withdraw::orderBy('created_at','desc')->orderBy('status','asc')->paginate(15);

@@ -1,12 +1,19 @@
-
 @extends('layout')
 @section('title')
     AIF :: Ticket
 @endsection
 @section('content')
+<div class="section">
+    <div class="section-header">
+        <h1>Ticket Details</h1>
+        <div class="section-header-breadcrumb">
+          <div class="breadcrumb-item active"><a href="/dashboard">Dashboard</a></div>
+          <div class="breadcrumb-item active"><a href="/tickets">Tickets</a></div>
+          <div class="breadcrumb-item">Ticket Details</div>
+        </div>
+      </div>
 <div class="row align-items-center justify-content-center">
-    <div class="section col-12">
-        
+    <div class="section col-12">   
     <div class="message-box  @if ($ticket->status == 1) scrolled @endif" id="message-box">
             @foreach ($messages as $item)
                 @if ($item->type == 'u')
@@ -31,6 +38,7 @@
         </form>
         @endif 
     </div>
+</div>
 </div>
 </div>
 @endsection

@@ -1,6 +1,6 @@
 @extends('layout')
 @section('title')
-    AIF :: My History
+    AIF :: My Reports
 @endsection
 @section('content')
     <div class="main-content">

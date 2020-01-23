@@ -20,7 +20,18 @@ class Controller extends BaseController
     public function home(){
         return view('web/home');
     }
+    public function about(){
+        return view('web/about');
+    }
 
+    public function lend(){
+        return view('web/lend');
+    }
+    public function trade(){
+        return view('web/trade');
+    }
+
+    
     function register($email){
         if (User::where('email',decrypt($email))->count()) {
             if (User::where('owner',decrypt($email))->count() < 3) {

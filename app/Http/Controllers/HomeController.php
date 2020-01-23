@@ -27,7 +27,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        // $this->middleware('enabledUser');
+        $this->middleware('enabledUser');
     }
     /**
      * Show the application dashboard.
@@ -119,6 +119,9 @@ class HomeController extends Controller
     function history(){
         return view('history');
     }
+    function reports(){
+        return view('reports');
+    }
     function revenue(){
         $list = Auth::user()->revenue()->orderBy('created_at','desc')->paginate(10);
         $sum = self::sumRevenue() + self::sumReward();
@@ -162,7 +165,7 @@ class HomeController extends Controller
         $request->validate([
             'amount' => 'required'
         ]);
-        $revenueSum = self::sumRevenue();
+        $revenueSum = self::sumRevenue() + self::sumReward();
         $withdrawSum = Auth::user()->withdraw()->sum('amount');
         $available = $revenueSum - $withdrawSum;
         if ($request->amount <= $available && $available >= 250) {
@@ -200,7 +203,7 @@ class HomeController extends Controller
             'amount' => 'required',
             'wallet' => 'required'
         ]);
-        $revenueSum = self::sumRevenue();
+        $revenueSum = self::sumRevenue() + self::sumReward();
         $withdrawSum = Auth::user()->withdraw()->sum('amount');
         $available = $revenueSum - $withdrawSum;
         if ($request->amount <= $available && $available > 50) {

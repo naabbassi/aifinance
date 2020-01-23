@@ -81,7 +81,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
     <script>
-      
       editFaqID = 0;
       async function editFaq(id){
         this.editFaqID = id;
@@ -99,30 +98,29 @@
           $('.faq-modal').modal('show');
         }
       }
-      function submitIssueForm(e){
-        $.ajax({
-        method: "POST",
-          data:{
+
+      async function submitIssueForm(){
+        result = await fetch("{{ route('home') }}/admin/faq/new",{
+          method: "POST",
+          body:JSON.stringify({
             '_token': '{{csrf_token()}}',
             id: this.editFaqID,
             question:document.getElementById('question').value,
             answer:$('.summernote').summernote('code')
-          },
-        url: "{{ route('home') }}/admin/faq/new",
-        }).done(function(result) {
-          if(result){
-            $('.faq-modal').modal('hide');
-            if(result == 'true'){
-                swal('Report the issue', 'Your issue reqistered successfully', 'success');
-                document.getElementById('question').value = "";
-                $('.summernote').summernote('reset');
-            } else {
-                swal('Report the issue', result, 'info');
-            }
-          } else{
-            swal('Report the issue', 'Opps! apparently something went wrong', 'info');
+          }),
+          headers:{
+            'Content-Type':'application/json'
           }
-         })
+        });
+        if(result.status == 200){
+          result = result.json();
+          $('.faq-modal').modal('hide');
+          swal('Report the issue', 'Your issue reqistered successfully', 'success');
+          document.getElementById('question').value = "";
+          $('.summernote').summernote('reset');
+        } else {
+          swal('Report the issue', 'Something went wrong - Error:' + result.status, 'info');
+        }
       }
       function closeModal(){
            document.getElementById('question').value = "";
