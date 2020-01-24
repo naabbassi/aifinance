@@ -30,6 +30,6 @@ class CreateTableRevenue extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_revenue');
+        Schema::dropIfExists('revenue');
     }
 }

@@ -3,17 +3,28 @@
     AIF :: 404
 @endsection
 @section('content')
-    <div class="col-12" style="height: 100% !important;">
-        <div class="empty-state " style="height: 100% !important; padding-top:20%">
-            <div class="empty-state-icon bg-danger">
-              <i class="fas fa-times"></i>
-            </div>
-            <h2>HTTP Request Failed - 404</h2>
-            <p class="lead">
-              We tried it, but failed when requesting data to the server, sorry. (Code: <a href="#" class="bb">404</a>)
-            </p>
-            <a href="{{ url()->previous() }}" class="btn btn-info mt-4"><i class="fas fa-arrow-circle-left"></i> Go Back to Previous Page</a>
-          <a href="{{ route('home')}}" class="btn btn-dark mt-4"><i class="fas fa-home"></i> Go Back to home</a>
-          </div>
-      </div>
+	<!-- 404 Area Start -->
+	<section class="four-zero-four">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="content">
+						<img src="/assets/images/404.png" alt="">
+						<div class="inner-content">
+							<h4 class="title">
+									Oops, <br>
+									Something went wrong !
+							</h4>
+							<p class="sub-title">
+									The page you're looking for isn't exist.
+							</p>
+              <a href="{{ url()->previous() }}"  class="mybtn1"><i class="fas fa-angle-double-left"></i> BACK TO Previous Page</a>
+              <a href="{{ route('home')}}" class="mybtn1"><i class="fas fa-home"></i> Go to home</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- 404 Area End -->
 @endsection
