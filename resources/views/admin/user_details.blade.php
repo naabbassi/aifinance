@@ -62,14 +62,16 @@
               <small class="form-text text-danger ">{{ $message }}</small>
              @enderror
             </div>
-        </div>
-        <div class="row">
-          <div class="form-group col-6">
-              <label>Is Admin</label>
-          <input class="form-control" type="checkbox" name="is_admin" {{$user->isAdmin == 1 ? 'checked' : null}}>
+            <div class="form-group col-6">
+              <label class="d-block">Is Admin</label>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="is_admin" {{$user->isAdmin == 1 ? 'checked' : null}}>
+                <label class="form-check-label" for="defaultCheck1">
+                  Is Admin
+                </label>
+              </div>
             </div>
         </div>
-
         <div class="form-group">
           <button type="submit" class="btn btn-primary ">
             Update information
