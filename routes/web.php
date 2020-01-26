@@ -11,8 +11,8 @@ Route::get('/web/about', 'Controller@about');
 Route::get('/web/lend', 'Controller@lend');
 Route::get('/web/trade', 'Controller@trade');
 
-// Registeration
-Route::get('/register/{email}','Controller@Register');
+// Registration
+Route::get('/register/{email}','Controller@register');
 Route::post('/newmember','Controller@newMember');
 //Test
 Route::get('/test','test@test');
@@ -60,6 +60,7 @@ Route::get('loan','HomeController@loan');
 Route::get('/faq','HomeController@faq');
 Route::get('/downloads','HomeController@downloads');
 //Administration routing
+Route::get('/admin','AdminController@home');
 Route::get('/admin/dashboard','AdminController@home');
 Route::get('/admin/deposit','AdminController@deposits');
 Route::get('/admin/users','AdminController@users');

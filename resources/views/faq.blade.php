@@ -12,7 +12,7 @@
                         </div>
                 </div>
         <div class="col-12 card">
-            {{-- start accordion --}}
+    
             <div class="card-header">
                     <h4>Frequently asked questions</h4>
             </div>
@@ -23,15 +23,11 @@
                             <h4> {{$index+1}} - {{$item->question}} </h4>
                         </div>
                         <div class="accordion-body collapse" id="panel-body-{{$index}}" data-parent="#accordion">
-                            @php
-                                $data = str_replace('&','&amp;',$item->answer);
-                            @endphp
-                            <p>{{ htmlspecialchars_decode($item->answer)}}</p>
+                            {!! $item->answer !!}
                         </div>
                     </div>
                   @endforeach
               </div>
-            {{-- end accordion --}}
         </div>
     </div>
 @endsection+

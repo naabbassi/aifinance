@@ -94,7 +94,7 @@
         if(result.status == 200){
           result = await result.json();
           document.getElementById('question').value = result.question;
-          $('.summernote').summernote('pasteHTML', result.answer);
+          $('.summernote').summernote('code', result.answer);
           $('.faq-modal').modal('show');
         }
       }
