@@ -6,6 +6,7 @@
 |
 */
 Route::get('/', 'Controller@home')->name('home');
+Route::post('/', 'Controller@subscribe');
 Route::get('/web', 'Controller@home');
 Route::get('/web/about', 'Controller@about');
 Route::get('/web/lend', 'Controller@lend');

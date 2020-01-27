@@ -31,9 +31,12 @@
 	<!-- preloader area end -->
 
 	<!-- Header Area Start  -->
-	<header class="header">
+	@php
+		\Request::is('/')? $ct = '' : $ct = 'inner-page';
+	@endphp
+	<header class="header {{$ct}}">
 		<!-- Top Header Area Start -->
-		<section class="top-header" style="background-color:#fff">
+		<section class="top-header" >
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12">
@@ -88,7 +91,7 @@
 					<div class="col-lg-12">                 
 						<nav class="navbar navbar-expand-lg navbar-light">
 							<a class="navbar-brand" href="/">
-								<h3>AI Finance</h3>
+								<img src="/assets/images/logo.png" alt="">
 							</a>
 							<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_menu" aria-controls="main_menu"
 								aria-expanded="false" aria-label="Toggle navigation">
@@ -110,7 +113,7 @@
 										<a class="nav-link" href="/web/lend">Lend</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="/web/invest">Borrow</a>
+										<a class="nav-link" href="/web/invest">Investment</a>
 									</li>
 								</ul>
 								<a href="/dashboard" class="mybtn1">Get Started </a>
@@ -145,8 +148,9 @@
 										<h4 class="title">
 											To Get Exclusive Benefits
 										</h4>
-										<form action="#">
-											<input type="text" placeholder="Your Email Address">
+										<form action="/" method="POST">
+											@csrf
+											<input type="text" placeholder="Your Email Address" name="subscribe">
 											<button type="submit">Subscribe</button>
 										</form>
 									</div>
@@ -306,7 +310,7 @@
 					<div class="col-lg-12">
 						<div class="content">
 							<div class="content">
-								<p>Copyright © 2019.All Rights Reserved By <a href="#">AI Finance</a>
+								<p>Copyright © {{ date("yy") }} All Rights Reserved By <a href="#">AI Finance</a>
 								</p>
 							</div>
 						</div>

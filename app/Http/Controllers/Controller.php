@@ -21,6 +21,13 @@ class Controller extends BaseController
     public function home(){
         return view('web/home');
     }
+    public function subscribe(Request $request){
+        $request->validate([
+            'email' => 'required|email'
+        ]);
+        \Session::flash('alert-success','Congrs! Your registration was successfull');
+        return view('web/home');
+    }
     public function about(){
         return view('web/about');
     }

@@ -23,8 +23,7 @@ AI Finance :: Cryptocurrency Investment Inistitue
 								assets on AI Finance								   
 							</p>
 							<div class="links">
-								<a href="#" class="mybtn1 link1"><span>Start Borrowing</span> </a>
-								<a href="#" class="mybtn1 link2"><span>Start Lending</span> </a>
+								<a href="/dashboard" class="mybtn1 link1"><span>Start Borrowing</span> </a>
 							</div>
 						</div>
 					</div>

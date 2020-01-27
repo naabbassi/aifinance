@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', '0'),
+    'name' => env('APP_NAME', 'AIFINANCE'),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'https://aifinance.io'),
 
     'asset_url' => env('ASSET_URL', null),
 
