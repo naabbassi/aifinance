@@ -46,8 +46,8 @@ class Controller extends BaseController
         } catch (DecryptException $e) {
             return ("content isn't valid");
         }
-        if (User::where('email',$email)->count()) {
-            if (User::where('owner',$email)->count() < 3) {
+        if (User::where('email',decrypt($email))->count()) {
+            if (User::where('owner',decrypt($email))->count() < 3) {
                 $countries = country::all();
                 return view('register',compact('email','countries'));
             } else {
