@@ -45,7 +45,7 @@
 								<ul class="left-list">
 									<li>
 										<p>
-											<i class="fas fa-headset"></i>	Support
+											<i class="fas fa-headset"></i>	Support .
 										</p>
 									</li>
 								</ul>
