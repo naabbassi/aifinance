@@ -64,7 +64,7 @@ class Controller extends BaseController
     }
     function newMember(Request $request){
         try {
-            decrypt($email);
+            decrypt($request->owner);
        } catch (DecryptException $e) {
            return ("content isn't valid");
        }
