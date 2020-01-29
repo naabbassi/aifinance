@@ -42,7 +42,7 @@ class Controller extends BaseController
     
     function register($email){
         try {
-            $email = decrypt($email);
+             decrypt($email);
         } catch (DecryptException $e) {
             return ("content isn't valid");
         }
@@ -63,6 +63,11 @@ class Controller extends BaseController
         }
     }
     function newMember(Request $request){
+        try {
+            decrypt($email);
+       } catch (DecryptException $e) {
+           return ("content isn't valid");
+       }
         if (User::where('email',decrypt($request->owner))->count()) {
             if (User::where('owner',decrypt($request->owner))->count() < 3) {
                 $request->validate([
