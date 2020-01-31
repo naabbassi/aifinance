@@ -28,6 +28,7 @@
                       <th>Type</th>
                       <th>User Type</th>
                       <th>User Activate</th>
+                      <th>Deposit</th>
                       <th>Action</th>
                     </tr>
                     @foreach ($users as $user)
@@ -76,6 +77,7 @@
                                 .... 
                             @endswitch
                           </td>
+                          <td>{{$user->deposit()->sum('amount')}}$</td>
                           <td class="options">
                               <div class="dropdown">
                                   <a href="#" data-toggle="dropdown" class="btn btn-primary " aria-expanded="false"> ⋮ </a>

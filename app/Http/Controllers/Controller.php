@@ -14,12 +14,28 @@ use App\Mail\email_confirmation;
 use App\User;
 use App\country;
 use Webpatser\Uuid\Uuid;
-
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-    public function home(){
+    public function home(){   
         return view('web/home');
+    }
+
+    public function sendmail(){
+        $title = 'title';
+        $content = 'content';
+
+        Mail::send('mail.test', ['title' => $title, 'content' => $content], function ($message)
+        {
+
+            $message->from('info@aifinance.io', 'Nasser');
+
+            $message->to('abbasiamanj@gmail.com');
+
+        });
+
+
+        return response()->json(['message' => 'Request completed']);
     }
     public function subscribe(Request $request){
         $request->validate([
@@ -92,6 +108,7 @@ class Controller extends BaseController
                 $user->country = $request->country;
                 $user->phone = $request->phone;
                 $user->type = true;
+                $user->enabled = true;
                 $user->save();
                 $title = ' Registeration  Completed';
                 \Session::flash('alert-success','Congrs! Your registration was successfull');
