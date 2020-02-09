@@ -113,7 +113,7 @@
 										<a class="nav-link" href="/web/lend">Lend</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="/web/invest">Investment</a>
+										<a class="nav-link" href="/web/investment">Investment</a>
 									</li>
 								</ul>
 								<a href="/dashboard" class="mybtn1">Get Started </a>

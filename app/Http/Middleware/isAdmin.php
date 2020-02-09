@@ -15,9 +15,9 @@ class isAdmin
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user() &&  Auth::user()->isAdmin == 1 && Auth::user()->enabled == 1) {
+        if (Auth::user() &&  Auth::user()->isAdmin() && Auth::user()->isEnabled() ) {
             return $next($request);
-     }
+         }
 
     return redirect()->back();
     }

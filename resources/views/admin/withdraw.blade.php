@@ -126,7 +126,7 @@
          document.getElementById('amount').innerHTML = result.amount;
          document.getElementById('type').innerHTML = result.type;
          document.getElementById('wallet').innerHTML = result.wallet_id;
-         document.getElementById('status').innerHTML = result.status;
+         document.getElementById('status').innerHTML = result.status ? 'Approved' : 'Pending';
          document.getElementById('date').innerHTML = result.created_at;
          $('.details-modal').modal('show');
         }

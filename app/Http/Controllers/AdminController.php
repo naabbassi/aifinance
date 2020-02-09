@@ -19,6 +19,7 @@ class AdminController extends Controller
 {
     private $netDepositReward = false;
     public function __construct(){
+        $this->middleware('auth');
         $this->middleware('admin');
         setlocale(LC_MONETARY, 'en_US');
     }

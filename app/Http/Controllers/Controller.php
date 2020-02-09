@@ -14,6 +14,7 @@ use App\Mail\email_confirmation;
 use App\User;
 use App\country;
 use Webpatser\Uuid\Uuid;
+use Twilio\Rest\Client;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
@@ -21,22 +22,6 @@ class Controller extends BaseController
         return view('web/home');
     }
 
-    public function sendmail(){
-        $title = 'title';
-        $content = 'content';
-
-        Mail::send('mail.test', ['title' => $title, 'content' => $content], function ($message)
-        {
-
-            $message->from('info@aifinance.io', 'Nasser');
-
-            $message->to('abbasiamanj@gmail.com');
-
-        });
-
-
-        return response()->json(['message' => 'Request completed']);
-    }
     public function subscribe(Request $request){
         $request->validate([
             'email' => 'required|email'
@@ -54,7 +39,9 @@ class Controller extends BaseController
     public function trade(){
         return view('web/trade');
     }
-
+    public function investment(){
+        return view('web/investment');
+    }
     
     function register($email){
         try {
@@ -82,7 +69,7 @@ class Controller extends BaseController
         try {
             decrypt($request->owner);
        } catch (DecryptException $e) {
-           return ("content isn't valid");
+           return ("content isn't valid ".$e);
        }
         if (User::where('email',decrypt($request->owner))->count()) {
             if (User::where('owner',decrypt($request->owner))->count() < 3) {
@@ -124,5 +111,26 @@ class Controller extends BaseController
             \Session::flash('alert-warning',"The invitation link isn't valid. to get a valid invitation link, please contact our support team.");
             return view('alert',compact('title'));
         }
+    }
+
+    
+    function sendSMS(Request $request){
+        // Your Account SID and Auth Token from twilio.com/console
+        $account_sid = 'ACa83c7503f9d5ca2a144ecd34f2cc42e3';
+        $auth_token = '541b46416a371e6db82c2c07d592a402';
+        // In production, these should be environment variables. E.g.:
+        // $auth_token = $_ENV["TWILIO_AUTH_TOKEN"]
+
+        // A Twilio number you own with SMS capabilities
+        $twilio_number = "+18305496299";
+        $client = new Client($account_sid, $auth_token);
+        $client->messages->create(
+            // Where to send a text message (your cell phone?)
+            $request->number,
+            array(
+                'from' => $twilio_number,
+                'body' => 'You recieve this message from Nasser!'
+            )
+        );
     }
 }

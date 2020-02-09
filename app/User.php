@@ -21,7 +21,7 @@ class User extends Authenticatable
     // tell Eloquent that uuid is a string, not an integer
     protected $keyType = 'string';
     protected $fillable = [
-        'id','name', 'family','birthday','email', 'password','type'
+        'id','name', 'family','birthday','email', 'password','type','enabled'
     ];
 
     /**
@@ -49,6 +49,14 @@ class User extends Authenticatable
     }
     public function issues(){
         return $this->hasMany('App\issue','uid');
+    }
+
+    public  function isEnabled(){
+        return $this->enabled;
+    }
+
+    public function isAdmin(){
+        return $this->isAdmin;
     }
     /**
      * The attributes that should be cast to native types.

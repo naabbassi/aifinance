@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Closure;
 
-class CheckEnabled
+class isEnabled
 {
     /**
      * Handle an incoming request.
@@ -15,7 +15,7 @@ class CheckEnabled
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user() &&  Auth::user()->enabled == 1) {
+        if (Auth::user() &&  Auth::user()->isEnabled()) {
             return $next($request);
      }
 
