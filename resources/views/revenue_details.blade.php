@@ -5,7 +5,7 @@
 @section('content')
         <div class="section">
                 <div class="section-header">
-                    <h1>My Revenue</h1>
+                    <h1>Revenue Details</h1>
                     <div class="section-header-breadcrumb">
                         <div class="breadcrumb-item active"><a href="/dashboard">Dashboard</a></div>
                         <div class="breadcrumb-item">My Revenue</div>
@@ -15,7 +15,7 @@
                 <div class="col-12">
                         <div class="card">
                                 <div class="card-header">
-                                  <h4>My Revenue</h4>
+                                  <h4>Revenue Details</h4>
                                   <div class="card-header-action">
                                     <span href="#" class="badge badge-secondary">
                                     Total : {{$details->sum('amount')}}$
@@ -42,7 +42,7 @@
                                         @foreach ($details as $i => $item)
                                             <tr>
                                             <td>{{$i + 1 }}</td>
-                                            <td>{{$item->source}}</td>
+                                            <td title="{{$item->source}}">{{Str::limit($item->source,7)}}</td>
                                             <td>{{$revenue->description}}</td>
                                                 <td class="align-middle">{{$item->amount}}$</td>
                                                 <td >

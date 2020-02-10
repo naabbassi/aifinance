@@ -11,4 +11,8 @@ class issue extends Model
     public function messages(){
         return $this->hasMany('App\issue_message','issue_id');
     }
+
+    public function isAsked(){
+        return $this->messages()->orderBy('created_at','desc')->first()->type == 's';
+    }
 }

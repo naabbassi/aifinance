@@ -115,8 +115,10 @@ class AdminController extends Controller
     }
     function userDetails(Request $request){
         $user = User::find($request->id);
+        $deposits = $user->deposit()->get();
+        $sum = $deposits->sum('amount');
         $countries = country::all();
-        return view('admin/user_details',compact('user','countries'));
+        return view('admin/user_details',compact('user','countries','sum','deposits'));
     }
     function disableUser($userId){
         $user = User::find($userId);

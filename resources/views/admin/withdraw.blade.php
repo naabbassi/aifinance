@@ -32,7 +32,7 @@
                         @foreach ($withdraw as $i => $item)
                         <tr>
                               <td>{{ $i+1 }}</td>
-                        <td><a href="/admin/users/{{$item->uid}}">{{ App\User::find($item->uid)->name}}</a></td>
+                        <td><a href="/admin/users/{{$item->uid}}">{{ App\User::find($item->uid)->fullname() }}</a></td>
                         <td>{{$item->amount}}$</td>
                               <td>
                                 @switch($item->type)
@@ -58,7 +58,6 @@
                                     <span class="badge badge-danger">Unknown</span>
                                 @endswitch
                               </td>
-
                               <td class="options">
                                   <div class="dropdown">
                                       <a href="#" data-toggle="dropdown" class="btn btn-primary " aria-expanded="false"> ⋮ </a>
@@ -92,13 +91,12 @@
         </button>
       </div>
       <div class="modal-body">
-        Amount : <p id="amount"></p>
-        User : <p id="user"></p>
-        Type : <p id="type"></p>
-        wallet : <p id="wallet"></p>
-        status : <p id="status"></p>
-        Date : <p id="date"></p>
-        approved by : <p id="proccedBy"></p>
+        <p>Amount : <span id="amount"></span></p>
+        <p>Type : <span id="type"></span></p>
+        <p>wallet : <span id="wallet"></span></p>
+        <p>status : <span id="status"></span></p>
+        <p>Date : <span id="date"></span></p>
+        <p>approved by : <span id="approvedBy"></span></p>
       </div>
     </div>
   </div>
@@ -124,10 +122,11 @@
           result = await response.json();
           br = '<br>';
          document.getElementById('amount').innerHTML = result.amount;
-         document.getElementById('type').innerHTML = result.type;
+         document.getElementById('type').innerHTML = result.type == 'w' ? 'withdraw to Wallet' : 'withdraw to deposit';
          document.getElementById('wallet').innerHTML = result.wallet_id;
          document.getElementById('status').innerHTML = result.status ? 'Approved' : 'Pending';
          document.getElementById('date').innerHTML = result.created_at;
+         document.getElementById('approvedBy').innerHTML = result.approvedBy;
          $('.details-modal').modal('show');
         }
       }

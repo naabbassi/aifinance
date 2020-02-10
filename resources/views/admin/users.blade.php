@@ -34,7 +34,7 @@
                     @foreach ($users as $user)
                     <tr>
                           <td class="align-middle">
-                            {{$user->name }} {{$user->family}}
+                            {{$user->fullname()}}
                           </td>
                           <td class="align-middle">
                             {{$user->email }}

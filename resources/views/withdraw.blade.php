@@ -13,7 +13,7 @@
                         <div class="card-body">
                             <div class="section-title p-2">Available amount to withdraw: <span class="text-success">{{ number_format($available, 2) }}$</span></div>
                             {{-- start accordion --}}
-                            <div id="accordion" class="pt-2">
+                            <div  id="accordion" class="pt-2">
                                 <div class="accordion">
                                   <div class="accordion-header" role="button" data-toggle="collapse" data-target="#panel-body-1" aria-expanded="false">
                                     <h4> <i class="fas fa-donate"></i> &nbsp; Withdraw to Deposit</h4>
@@ -182,9 +182,6 @@
 @endsection
 
 @section('script')
-<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
 <script>
       //issue form
       var IssueItemId=0;

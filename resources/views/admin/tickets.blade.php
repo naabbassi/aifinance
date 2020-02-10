@@ -26,12 +26,13 @@
                           <th>Issue Type</th>
                           <th>User</th>
                           <th>Status</th>
+                          <th>Answered</th>
                           <th>Action</th>
                         </tr>
                         @foreach ($tickets as $item)
                         <tr>
                               <td class="align-middle">
-                                {{ $item->id }}
+                                {{ Str::limit($item->id, 7) }}
                               </td>
                               <td>
                                 @switch($item->type)
@@ -64,6 +65,11 @@
                                     <span class="badge badge-danger" >Close</span>
                                   @endif
                               </td>
+                              <td>@if ($item->isAsked())
+                                     <span class="badge badge-success">Answered</span>
+                                  @else
+                                  <span class="badge badge-warning">Not Answered</span>
+                                  @endif</td>
                               <td class="options">
                                   <div class="dropdown">
                                       <a href="#" data-toggle="dropdown" class="btn btn-light" aria-expanded="false"> ⋮ </a>

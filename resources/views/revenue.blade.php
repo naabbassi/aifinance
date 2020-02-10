@@ -40,8 +40,8 @@
                                       <tbody>
                                         @foreach ($list as $indexKey => $item)
                                             <tr>
-                                                <td>{{$indexKey+1}}</td>
-                                                <td>{{date_format($item->created_at,'my')}}{{strtoupper($item->type)}}-{{$item->id}}</td>
+                                                <td class="align-middle">{{$indexKey+1}}</td>
+                                                <td>{{Str::limit($item->id,7)}}</td>
                                                 <td class="align-middle">{{$item->items()->sum('amount')}}$</td>
                                                 <td >
                                                   @switch($item->type)

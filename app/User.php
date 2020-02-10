@@ -58,6 +58,10 @@ class User extends Authenticatable
     public function isAdmin(){
         return $this->isAdmin;
     }
+
+    public function fullname(){
+        return $this->name." ".$this->family;
+    }
     /**
      * The attributes that should be cast to native types.
      *

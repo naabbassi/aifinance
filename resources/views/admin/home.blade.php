@@ -111,6 +111,7 @@
                         <th>Issue Type</th>
                         <th>User</th>
                         <th>Created At</th>
+                        <th>Status</th>
                         <th>Action</th>
                       </tr>
                       @foreach ($tickets as $item)
@@ -137,6 +138,11 @@
                             <td>
                                 {{ date_format($item->created_at,'d M. Y') }}
                             </td>
+                            <td>@if ($item->isAsked())
+                              <span class="badge badge-success">Answered</span>
+                            @else
+                               <span class="badge badge-danger">Not Answered</span>
+                           @endif</td>
                             <td class="options">
                                 <div class="dropdown">
                                     <a href="#" data-toggle="dropdown" class="btn btn-primary " aria-expanded="false"> ⋮ </a>
