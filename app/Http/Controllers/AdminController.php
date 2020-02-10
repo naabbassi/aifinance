@@ -15,6 +15,7 @@ use App\country;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Webpatser\Uuid\Uuid;
+use DB;
 class AdminController extends Controller
 {
     private $netDepositReward = false;
@@ -98,7 +99,11 @@ class AdminController extends Controller
         return view('admin/withdraw',compact('withdraw'));
     }
     function withdrawDetails(Request $request){
-        $withdraw = withdraw::find($request->id);
+        $withdraw = DB::table('withdraw')
+            ->join('wallets', 'withdraw.wallet_id', '=', 'wallets.id')
+            ->select('withdraw.*', 'wallets.address')
+            ->where('withdraw.id',$request->id)
+            ->get();
         return $withdraw->toJson();
     }
     function withdrawConfirm(Request $request){

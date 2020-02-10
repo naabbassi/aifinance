@@ -121,9 +121,10 @@
         if(response.status == 200){
           result = await response.json();
           br = '<br>';
+          result = result[0];
          document.getElementById('amount').innerHTML = result.amount;
          document.getElementById('type').innerHTML = result.type == 'w' ? 'withdraw to Wallet' : 'withdraw to deposit';
-         document.getElementById('wallet').innerHTML = result.wallet_id;
+         document.getElementById('wallet').innerHTML = result.address;
          document.getElementById('status').innerHTML = result.status ? 'Approved' : 'Pending';
          document.getElementById('date').innerHTML = result.created_at;
          document.getElementById('approvedBy').innerHTML = result.approvedBy;
