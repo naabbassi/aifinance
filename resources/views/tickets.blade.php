@@ -24,7 +24,7 @@
                         </tr>
                         @foreach ($issues as $item)
                         <tr>
-                              <td class="align-middle">{{{Str::limit({$item->id,7)}}</td>
+                              <td class="align-middle">{{ Str::limit($item->id, 7) }}</td>
                               <td>
                                 @switch($item->type)
                                     @case("d")
