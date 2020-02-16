@@ -91,12 +91,12 @@
         </button>
       </div>
       <div class="modal-body">
-        <p>Amount : <span id="amount"></span></p>
-        <p>Type : <span id="type"></span></p>
-        <p>wallet : <span id="wallet"></span></p>
-        <p>status : <span id="status"></span></p>
-        <p>Date : <span id="date"></span></p>
-        <p>approved by : <span id="approvedBy"></span></p>
+        <p class="font-weight-bold">Amount : <span id="amount" class="font-weight-bold"></span></p>
+        <p class="font-weight-bold">Type : <span id="type"></span></p>
+        <p class="font-weight-bold">wallet : <span id="wallet" class="font-weight-bold text-primary"></span></p>
+        <p class="font-weight-bold">status : <span id="status"></span></p>
+        <p class="font-weight-bold">Date : <span id="date"></span></p>
+        <p class="font-weight-bold">approved by : <span id="approvedBy"></span></p>
       </div>
     </div>
   </div>

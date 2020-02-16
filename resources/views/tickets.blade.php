@@ -24,7 +24,7 @@
                         </tr>
                         @foreach ($issues as $item)
                         <tr>
-                              <td class="align-middle">{{date_format($item->created_at,'my')}}{{strtoupper($item->type)}}-{{$item->id}}</td>
+                              <td class="align-middle">{{{Str::limit({$item->id,7)}}</td>
                               <td>
                                 @switch($item->type)
                                     @case("d")

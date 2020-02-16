@@ -34,7 +34,7 @@
                     @foreach ($users as $user)
                     <tr>
                           <td class="align-middle">
-                            {{$user->fullname()}}
+                           <a href="/admin/users/{{$user->id}}">{{$user->fullname()}}</a>
                           </td>
                           <td class="align-middle">
                             {{$user->email }}

@@ -56,7 +56,7 @@
                                 @php
                                     $user = App\user::find($item->uid)
                                 @endphp
-                                <a href="/admin/user/{{$item->uid}}">{{$user->name }}</a>
+                                <a href="/admin/users/{{$item->uid}}">{{$user->name }}</a>
                               </td>
                               <td>
                                   @if ($item->status)

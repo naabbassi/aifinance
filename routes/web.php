@@ -13,13 +13,10 @@ Route::get('/web/about', 'Controller@about');
 Route::get('/web/lend', 'Controller@lend');
 Route::get('/web/trade', 'Controller@trade');
 Route::get('/web/investment', 'Controller@investment');
-
 // Registration
 Route::get('/register/{email}','Controller@register');
 Route::post('/newmember','Controller@newMember');
-//Test
-Route::get('/test','test@test');
-//Authentication
+//enable authentication for next routes
 Auth::routes();
 // Dashboard
 Route::get('/dashboard', 'HomeController@dashboard');
@@ -81,9 +78,3 @@ Route::post('/admin/faq/get/{id}','AdminController@getFaqById');
 Route::get('/admin/withdraw','AdminController@withdraw');
 Route::post('/admin/withdraw/details','AdminController@withdrawDetails');
 Route::put('/admin/withdraw/confirm','AdminController@withdrawConfirm');
-
-
-
-
-
-
