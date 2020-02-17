@@ -10,7 +10,9 @@ Route::post('/', 'Controller@subscribe');
 Route::get('/sendsms/{number}', 'Controller@sendSMS');
 Route::get('/web', 'Controller@home');
 Route::get('/web/about', 'Controller@about');
-Route::get('/web/lend', 'Controller@lend');
+Route::get('/web/blog', 'Controller@blog');
+Route::get('/web/contact', 'Controller@contact');
+Route::get('/web/help', 'Controller@help');
 Route::get('/web/trade', 'Controller@trade');
 Route::get('/web/investment', 'Controller@investment');
 // Registration

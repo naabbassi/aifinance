@@ -33,8 +33,15 @@ class Controller extends BaseController
         return view('web/about');
     }
 
-    public function lend(){
-        return view('web/lend');
+    public function blog(){
+        return view('web/blog');
+    }
+
+    public function contact(){
+        return view('web/contact');
+    }
+    public function help(){
+        return view('web/help');
     }
     public function trade(){
         return view('web/trade');

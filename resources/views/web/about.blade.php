@@ -13,7 +13,7 @@ AI Finance :: About Us
 					</h4>
 					<ul class="breadcrumb-list">
 						<li>
-							<a href="index.html">
+							<a href="/">
 									<i class="fas fa-home"></i>
 									Home
 							</a>
@@ -22,7 +22,7 @@ AI Finance :: About Us
 							<span><i class="fas fa-chevron-right"></i> </span>
 						</li>
 						<li>
-							<a class="active" href="aboutus.html">About Us</a>
+							<a class="active" href="/web/about">About Us</a>
 						</li>
 					</ul>
 				</div>

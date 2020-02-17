@@ -109,11 +109,17 @@
 									<li class="nav-item">
 										<a class="nav-link" href="/web/trade">Trade</a>
 									</li>
+									{{-- <li class="nav-item">
+											<a class="nav-link" href="/web/investment">Investment</a>
+									</li> --}}
 									<li class="nav-item">
-										<a class="nav-link" href="/web/lend">Lend</a>
+										<a class="nav-link" href="/web/blog">Blog</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="/web/investment">Investment</a>
+										<a class="nav-link" href="/web/help">Help Center</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="/web/contact">Contact Us</a>
 									</li>
 								</ul>
 								<a href="/dashboard" class="mybtn1">Get Started </a>
