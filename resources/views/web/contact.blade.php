@@ -55,36 +55,49 @@
 						<h4 class="title">
 								Drop us a Line
 						</h4>
-						<form>
+						<form action="/web/contact" method="POST">
+							@csrf
 							<div class="row">
 								<div class="col-lg-6">
 									<div class="form-group">
 										<label for="name">Name :</label>
-										<input type="text" class="input-field" id="name" placeholder="Enter Your Name">
+										<input type="text" class="input-field" name="name" placeholder="Enter Your Name">
+										@error('name')
+											<small class="form-text text-danger ">{{ $message }}</small>
+										@enderror
 									</div>
 								</div>
 								<div class="col-lg-6">
 									<div class="form-group">
 										<label for="email">Email :</label>
-										<input type="text" class="input-field" id="email" placeholder="Enter Your Email">
+										<input type="email" class="input-field" name="email" placeholder="Enter Your Email">
+										@error('email')
+											<small class="form-text text-danger ">{{ $message }}</small>
+										@enderror
 									</div>
 								</div>
 								<div class="col-lg-6">
 									<div class="form-group">
 										<label for="subjict">Subjict :</label>
-										<input type="text" class="input-field" id="subjict" placeholder="Write Your Subjict">
+										<input type="text" class="input-field" name="subject" placeholder="Write Your Subjict">
+										@error('subject')
+											<small class="form-text text-danger ">{{ $message }}</small>
+										@enderror
 									</div>
 								</div>
 								<div class="col-lg-6">
 									<div class="form-group">
 										<label for="phone">Phone :</label>
-										<input type="text" class="input-field" id="phone" placeholder="Enter Your Phone No">
+										<input type="phone" class="input-field" name="phone" placeholder="Enter Your Phone No">
 									</div>
 								</div>
 								<div class="col-lg-12">
 									<div class="form-group button-area">
 										<label for="message">Message :</label>
-										<textarea id="message" class="input-field textarea" placeholder="Write Your Message"></textarea>
+										<textarea name="message" class="input-field textarea" placeholder="Write Your Message"></textarea>
+										@error('message')
+											<small class="form-text text-danger ">{{ $message }}</small>
+										@enderror
 										<button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i></button>
 									</div>
 								</div>

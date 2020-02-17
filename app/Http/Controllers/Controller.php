@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Mail\email_confirmation;
 use App\User;
 use App\country;
+use App\Contacts;
 use Webpatser\Uuid\Uuid;
 use Twilio\Rest\Client;
 class Controller extends BaseController
@@ -38,6 +39,23 @@ class Controller extends BaseController
     }
 
     public function contact(){
+        return view('web/contact');
+    }
+    public function contactForm(Request $request){
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'subject' => 'required',
+            'message' => 'required'
+        ]);
+        $contact = new Contacts;
+        $contact->name =  $request->name;
+        $contact->email =  $request->email;
+        $contact->phone =  $request->phone;
+        $contact->subject =  $request->subject;
+        $contact->message = $request->message;
+        $contact->save();
+        \Session::flash('alert-success','Thanks ! We got your message');
         return view('web/contact');
     }
     public function help(){

@@ -12,6 +12,7 @@ Route::get('/web', 'Controller@home');
 Route::get('/web/about', 'Controller@about');
 Route::get('/web/blog', 'Controller@blog');
 Route::get('/web/contact', 'Controller@contact');
+Route::post('/web/contact', 'Controller@contactForm');
 Route::get('/web/help', 'Controller@help');
 Route::get('/web/trade', 'Controller@trade');
 Route::get('/web/investment', 'Controller@investment');
