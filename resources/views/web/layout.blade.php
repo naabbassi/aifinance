@@ -176,12 +176,12 @@
 						</h4>
 						<ul class="link-list">
 							<li>
-								<a href="#">
+								<a href="/web/about">
 									<i class="fas fa-angle-double-right"></i>	About Us
 								</a>
 							</li>
 							<li>
-								<a href="#">
+								<a href="/web/contact">
 									<i class="fas fa-angle-double-right"></i>	Contact Us
 								</a>
 							</li>
@@ -195,34 +195,18 @@
 						</h4>
 						<ul class="link-list">
 							<li>
-								<a href="#">
+								<a href="/dashboard">
 									<i class="fas fa-angle-double-right"></i> Manage Your Account
 								</a>
 							</li>
 							<li>
-								<a href="#">
+								<a href="/web/help">
 									<i class="fas fa-angle-double-right"></i> How to Deposit
 								</a>
 							</li>
 							<li>
-								<a href="#">
+								<a href="/web/help#withdraw">
 									<i class="fas fa-angle-double-right"></i> How to Withdraw
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fas fa-angle-double-right"></i> Account Varification
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fas fa-angle-double-right"></i> Safety & Security
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fas fa-angle-double-right"></i> Membership Level
-
 								</a>
 							</li>
 						</ul>
@@ -235,34 +219,18 @@
 						</h4>
 						<ul class="link-list">
 							<li>
-								<a href="#">
+								<a href="/web/help">
 									<i class="fas fa-angle-double-right"></i>Help centre
 								</a>
 							</li>
 							<li>
-								<a href="#">
+								<a href="/web/faq">
 									<i class="fas fa-angle-double-right"></i>FAQ
 								</a>
 							</li>
 							<li>
-								<a href="#">
-									<i class="fas fa-angle-double-right"></i>Quick Start Guide
-								</a>
-							</li>
-							<li>
-								<a href="#">
+								<a href="/web/downloads">
 									<i class="fas fa-angle-double-right"></i>Tutorials
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fas fa-angle-double-right"></i>Borrow
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fas fa-angle-double-right"></i>Lend
-
 								</a>
 							</li>
 						</ul>
@@ -276,11 +244,6 @@
 						<ul class="link-list">
 							<li>
 								<a href="#">
-									<i class="fas fa-angle-double-right"></i>Risk Warnings
-								</a>
-							</li>
-							<li>
-								<a href="#">
 									<i class="fas fa-angle-double-right"></i>Privacy Notice
 								</a>
 							</li>
@@ -292,17 +255,6 @@
 							<li>
 								<a href="#">
 									<i class="fas fa-angle-double-right"></i>Terms of Service
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fas fa-angle-double-right"></i>Become Affiliate
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fas fa-angle-double-right"></i>Complaints Policy
-
 								</a>
 							</li>
 						</ul>
