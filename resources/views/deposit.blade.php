@@ -192,7 +192,7 @@
     var qrcode = new QRCode("qrcode");
     var exchangeRate = 0;
     var val = 0;
-    var walletAddress = "1P9DcGZEjxBd8oUGfi862JdBYVrw3cg8ML";
+    var walletAddress = "bitcoin://1CoQ4pgagb6QuW7sLxLj79A6mKLPA3Wtje";
     $(document).on('input', '#range', function() {
         val = $(this).val();
         generateQR(val);
@@ -212,7 +212,7 @@
       .then((out) => {
         exchangeRate = Number.parseFloat(out.data.rateUsd).toFixed(4);
         var btc =(amount / exchangeRate).toFixed(5);
-        qrcode.makeCode(walletAddress + btc);
+        qrcode.makeCode(this.walletAddress);
         document.getElementById('rate').innerHTML = '1 BTC = ' + exchangeRate + '$';
         document.getElementById('usd').value = amount ;
         document.getElementById('btc').innerHTML = btc + '₿';
