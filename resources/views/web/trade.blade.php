@@ -71,141 +71,10 @@ AI Finance :: Trade
 	</div>
 	<!-- calculator Area End -->
 
-	<!-- borrow Area Start -->
-	<section class="lend borrow-page">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-lg-8 col-md-10">
-					<div class="section-heading">
-						<h5 class="subtitle extra-padding">
-							The Smarter Way 
-						</h5>
-						<h2 class="title extra-padding">
-							Way to Borrow
-						</h2>
-						<p class="text">
-							Deposit crypto assets & earn interest on your reserves.
-							Try to check out Lending Rate
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="responsive-table">
-						<table class="table">
-							<thead>
-								<tr>
-								<th scope="col">TOKEN NAME</th>
-								<th scope="col">LEND APR</th>
-								<th scope="col">BORROW APR</th>
-								<th scope="col">LOANS ACTIVE</th>
-								<th scope="col">RESERVE POOL</th>
-								<th scope="col">LEND & EARN</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-								<td>
-									<img src="/assets/images/icon1.png" alt="">
-									BTC
-								</td>
-								<td>9.8%</td>
-								<td>17.9%</td>
-								<td>$325,650</td>
-								<td>$481,694</td>
-								<td>
-									<a href="#">
-										Lend
-									</a>
-								</td>
-								</tr>
-								<tr>
-								<td>
-									<img src="/assets/images/icon2.png" alt="">
-									ETH
-								</td>
-								<td>9.8%</td>
-								<td>17.9%</td>
-								<td>$325,650</td>
-								<td>$481,694</td>
-								<td>
-									<a href="#">
-										Lend
-									</a>
-								</td>
-								</tr>
-								<tr>
-								<td>
-									<img src="/assets/images/icon3.png" alt="">
-									DASH
-								</td>
-								<td>9.8%</td>
-								<td>17.9%</td>
-								<td>$325,650</td>
-								<td>$481,694</td>
-								<td>
-									<a href="#">
-										Lend
-									</a>
-								</td>
-								</tr>
-								<tr>
-								<td>
-									<img src="/assets/images/icon4.png" alt="">
-									ETC
-								</td>
-								<td>9.8%</td>
-								<td>17.9%</td>
-								<td>$325,650</td>
-								<td>$481,694</td>
-								<td>
-									<a href="#">
-										Lend
-									</a>
-								</td>
-								</tr>
-								<tr>
-								<td>
-									<img src="/assets/images/icon5.png" alt="">
-									TRX
-								</td>
-								<td>9.8%</td>
-								<td>17.9%</td>
-								<td>$325,650</td>
-								<td>$481,694</td>
-								<td>
-									<a href="#">
-										Lend
-									</a>
-								</td>
-								</tr>
-								<tr>
-								<td>
-									<img src="/assets/images/icon1.png" alt="">
-									BTC
-								</td>
-								<td>9.8%</td>
-								<td>17.9%</td>
-								<td>$325,650</td>
-								<td>$481,694</td>
-								<td>
-									<a href="#">
-										Lend
-									</a>
-								</td>
-								</tr>
-							</tbody>
-							</table>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- borrow Area End -->
+
 
 	<!-- Get Start Area2 Start -->
-	<section class="get-start2">
+	<section class="get-start2 borrow-page">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-lg-8 col-md-10">
@@ -217,7 +86,7 @@ AI Finance :: Trade
 							In a few minutes
 						</h2>
 						<p class="text">
-							Lendbo supports a variety of the most popular digital currencies.
+							AI Finance supports a variety of the most popular digital currencies.
 							Deposit crypto assets & earn interest on your reserves.
 						</p>
 					</div>

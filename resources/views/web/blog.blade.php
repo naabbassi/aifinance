@@ -62,7 +62,7 @@
                                 <div class="post-footer">
                                     <div class="post-by">
                                         <img src="/assets/images/blog/author.png" alt="">
-                                        <a href="#">Jhon Doe</a>
+                                        <a href="#">Alex Krummer</a>
                                     </div>
                                     <div class="time">
                                         <span>
@@ -103,7 +103,7 @@
                                 <div class="post-footer">
                                     <div class="post-by">
                                         <img src="/assets/images/blog/author.png" alt="">
-                                        <a href="#">Jhon Doe</a>
+                                        <a href="#">Alex Krummer</a>
                                     </div>
                                     <div class="time">
                                         <span>
@@ -144,7 +144,7 @@
                                 <div class="post-footer">
                                     <div class="post-by">
                                         <img src="/assets/images/blog/author.png" alt="">
-                                        <a href="#">Jhon Doe</a>
+                                        <a href="#">Alex Krummer</a>
                                     </div>
                                     <div class="time">
                                         <span>
@@ -185,7 +185,7 @@
                                 <div class="post-footer">
                                     <div class="post-by">
                                         <img src="/assets/images/blog/author.png" alt="">
-                                        <a href="#">Jhon Doe</a>
+                                        <a href="#">Alex Krummer</a>
                                     </div>
                                     <div class="time">
                                         <span>
@@ -226,7 +226,7 @@
                                 <div class="post-footer">
                                     <div class="post-by">
                                         <img src="/assets/images/blog/author.png" alt="">
-                                        <a href="#">Jhon Doe</a>
+                                        <a href="#">Alex Krummer</a>
                                     </div>
                                     <div class="time">
                                         <span>
@@ -267,7 +267,7 @@
                                 <div class="post-footer">
                                     <div class="post-by">
                                         <img src="/assets/images/blog/author.png" alt="">
-                                        <a href="#">Jhon Doe</a>
+                                        <a href="#">Alex Krummer</a>
                                     </div>
                                     <div class="time">
                                         <span>
@@ -308,7 +308,7 @@
                                 <div class="post-footer">
                                     <div class="post-by">
                                         <img src="/assets/images/blog/author.png" alt="">
-                                        <a href="#">Jhon Doe</a>
+                                        <a href="#">Alex Krummer</a>
                                     </div>
                                     <div class="time">
                                         <span>
@@ -349,7 +349,7 @@
                                 <div class="post-footer">
                                     <div class="post-by">
                                         <img src="/assets/images/blog/author.png" alt="">
-                                        <a href="#">Jhon Doe</a>
+                                        <a href="#">Alex Krummer</a>
                                     </div>
                                     <div class="time">
                                         <span>
@@ -390,7 +390,7 @@
                                 <div class="post-footer">
                                     <div class="post-by">
                                         <img src="/assets/images/blog/author.png" alt="">
-                                        <a href="#">Jhon Doe</a>
+                                        <a href="#">Alex Krummer</a>
                                     </div>
                                     <div class="time">
                                         <span>

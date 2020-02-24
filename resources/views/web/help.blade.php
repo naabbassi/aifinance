@@ -152,28 +152,4 @@
 	</section>
 	<!-- Help Section Area End -->
 
-
-	<!-- Submit Request Area Start -->
-	<section class="submit-request">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="submit-request-box">
-						<div class="content">
-							<h4 class="title">
-								You have not found an answer
-								to your questions?
-							</h4>
-							<p class="sub-title">
-								You have not found an answer? Don't worry, send us a message
-							</p>
-							<a href="#" class="mybtn1">Submit a request</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- Submit Request Area End -->
-
 @endsection

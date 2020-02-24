@@ -35,55 +35,6 @@
 		\Request::is('/')? $ct = '' : $ct = 'inner-page';
 	@endphp
 	<header class="header {{$ct}}">
-		<!-- Top Header Area Start -->
-		<section class="top-header" >
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="content">
-							<div class="left-content">
-								<ul class="left-list">
-									<li>
-										<p>
-											<i class="fas fa-headset"></i>	Support
-										</p>
-									</li>
-								</ul>
-							</div>
-							<div class="right-content">
-								<ul class="right-list">
-									<li>
-										<ul class="social-link">
-											<li>
-												<a href="#">
-													<i class="fab fa-facebook-f"></i>
-												</a>
-											</li>
-											<li>
-												<a href="#">
-													<i class="fab fa-twitter"></i>
-												</a>
-											</li>
-											<li>
-												<a href="#">
-													<i class="fab fa-linkedin-in"></i>
-												</a>
-											</li>
-											<li>
-												<a href="#">
-													<i class="fab fa-instagram"></i>
-												</a>
-											</li>
-										</ul>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- Top Header Area End -->
 		<!--Main-Menu Area Start-->
 		<div class="mainmenu-area">
 			<div class="container">
