@@ -219,7 +219,7 @@
 					<div class="col-lg-12">
 						<div class="content">
 							<div class="content">
-								<p>Copyright © {{ date("yy") }} All Rights Reserved By <a href="#">AI Finance</a>
+								<p>Copyright © 2009 - {{ date("yy") }} All Rights Reserved By <a href="#">AI Finance</a>
 								</p>
 							</div>
 						</div>

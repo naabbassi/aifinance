@@ -44,15 +44,17 @@ AI Finance :: About Us
 								</h5>
 								<p class="text">
 									We aren't a typical company in the investment and finance sector, but we are a group of professional analysts and market researchers with more than 10 years of successful experience in business and financial branches.
+									<br>
 									The wide and comprehensive experience and using modern technologies like Artificial Intelligence made us able to be unique in our field and make a milestone compare to our competitors. 
 									
 									AIFinance currently has hands in wide ranges over markets like Forex, NYSE, Crypto infrastructures.
 									
-									In our philosophy profit is not defined as a short-term process but a long-term approach that is reachable due to be trusted by our customers and creditors.
+									In our philosophy profit is not defined as a short-term process but a long-term approach that is reachable due to be trusted by our customers and creditors. <br>
 									We are trusted in the future why we have roots in history and had hands in shaping it and believe that every transaction based on good analytics can be led to profit due soon or late. 
+									<br>
 									Thanks to our well developed AI-based systems we can overcome the market complexity and guarantee our creditors' profit.
 									Our activity 
-									<ul>
+									<ul class="text">
 										<li> Stock Exchanges (NYSE, NASDAQ &, etc.) </li>
 										<li> Börse Frankfurt </li>
 										<li> London Stock Exchange </li>
