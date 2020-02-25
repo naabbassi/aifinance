@@ -43,14 +43,27 @@ AI Finance :: About Us
 									About AI Finance
 								</h5>
 								<p class="text">
-										Our business model provides for the highest 
-										standard of technological excellence, user 
-										experience, and crypto security. Secure platform architecture will protect customers over the whole loan life. Besides Lendbo powered 
-										functionality, users will also enjoy the benefit.
+									We aren't a typical company in the investment and finance sector, but we are a group of professional analysts and market researchers with more than 10 years of successful experience in business and financial branches.
+									The wide and comprehensive experience and using modern technologies like Artificial Intelligence made us able to be unique in our field and make a milestone compare to our competitors. 
+									
+									AIFinance currently has hands in wide ranges over markets like Forex, NYSE, Crypto infrastructures.
+									
+									In our philosophy profit is not defined as a short-term process but a long-term approach that is reachable due to be trusted by our customers and creditors.
+									We are trusted in the future why we have roots in history and had hands in shaping it and believe that every transaction based on good analytics can be led to profit due soon or late. 
+									Thanks to our well developed AI-based systems we can overcome the market complexity and guarantee our creditors' profit.
+									Our activity 
+									<ul>
+										<li> Stock Exchanges (NYSE, NASDAQ &, etc.) </li>
+										<li> Börse Frankfurt </li>
+										<li> London Stock Exchange </li>
+										<li> Börse Luxemburg </li>
+										<li> Crypto Currencies (BTC, Ether, etc.) </li>
+										<li> Mining & Infrastructure Supplier </li>
+									</ul>
 										
 								</p>
 								<p class="text">
-										The digital future is arriving. Welcome it with Lendbo! Your success will become a brilliant point in a magnificent future digital landscape!
+										The digital future is arriving. Welcome it with AIFinance! Your success will become a brilliant point in a magnificent future digital landscape!
 								</p>
 							</div>
 						</div>
@@ -86,7 +99,7 @@ AI Finance :: About Us
 								</h4>
 								<p class="text">
 										Processed for <span>170,000+</span>
-										Lendbo Users
+										 Users
 								</p>
 							</div>
 						</div>
@@ -101,8 +114,7 @@ AI Finance :: About Us
 										$1+ billion
 								</h4>
 								<p class="text">
-										in Instant Crypto 
-										Loan Requests
+										Investment
 								</p>
 							</div>
 						</div>
@@ -117,8 +129,7 @@ AI Finance :: About Us
 										100+
 								</h4>
 								<p class="text">
-										<span>45+</span> Fiat Currencies 
-										Supported
+										<span>45+</span> Currencies Supported
 								</p>
 							</div>
 						</div>
@@ -154,30 +165,10 @@ AI Finance :: About Us
 						<img src="/assets/images//team1.png" alt="">
 						<div class="member-data">
 								<div class="name">
-								<h4 class="title">Billy Lopez</h4>
+								<h4 class="title">Kornel Patrick</h4>
 								<p class="position">Co-Founder</p>
 								</div>
 							</div>
-					</div>
-		
-					<div class="social">
-						<ul>
-						<li>
-							<a href="#">
-							<i class="fab fa-facebook-f"></i>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-							<i class="fab fa-twitter"></i>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-							<i class="fab fa-instagram"></i>
-							</a>
-						</li>
-						</ul>
 					</div>
 					</div>
 				</div>
@@ -187,30 +178,10 @@ AI Finance :: About Us
 						<img src="/assets/images//team2.png" alt="">
 						<div class="member-data">
 								<div class="name">
-								<h4 class="title">Jason Price </h4>
+								<h4 class="title">Paul Weinstein </h4>
 								<p class="position">Co-Founder</p>
 								</div>
 							</div>
-					</div>
-		
-					<div class="social">
-						<ul>
-						<li>
-							<a href="#">
-							<i class="fab fa-facebook-f"></i>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-							<i class="fab fa-twitter"></i>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-							<i class="fab fa-instagram"></i>
-							</a>
-						</li>
-						</ul>
 					</div>
 					</div>
 				</div>
@@ -220,30 +191,10 @@ AI Finance :: About Us
 						<img src="/assets/images//team3.png" alt="">
 						<div class="member-data">
 								<div class="name">
-								<h4 class="title">Albert Bell</h4>
-								<p class="position">Co-Founder</p>
+									<h4 class="title">Paul Shaabosky</h4>
+									<p class="position">CEO</p>
 								</div>
-							</div>
-					</div>
-		
-					<div class="social">
-						<ul>
-						<li>
-							<a href="#">
-							<i class="fab fa-facebook-f"></i>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-							<i class="fab fa-twitter"></i>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-							<i class="fab fa-instagram"></i>
-							</a>
-						</li>
-						</ul>
+						</div>
 					</div>
 					</div>
 				</div>
@@ -253,30 +204,10 @@ AI Finance :: About Us
 						<img src="/assets/images//team4.png" alt="">
 						<div class="member-data">
 								<div class="name">
-								<h4 class="title">Gary Bell </h4>
-								<p class="position">Co-Founder</p>
+								<h4 class="title">Karen Edingen </h4>
+								<p class="position">CTO</p>
 								</div>
 							</div>
-					</div>
-		
-					<div class="social">
-						<ul>
-						<li>
-							<a href="#">
-							<i class="fab fa-facebook-f"></i>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-							<i class="fab fa-twitter"></i>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-							<i class="fab fa-instagram"></i>
-							</a>
-						</li>
-						</ul>
 					</div>
 					</div>
 				</div>

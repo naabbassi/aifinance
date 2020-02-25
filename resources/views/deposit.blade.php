@@ -192,7 +192,7 @@
     var qrcode = new QRCode("qrcode");
     var exchangeRate = 0;
     var val = 0;
-    var walletAddress = "bitcoin://1CoQ4pgagb6QuW7sLxLj79A6mKLPA3Wtje";
+    var walletAddress = "1CoQ4pgagb6QuW7sLxLj79A6mKLPA3Wtje";
     $(document).on('input', '#range', function() {
         val = $(this).val();
         generateQR(val);
