@@ -78,7 +78,7 @@
 								</div>
 								<div class="col-lg-6">
 									<div class="form-group">
-										<label for="subjict">Subjict :</label>
+										<label for="subjict">Subject :</label>
 										<input type="text" class="input-field" name="subject" placeholder="Write Your Subjict">
 										@error('subject')
 											<small class="form-text text-danger ">{{ $message }}</small>
@@ -130,32 +130,11 @@
 							<li>
 								<p>
 										<i class="fas fa-globe-americas"></i>
-										WEbsite:  aifinance.io
+										Website:  aifinance.io
 								</p>
 							</li>
 						</ul>
-						<ul class="social-links">
-							<li>
-								<a href="#">
-									<i class="fab fa-facebook-f"></i>
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fab fa-twitter"></i>
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fab fa-linkedin-in"></i>
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fab fa-pinterest-p"></i>
-								</a>
-							</li>
-						</ul>
+
 					</div>
 				</div>
 			</div>

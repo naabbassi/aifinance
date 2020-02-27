@@ -70,7 +70,7 @@ AI Finance :: About Us
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-6">
+					<div class="col-lg-4 col-sl-12">
 						<div class="right-area">
 							<img src="/assets/images/about.png" alt="">
 						</div>

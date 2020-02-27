@@ -64,7 +64,7 @@
                               @php
                                   $user =  App\user::find($item->uid);
                               @endphp
-                            <td><a class="badge btn btn-outline-info" href="/admin/user/{{$item->uid}}">{{$user->name.' '.$user->family}}</a></td>
+                            <td><a class="badge btn btn-outline-info" href="/admin/users/{{$item->uid}}">{{$user->name.' '.$user->family}}</a></td>
                               <td class="options">
                                   <div class="dropdown">
                                       <a href="#" data-toggle="dropdown" class="btn btn-primary " aria-expanded="false"> ⋮ </a>

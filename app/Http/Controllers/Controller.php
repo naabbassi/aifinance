@@ -14,6 +14,7 @@ use App\Mail\email_confirmation;
 use App\User;
 use App\country;
 use App\Contacts;
+use App\Blog;
 use Webpatser\Uuid\Uuid;
 use Twilio\Rest\Client;
 class Controller extends BaseController
@@ -35,7 +36,13 @@ class Controller extends BaseController
     }
 
     public function blog(){
-        return view('web/blog');
+        $blogs = Blog::orderBy('created_at','desc')->paginate(9);
+        return view('web/blog',compact('blogs'));
+    }
+
+    public function post($postId){
+        $post = Blog::find($postId);
+        return view('web/post',compact('post'));
     }
 
     public function contact(){

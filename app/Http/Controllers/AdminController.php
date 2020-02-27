@@ -12,6 +12,8 @@ use App\revenue;
 use App\revenue_items;
 use App\withdraw;
 use App\country;
+use App\Blog;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Webpatser\Uuid\Uuid;
@@ -245,5 +247,39 @@ class AdminController extends Controller
             \Session::flash('alert-success','Your password updated successfuly');
             return redirect('/admin/users/');
     }
+    function blogs(){
+        $blogs = Blog::all();
+        return view('admin/blog', compact('blogs'));
+    }
+    function createOrUpdatePost(Request $request){
+        $request->validate([
+            'title' =>'required',
+            'content' => 'required',
+            'author' => 'required'
+        ]);
+            if($request->id == 0 ){
+                $blog = new Blog;
+            } else {
+                $blog = Blog::find($request->id);
+            }
+            $blog->title = $request->title;
+            $blog->content = $request->content;
+            $blog->author = $request->author;
+            if($request->hasFile('file')){
+                $blog->pic ? Storage::delete($blog->pic): null;
+                $path = $request->file->store('public');
+                $blog->pic = $path;
+            }
+            $blog->save();
+    }
+
+    function getPostById($postId){
+        $post = Blog::find($postId)->toJson();
+        return $post;
+    }
     
+    function deletePostById($postId){
+        Storage::delete(Blog::find($postId)->pic);
+        Blog::where('id','=',$postId)->delete();
+    }
 }
