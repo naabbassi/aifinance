@@ -12,7 +12,7 @@ use App\revenue;
 use App\revenue_items;
 use App\withdraw;
 use App\country;
-use App\Blog;
+use App\blog;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -248,7 +248,7 @@ class AdminController extends Controller
             return redirect('/admin/users/');
     }
     function blogs(){
-        $blogs = Blog::all();
+        $blogs = blog::all();
         return view('admin/blog', compact('blogs'));
     }
     function createOrUpdatePost(Request $request){
@@ -258,9 +258,9 @@ class AdminController extends Controller
             'author' => 'required'
         ]);
             if($request->id == 0 ){
-                $blog = new Blog;
+                $blog = new blog;
             } else {
-                $blog = Blog::find($request->id);
+                $blog = blog::find($request->id);
             }
             $blog->title = $request->title;
             $blog->content = $request->content;
@@ -274,12 +274,12 @@ class AdminController extends Controller
     }
 
     function getPostById($postId){
-        $post = Blog::find($postId)->toJson();
+        $post = blog::find($postId)->toJson();
         return $post;
     }
     
     function deletePostById($postId){
-        Storage::delete(Blog::find($postId)->pic);
-        Blog::where('id','=',$postId)->delete();
+        Storage::delete(blog::find($postId)->pic);
+        blog::where('id','=',$postId)->delete();
     }
 }

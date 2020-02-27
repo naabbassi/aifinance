@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Hash;
 use App\Mail\email_confirmation;
 use App\User;
 use App\country;
-use App\Contacts;
-use App\Blog;
+use App\contacts;
+use App\blog;
 use Webpatser\Uuid\Uuid;
 use Twilio\Rest\Client;
 class Controller extends BaseController
@@ -36,12 +36,12 @@ class Controller extends BaseController
     }
 
     public function blog(){
-        $blogs = Blog::orderBy('created_at','desc')->paginate(9);
+        $blogs = blog::orderBy('created_at','desc')->paginate(9);
         return view('web/blog',compact('blogs'));
     }
 
     public function post($postId){
-        $post = Blog::find($postId);
+        $post = blog::find($postId);
         return view('web/post',compact('post'));
     }
 
@@ -55,7 +55,7 @@ class Controller extends BaseController
             'subject' => 'required',
             'message' => 'required'
         ]);
-        $contact = new Contacts;
+        $contact = new contacts;
         $contact->name =  $request->name;
         $contact->email =  $request->email;
         $contact->phone =  $request->phone;
