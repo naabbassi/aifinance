@@ -13,6 +13,7 @@ use App\revenue_items;
 use App\withdraw;
 use App\country;
 use App\blog;
+use App\contacts;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -281,5 +282,10 @@ class AdminController extends Controller
     function deletePostById($postId){
         Storage::delete(blog::find($postId)->pic);
         blog::where('id','=',$postId)->delete();
+    }
+
+    function messages(){
+        $msgs = contacts::all();
+        return view('admin/messages',compact('msgs'));
     }
 }

@@ -86,3 +86,4 @@ Route::get('/admin/blog','AdminController@blogs');
 Route::post('/admin/blog','AdminController@createOrUpdatePost');
 Route::post('/admin/blog/{postId}','AdminController@getPostById');
 Route::delete('/admin/blog/{postId}','AdminController@deletePostById');
+Route::get('/admin/msg','AdminController@messages');
