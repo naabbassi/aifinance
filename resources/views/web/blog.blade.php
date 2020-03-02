@@ -43,7 +43,7 @@
                                 </div>
                                 <div class="post-footer">
                                     <div class="post-by">
-                                        <img src="/assets/images/blog/author.png" alt="">
+                                        <img src="/img/avatar/avatar-3.png" alt="">
                                         <a href="#">{{$item->author}}</a>
                                     </div>
                                     <div class="time">

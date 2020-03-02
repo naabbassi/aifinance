@@ -75,14 +75,14 @@
 								</h4>
 								<div class="writer-profile">
 									<div class="img">
-										<img src="/assets/images/help/writter.png" alt="">
+										<img src="/img/avatar/avatar-3.png" alt="">
 									</div>
 									<div class="writer-content">
 										<p>27 articles in this collection
 										</p>
 										<p>
 											Written by <a href="#">
-												David Kemmerer
+												David Kummel
 											</a>
 										</p>
 									</div>
@@ -103,14 +103,14 @@
 								</h4>
 								<div class="writer-profile">
 									<div class="img">
-										<img src="/assets/images/help/writter.png" alt="">
+										<img src="/img/avatar/avatar-3.png" alt="">
 									</div>
 									<div class="writer-content">
 										<p>27 articles in this collection
 										</p>
 										<p>
 											Written by <a href="#">
-												David Kemmerer
+												David Kummel
 											</a>
 										</p>
 									</div>
@@ -131,14 +131,14 @@
 								</h4>
 								<div class="writer-profile">
 									<div class="img">
-										<img src="/assets/images/help/writter.png" alt="">
+										<img src="/img/avatar/avatar-3.png" alt="">
 									</div>
 									<div class="writer-content">
 										<p>27 articles in this collection
 										</p>
 										<p>
 											Written by <a href="#">
-												David Kemmerer
+												Sayer Brown
 											</a>
 										</p>
 									</div>
