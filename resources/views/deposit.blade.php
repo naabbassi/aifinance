@@ -100,7 +100,7 @@
                                       <th>Due Date</th>
                                       <th>Status</th>
                                       <th>Action</th>
-                                    </tr>
+                                    </tr> 
                                     @foreach ($deposits as $item)
                                     <tr>
                                           <td class="align-middle">

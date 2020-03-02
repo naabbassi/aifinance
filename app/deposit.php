@@ -12,4 +12,5 @@ class deposit extends Model
     protected $fillable = [
         'uid', 'amount', 'title', 'description'
     ];
+
 }

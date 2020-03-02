@@ -1,7 +1,7 @@
 @extends('web/layout')
 @section('title')
     
-@endsection
+@endsection 
 @section('content')
     
 	<!-- Breadcrumb Area Start -->

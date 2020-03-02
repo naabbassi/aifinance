@@ -82,12 +82,12 @@ class Controller extends BaseController
             return ("content isn't valid");
         }
         if (User::where('email',decrypt($email))->count()) {
-            if (User::where('owner',decrypt($email))->count() < 3) {
+            if (User::where('owner',decrypt($email))->count() < 3 && User::where('email',decrypt($email))->first()->deposit()->where('status', true)->count() > 0) {
                 $countries = country::all();
                 return view('register',compact('email','countries'));
             } else {
                 $title = 'Reistration failed';
-                \Session::flash('alert-warning','Unfortunatley your inviter has reached maximal sub member');
+                \Session::flash('alert-warning','Unfortunatley your inviter either has reached maximal sub member or has not yet an approved deposit.');
                 return view('alert',compact('title'));
             }
         }
