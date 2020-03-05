@@ -7,7 +7,7 @@
 */
 Route::get('/', 'Controller@home')->name('home');
 Route::post('/', 'Controller@subscribe');
-Route::get('/sendsms/{number}', 'Controller@sendSMS');
+// Route::get('/sendsms/{number}', 'Controller@sendSMS');
 Route::get('/web', 'Controller@home');
 Route::get('/web/about', 'Controller@about');
 Route::get('/web/blog', 'Controller@blog');
@@ -87,3 +87,7 @@ Route::post('/admin/blog','AdminController@createOrUpdatePost');
 Route::post('/admin/blog/{postId}','AdminController@getPostById');
 Route::delete('/admin/blog/{postId}','AdminController@deletePostById');
 Route::get('/admin/msg','AdminController@messages');
+Route::post('/admin/msg/{id}','AdminController@messageById');
+Route::get('/test',function(){
+    return true;
+});

@@ -285,7 +285,12 @@ class AdminController extends Controller
     }
 
     function messages(){
-        $msgs = contacts::all();
+        $msgs = contacts::orderBy('created_at','desc')->get();
         return view('admin/messages',compact('msgs'));
+    }
+
+    function messageById($id){
+        $msg = contacts::find($id)->toJson();
+        return $msg;
     }
 }

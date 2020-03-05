@@ -41,7 +41,7 @@
                           <div class="dropdown">
                               <a href="#" data-toggle="dropdown" class="btn btn-light" aria-expanded="false"> ⋮ </a>
                               <div class="dropdown-menu" x-placement="top-start" style="position: absolute; transform: translate3d(0px, -6px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                <a href="/admin/messages/{{$item->id}}" class="dropdown-item has-icon "><i class="fas fa-book-open"></i> View Message</a>
+                                <a href="#" onclick="getMessage({{$item->id}})" class="dropdown-item has-icon "><i class="fas fa-book-open"></i> View Message</a>
                                 <div class="dropdown-divider"></div>
                               <a href="#" class="dropdown-item has-icon text-danger" id="closeIssue" data-id="{{$item->id}}"><i class="far fa-bell-slash"></i>Delete Message</a>
                               </div>
@@ -58,7 +58,54 @@
       </div>
 </div>
 </div>
+           <!-- Message Modal modal -->
+           <div class="modal fade msg-modal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title ">Message Details</h5>
+                  <button type="button" class="close" onclick="closeModal()">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group" id="content">
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
 @endsection
 @section('script')
-    
+<script>
+  const content = document.getElementById('content');
+  async function getMessage(id){
+  result = await fetch("{{ route('home') }}/admin/msg/" + id,{
+    method: "POST",
+    body:JSON.stringify({
+      '_token': '{{csrf_token()}}'
+    }),
+          headers:{
+            'Content-Type':'application/json'
+          }
+  });
+  if(result.status == 200){
+    result =await result.json();
+    $('.msg-modal').modal('show');
+    content.value = "";
+    console.info(result);
+    Object.keys(result).map( e => {
+      content.innerHTML += result[e];
+      content.innerHTML += '<br>';
+    })
+    console.log(result)
+  } else {
+    swal('Report the issue', 'Something went wrong - Error:' + result.status, 'info');
+  }
+}
+function closeModal(){
+  $('.msg-modal').modal('hidden');
+}
+
+</script>
 @endsection

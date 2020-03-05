@@ -144,25 +144,4 @@ class Controller extends BaseController
             return view('alert',compact('title'));
         }
     }
-
-    
-    function sendSMS(Request $request){
-        // Your Account SID and Auth Token from twilio.com/console
-        $account_sid = 'ACa83c7503f9d5ca2a144ecd34f2cc42e3';
-        $auth_token = '541b46416a371e6db82c2c07d592a402';
-        // In production, these should be environment variables. E.g.:
-        // $auth_token = $_ENV["TWILIO_AUTH_TOKEN"]
-
-        // A Twilio number you own with SMS capabilities
-        $twilio_number = "+18305496299";
-        $client = new Client($account_sid, $auth_token);
-        $client->messages->create(
-            // Where to send a text message (your cell phone?)
-            $request->number,
-            array(
-                'from' => $twilio_number,
-                'body' => 'You recieve this message from Nasser!'
-            )
-        );
-    }
 }
