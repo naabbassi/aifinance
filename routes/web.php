@@ -8,7 +8,7 @@
 Route::get('/', 'Controller@home')->name('home');
 Route::post('/', 'Controller@subscribe');
 Route::get('/test',function(){
-    return true;
+    return "true";
 });
 // Route::get('/sendsms/{number}', 'Controller@sendSMS');
 Route::get('/web', 'Controller@home');
